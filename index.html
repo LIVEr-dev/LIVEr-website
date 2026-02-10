@@ -3,53 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#FF3B3B">
+    <meta name="theme-color" content="#ff3131">
     <meta name="color-scheme" content="light dark">
     <title>LIVEr - Digital Growth for Ambitious Businesses</title>
     <meta name="description" content="We turn attention into customers using strategy, systems, and execution. Digital growth solutions for businesses in Zimbabwe and beyond.">
+    
     <!-- SEO: Open Graph for social sharing -->
     <meta property="og:title" content="LIVEr - Digital Growth for Ambitious Businesses">
     <meta property="og:description" content="We turn attention into customers using strategy, systems, and execution. Digital growth solutions for businesses in Zimbabwe and beyond.">
     <meta property="og:type" content="website">
     <meta name="robots" content="index, follow">
-    <!-- Accessibility: Skip to content link via CSS -->
-    <style>.skip-to-main { position: absolute; top: -40px; left: 0; background: #FF3B3B; color: white; padding: 8px 16px; z-index: 10001; text-decoration: none; border-radius: 0 0 4px 0; } .skip-to-main:focus { top: 0; }</style>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Accessibility: Skip to content link -->
+    <style>.skip-to-main { position: absolute; top: -40px; left: 0; background: #ff3131; color: white; padding: 8px 16px; z-index: 10001; text-decoration: none; border-radius: 0 0 4px 0; } .skip-to-main:focus { top: 0; }</style>
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* =========================================
+           PREMIUM DESIGN SYSTEM
+        ========================================= */
         :root {
-            --primary: #FF3B3B;
-            --primary-hover: #E62E2E;
-            --primary-light: rgba(255, 59, 59, 0.08);
-            --dark: #1a1a2e;
-            --dark-soft: #2d3748;
-            --light: #FFFFFF;
-            --gray: #f8f9fa;
+            --primary: #ff3131;
+            --primary-hover: #e62020;
+            --primary-light: rgba(255, 49, 49, 0.08);
+            --dark: #373643;
+            --dark-soft: #4a4a57;
+            --light: #ffffff;
+            --gray: #f4f5f7;
             --gray-dark: #e8eaed;
-            --text: #1a1a2e;
-            --text-soft: #4a5568;
+            --text: #373643;
+            --text-soft: #4a4a57;
             --text-light: #6B7280;
             --border: #e5e7eb;
-            --border-soft: rgba(26, 26, 46, 0.08);
-            --shadow-sm: 0 1px 3px 0 rgba(26, 26, 46, 0.1), 0 1px 2px -1px rgba(26, 26, 46, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(26, 26, 46, 0.1), 0 2px 4px -2px rgba(26, 26, 46, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(26, 26, 46, 0.12), 0 4px 6px -4px rgba(26, 26, 46, 0.08);
-            --shadow-xl: 0 20px 25px -5px rgba(26, 26, 46, 0.14), 0 8px 10px -6px rgba(26, 26, 46, 0.08);
-            --shadow-2xl: 0 25px 50px -12px rgba(26, 26, 46, 0.25);
-            --gradient-primary: linear-gradient(135deg, #FF3B3B 0%, #ff6b6b 100%);
-            --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #2d3748 100%);
-            --gradient-subtle: linear-gradient(135deg, rgba(255, 59, 59, 0.04) 0%, rgba(255, 107, 107, 0.02) 100%);
+            --border-soft: rgba(55, 54, 67, 0.08);
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow-sm: 0 1px 3px 0 rgba(55, 54, 67, 0.1), 0 1px 2px -1px rgba(55, 54, 67, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(55, 54, 67, 0.1), 0 2px 4px -2px rgba(55, 54, 67, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(55, 54, 67, 0.12), 0 4px 6px -4px rgba(55, 54, 67, 0.08);
+            --shadow-xl: 0 20px 25px -5px rgba(55, 54, 67, 0.14), 0 8px 10px -6px rgba(55, 54, 67, 0.08);
+            --shadow-2xl: 0 25px 50px -12px rgba(55, 54, 67, 0.25);
+            --gradient-primary: linear-gradient(135deg, #ff3131 0%, #ff5a5a 100%);
+            --gradient-dark: linear-gradient(135deg, #373643 0%, #4a4a57 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(255, 49, 49, 0.04) 0%, rgba(255, 90, 90, 0.02) 100%);
         }
 
-        /* ============================================
-        MOTION DESIGN SYSTEM (Apple-style)
-        ============================================ */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
 
-        /* Keyframe Animations */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* =========================================
+           FLUID TYPOGRAPHY
+        ========================================= */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: clamp(3rem, 6vw, 5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        p { font-size: 1.1rem; color: var(--text-soft); max-width: 70ch; margin-bottom: 1.5rem; }
+
+        /* =========================================
+           MOTION DESIGN SYSTEM
+        ========================================= */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -66,29 +103,16 @@
             to { opacity: 1; }
         }
 
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        /* Animation Utility Classes */
         .animate-in {
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -108,6 +132,17 @@
             opacity: 0;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .scroll-reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -120,7 +155,6 @@
             transform: translateY(0);
         }
 
-        /* Reduced Motion Support */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -129,39 +163,33 @@
             }
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-            background: #ffffff;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        /* =========================================
+           GLASSMORPHISM NAVIGATION
+        ========================================= */
+        nav, header {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(55, 54, 67, 0.08);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 28px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-soft);
-            backdrop-filter: blur(16px) saturate(180%);
-            box-shadow: 0 1px 3px 0 rgba(26, 26, 46, 0.04);
-            transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .logo {
@@ -213,12 +241,11 @@
         .nav-links a {
             color: var(--text);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            font-size: 15px;
+            font-size: 0.9rem;
             padding: 4px 0;
             border-bottom: 2px solid transparent;
-            /* Accessibility: Smooth focus indicator */
             border-radius: 2px;
         }
 
@@ -227,6 +254,7 @@
             color: var(--primary);
             border-bottom-color: var(--primary);
             outline: none;
+            opacity: 0.8;
         }
 
         .mobile-menu {
@@ -239,7 +267,6 @@
             padding: 8px;
             min-width: 44px;
             min-height: 44px;
-            /* Accessibility: Visible focus indicator */
             border-radius: 4px;
         }
 
@@ -248,10 +275,12 @@
             outline-offset: 2px;
         }
 
-        /* Hero Section */
+        /* =========================================
+           HERO SECTION WITH AMBIENT BACKGROUND
+        ========================================= */
         .hero {
             padding: 100px 0 80px;
-            background: linear-gradient(135deg, var(--gray) 0%, #ffffff 100%);
+            background: var(--gray);
             position: relative;
             overflow: hidden;
         }
@@ -259,12 +288,25 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
+            top: -10%;
             right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 59, 59, 0.05) 0%, transparent 70%);
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(255, 49, 49, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(55, 54, 67, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
         }
 
         .hero .container {
@@ -273,7 +315,7 @@
         }
 
         .hero h1 {
-            font-size: 56px;
+            font-size: clamp(38px, 6vw, 56px);
             line-height: 1.1;
             margin-bottom: 20px;
             color: var(--dark);
@@ -289,44 +331,42 @@
             line-height: 1.5;
         }
 
+        /* =========================================
+           MODERN INTERACTIVE BUTTONS
+        ========================================= */
         .cta-group {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
         }
 
-       .btn {
-            padding: 18px 36px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
+        button, .btn, input[type="submit"], a[class*="button"] {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(0);
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(0);
             min-height: 52px;
-            min-width: 52px;
             letter-spacing: -0.01em;
-        }
-
-        .btn:focus-visible {
-            outline: 2px solid var(--dark);
-            outline-offset: 2px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 4px 14px rgba(255, 59, 59, 0.35);
-            will-change: transform, box-shadow;
+            box-shadow: 0 5px 20px rgba(255, 49, 49, 0.35);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 59, 59, 0.45);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 49, 49, 0.45);
         }
 
         .btn-primary:active {
@@ -334,16 +374,20 @@
             transition-duration: 0.1s;
         }
 
-       .btn-secondary {
+        .btn-primary:focus-visible {
+            outline: 2px solid var(--dark);
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
             background: var(--gradient-dark);
             color: white;
-            box-shadow: 0 4px 14px rgba(26, 26, 46, 0.25);
-            will-change: transform, box-shadow;
+            box-shadow: 0 5px 20px rgba(55, 54, 67, 0.25);
         }
 
         .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(26, 26, 46, 0.35);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(55, 54, 67, 0.35);
         }
 
         .btn-secondary:active {
@@ -351,13 +395,16 @@
             transition-duration: 0.1s;
         }
 
-        /* Section Styles */
+        /* =========================================
+           SECTION STYLES
+        ========================================= */
         section {
             padding: 70px 0;
+            position: relative;
         }
 
         .section-title {
-            font-size: 44px;
+            font-size: clamp(34px, 4vw, 44px);
             line-height: 1.15;
             margin-bottom: 18px;
             color: var(--dark);
@@ -372,22 +419,9 @@
             max-width: 700px;
         }
 
-        /* Positioning Section */
-        .positioning {
-            background: white;
-        }
-
-        .positioning-content {
-            max-width: 800px;
-        }
-
-        .positioning-content p {
-            font-size: 18px;
-            margin-bottom: 18px;
-            line-height: 1.6;
-        }
-
-        /* Solutions Grid */
+        /* =========================================
+           PREMIUM CARD STYLES
+        ========================================= */
         .solutions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -395,7 +429,7 @@
             margin-bottom: 48px;
         }
 
-        .solution-card {
+        .solution-card, .card, .container {
             background: white;
             padding: 36px;
             border-radius: 20px;
@@ -404,15 +438,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            align-self: start;
-            will-change: transform, box-shadow;
             box-shadow: var(--shadow-sm);
-            /* Accessibility: Make clickable cards keyboard accessible */
-        }
-
-        .solution-card:focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: -2px;
         }
 
         .solution-card::before {
@@ -439,7 +465,7 @@
         .solution-card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-2xl);
-            border-color: rgba(255, 59, 59, 0.15);
+            border-color: rgba(255, 49, 49, 0.15);
         }
 
         .solution-card:hover::after {
@@ -448,6 +474,11 @@
 
         .solution-card:hover::before {
             height: 100%;
+        }
+
+        .solution-card:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: -2px;
         }
 
         .solution-card h3 {
@@ -465,7 +496,35 @@
             line-height: 1.7;
         }
 
-        /* NEW STYLES FOR UPGRADED SOLUTIONS */
+        /* Premium Images */
+        img {
+            border-radius: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Premium Forms */
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: white;
+            margin-bottom: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 49, 49, 0.1);
+        }
+
+        /* =========================================
+           SOLUTION CARDS EXPAND/COLLAPSE
+        ========================================= */
         .solution-outcome {
             font-size: 17px;
             font-weight: 600;
@@ -502,21 +561,18 @@
             font-weight: 600;
         }
 
-        /* Hide all expandable content by default */
         .solution-outcome,
         .solution-qualifier,
         .solution-process li:nth-child(n+3) {
             display: none;
         }
 
-        /* Show content when expanded */
         .solution-card.expanded .solution-outcome,
         .solution-card.expanded .solution-qualifier,
         .solution-card.expanded .solution-process li:nth-child(n+3) {
             display: block;
         }
 
-        /* Hidden class for JavaScript toggle */
         .hidden {
             display: none !important;
         }
@@ -550,7 +606,9 @@
             transform: rotate(180deg);
         }
 
-        /* Differentiators */
+        /* =========================================
+           DIFFERENTIATORS
+        ========================================= */
         .diff-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -573,14 +631,16 @@
             line-height: 1.6;
         }
 
-        /* Health Check Form */
+        /* =========================================
+           FORMS
+        ========================================= */
         .health-check-form {
             max-width: 700px;
             margin: 0 auto;
             background: white;
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-lg);
         }
 
         .form-group {
@@ -604,25 +664,9 @@
             border-radius: 10px;
             font-size: 16px;
             font-family: inherit;
-            will-change: border-color, background, box-shadow;
             transition: all 0.3s;
             background: #FAFAFA;
             color: #000000;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(255, 59, 59, 0.1);
-        }
-
-        /* Accessibility: Required field indicator */
-        .form-group label [aria-required="true"]::after {
-            content: " *";
-            color: var(--primary);
         }
 
         .form-group textarea {
@@ -630,13 +674,15 @@
             min-height: 110px;
         }
 
-        /* Case Studies */
+        /* =========================================
+           CASE STUDIES & RESOURCES
+        ========================================= */
         .case-study {
             background: var(--gray);
             padding: 40px;
             border-radius: 16px;
             margin-bottom: 24px;
-            border: 1px solid #E5E5E5;
+            border: 1px solid var(--border);
         }
 
         .case-study h3 {
@@ -653,12 +699,11 @@
             margin-bottom: 10px;
         }
 
-        /* Resources */
         .resource-card {
             background: white;
             padding: 28px;
             border-radius: 16px;
-            border: 1px solid #E5E5E5;
+            border: 1px solid var(--border);
             margin-bottom: 16px;
             transition: all 0.3s;
             cursor: pointer;
@@ -667,7 +712,7 @@
         .resource-card:hover {
             transform: translateX(8px);
             border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-lg);
         }
 
         .resource-card h3 {
@@ -677,7 +722,9 @@
             font-weight: 600;
         }
 
-        /* Contact */
+        /* =========================================
+           CONTACT
+        ========================================= */
         .contact-info {
             display: flex;
             flex-direction: column;
@@ -699,7 +746,7 @@
         .contact-item:hover {
             transform: translateX(5px);
             background: white;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-md);
         }
 
         .contact-icon {
@@ -715,7 +762,33 @@
             flex-shrink: 0;
         }
 
-        /* Footer */
+        /* =========================================
+           CTA BOX
+        ========================================= */
+        .cta-box {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px;
+            background: var(--gray);
+            border-radius: 16px;
+            border: 2px dashed var(--border);
+        }
+
+        .cta-box h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .cta-box p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
         footer {
             background: var(--dark);
             color: rgb(255, 255, 255);
@@ -755,7 +828,9 @@
             font-size: 14px;
         }
 
-        /* WhatsApp Float Button */
+        /* =========================================
+           WHATSAPP FLOAT BUTTON
+        ========================================= */
         .whatsapp-float {
             position: fixed;
             bottom: 32px;
@@ -792,7 +867,9 @@
             border-color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Page Management */
+        /* =========================================
+           PAGE MANAGEMENT
+        ========================================= */
         .page {
             display: none;
             opacity: 0;
@@ -807,40 +884,16 @@
             animation: fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-
-        /* CTA Box */
-        .cta-box {
-            text-align: center;
-            margin-top: 60px;
-            padding: 50px;
-            background: var(--gray);
-            border-radius: 16px;
-            border: 2px dashed #E5E5E5;
-        }
-
-        .cta-box h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: var(--dark);
-        }
-
-        .cta-box p {
-            color: var(--text-light);
-            margin-bottom: 30px;
-            font-size: 17px;
-        }
-
-        /* Responsive */
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
         @media (max-width: 768px) {
+            nav, header {
+                border-radius: 16px;
+                top: 10px;
+                margin: 10px auto;
+            }
+
             .nav-links {
                 display: none;
                 position: absolute;
@@ -850,7 +903,7 @@
                 background: white;
                 flex-direction: column;
                 padding: 20px;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                box-shadow: var(--shadow-lg);
                 border-radius: 0 0 12px 12px;
             }
 
@@ -911,7 +964,7 @@
 
     <!-- Navigation -->
     <nav role="navigation" aria-label="Main navigation">
-        <div class="container">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <a href="#home" class="logo" data-page="home" title="LIVEr - Go to Home page">
                 <div class="logo-icon" aria-hidden="true">
                     <img src="liver-logo-white.png" alt="LIVEr Logo" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
@@ -936,9 +989,9 @@
     <div id="home" class="page active" role="main">
         <section class="hero">
             <div class="container">
-                <h1>Digital growth for businesses<br>that want real results.</h1>
-                <p>We turn attention into customers using strategy, systems, and execution.</p>
-                <div class="cta-group">
+                <h1 class="reveal">Digital growth for businesses<br>that want real results.</h1>
+                <p class="reveal">We turn attention into customers using strategy, systems, and execution.</p>
+                <div class="cta-group reveal">
                     <a href="#health-check" data-page="health-check" class="btn btn-primary">
                         <span>Start the Digital Health Check</span>
                         <span aria-hidden="true">→</span>
@@ -951,21 +1004,21 @@
             </div>
         </section>
 
-        <section class="positioning">
+        <section style="background: white;">
             <div class="container">
-                <div class="positioning-content">
-                    <h2 class="section-title">Most businesses don't have a marketing problem.<br>They have a clarity problem.</h2>
-                    <p>They're posting. They're boosting ads. They're spending money.<br>But they don't know what's working — or why.</p>
-                    <p><strong>LIVEr exists to fix that.</strong></p>
+                <div style="max-width: 800px;">
+                    <h2 class="section-title reveal">Most businesses don't have a marketing problem.<br>They have a clarity problem.</h2>
+                    <p class="reveal">They're posting. They're boosting ads. They're spending money.<br>But they don't know what's working — or why.</p>
+                    <p class="reveal"><strong>LIVEr exists to fix that.</strong></p>
                 </div>
             </div>
         </section>
 
         <section style="background: var(--gray);">
             <div class="container">
-                <h2 class="section-title">What We Do</h2>
-                <p class="section-subtitle">We help businesses:</p>
-                <div class="solutions-grid">
+                <h2 class="section-title reveal">What We Do</h2>
+                <p class="section-subtitle reveal">We help businesses:</p>
+                <div class="solutions-grid reveal">
                     <div class="solution-card">
                         <h3>Get clear on what actually matters</h3>
                         <p>No more guessing. We identify the metrics and channels that drive real business outcomes.</p>
@@ -982,10 +1035,10 @@
             </div>
         </section>
 
-        <section>
+        <section style="background: white;">
             <div class="container">
-                <h2 class="section-title">How We're Different</h2>
-                <div class="diff-grid">
+                <h2 class="section-title reveal">How We're Different</h2>
+                <div class="diff-grid reveal">
                     <div class="diff-item">
                         <h3>Strategy before execution</h3>
                         <p>We don't start posting until we know why we're posting.</p>
@@ -1003,7 +1056,7 @@
                         <p>We care about customers, not just likes.</p>
                     </div>
                 </div>
-                <div class="cta-box">
+                <div class="cta-box reveal">
                     <h3>Not sure where to start?</h3>
                     <p>Take the 5-minute Digital Health Check to understand what your business needs.</p>
                     <a href="#health-check" data-page="health-check" class="btn btn-primary">Start Health Check <span aria-hidden="true">→</span></a>
@@ -1392,7 +1445,7 @@
         <section class="hero">
             <div class="container">
                 <h1>Free Digital Health Check</h1>
-                <p>Not a sales pitch. No upsells. This<br> is about understanding your business.</p>
+                <p>Not a sales pitch. No upsells. This is about understanding your business.</p>
             </div>
         </section>
         <section>
@@ -1543,7 +1596,7 @@
     <div id="about" class="page" role="main">
         <section class="hero">
             <div class="container">
-                <h1>Why we exists</h1>
+                <h1>Why we exist</h1>
             </div>
         </section>
 
@@ -1665,20 +1718,8 @@
     </a>
 
     <script>
-        // Contact configuration (centralized for easy updates)
-        const CONFIG = {
-            whatsappNumber: '263717122549',
-            phone: '263717122549',
-            emails: {
-                primary: 'mchinodyaruswa@gmail.com',
-                secondary: 'rwezuvaf@gmail.com'
-            },
-            instagram: 'https://www.instagram.com/liver.digital/'
-        };
-
-        // EMAIL OBFUSCATION - Prevents auto-masking by GitHub Pages/Jekyll
+        // EMAIL OBFUSCATION
         function initEmailProtection() {
-            // Handle regular email spans with data attributes
             document.querySelectorAll('.js-email').forEach(function(span) {
                 const user = span.getAttribute('data-user');
                 const domain = span.getAttribute('data-domain');
@@ -1694,7 +1735,6 @@
                 span.parentNode.replaceChild(link, span);
             });
 
-            // Handle footer email spans
             document.querySelectorAll('.js-email-footer').forEach(function(span) {
                 const user = span.getAttribute('data-user');
                 const domain = span.getAttribute('data-domain');
@@ -1714,7 +1754,6 @@
                 span.parentNode.replaceChild(link, span);
             });
 
-            // Handle email links with subject lines (like newsletter signup)
             document.querySelectorAll('.js-email-link').forEach(function(span) {
                 const user = span.getAttribute('data-user');
                 const domain = span.getAttribute('data-domain');
@@ -1731,31 +1770,26 @@
             });
         }
 
-        // Initialize event listeners on DOM ready
+        // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
-            initEmailProtection(); // Run email protection first
+            initEmailProtection();
             initScrollReveal();
             initHeroAnimation();
             initNavScrollEffect();
             initNavigation();
             initPageNavigation();
-            initFormHandling();
             initSolutionCards();
             initMobileMenu();
         });
 
-        // Apple-style scroll reveal for sections and cards
+        // SCROLL REVEAL
         function initScrollReveal() {
-            const revealElements = document.querySelectorAll('.solutions-grid, .diff-grid, .case-study, .resource-card, .contact-info, section > .container > h2, section > .container > p.section-subtitle');
+            const revealElements = document.querySelectorAll('.reveal');
             
-            revealElements.forEach(el => {
-                el.classList.add('scroll-reveal');
-            });
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
+                        entry.target.classList.add('active');
                     }
                 });
             }, {
@@ -1766,7 +1800,7 @@
             revealElements.forEach(el => observer.observe(el));
         }
 
-        // Hero section entrance animation
+        // HERO ANIMATION
         function initHeroAnimation() {
             const activePage = document.querySelector('.page.active');
             if (activePage) {
@@ -1782,36 +1816,24 @@
             const p = hero.querySelector('p');
             const ctaGroup = hero.querySelector('.cta-group');
 
-            if (h1) {
-                h1.classList.add('animate-in');
-            }
-            if (p) {
-                p.classList.add('animate-in', 'animate-in-delay-1');
-            }
-            if (ctaGroup) {
-                ctaGroup.classList.add('animate-in', 'animate-in-delay-2');
-            }
+            if (h1) h1.classList.add('animate-in');
+            if (p) p.classList.add('animate-in', 'animate-in-delay-1');
+            if (ctaGroup) ctaGroup.classList.add('animate-in', 'animate-in-delay-2');
         }
 
-        // Navigation shadow on scroll
+        // NAV SCROLL EFFECT
         function initNavScrollEffect() {
             const nav = document.querySelector('nav');
-            let lastScroll = 0;
-
+            
             window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll > 10) {
-                    nav.style.boxShadow = '0 2px 16px rgba(26, 26, 46, 0.08)';
+                if (window.pageYOffset > 10) {
+                    nav.style.boxShadow = '0 10px 40px rgba(55, 54, 67, 0.1)';
                 } else {
-                    nav.style.boxShadow = '0 1px 3px 0 rgba(26, 26, 46, 0.04)';
+                    nav.style.boxShadow = '0 10px 30px rgba(55, 54, 67, 0.08)';
                 }
-                
-                lastScroll = currentScroll;
             }, { passive: true });
         }
 
-        // Remove animation classes before page switch
         function cleanupAnimations(page) {
             const animatedElements = page.querySelectorAll('.animate-in, .animate-in-delay-1, .animate-in-delay-2, .animate-in-delay-3');
             animatedElements.forEach(el => {
@@ -1819,10 +1841,9 @@
             });
         }
 
-        // Add subtle page transition delay
         let isTransitioning = false;
 
-        // Navigation: Handle page switching with data attributes
+        // NAVIGATION
         function initNavigation() {
             document.querySelectorAll('[data-page]').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -1832,21 +1853,18 @@
             });
         }
 
-        // Update active page with smooth scroll
         function showPage(pageId) {
             if (isTransitioning) return;
             isTransitioning = true;
 
-            const pages = document.querySelectorAll('.page');
             const currentPage = document.querySelector('.page.active');
-            
             const targetPage = document.getElementById(pageId);
+            
             if (!targetPage || targetPage === currentPage) {
                 isTransitioning = false;
                 return;
             }
 
-            // Exit current page
             if (currentPage) {
                 currentPage.classList.add('exiting');
                 
@@ -1854,11 +1872,9 @@
                     currentPage.classList.remove('active', 'exiting');
                     cleanupAnimations(currentPage);
                     
-                    // Enter new page
                     targetPage.classList.add('active');
                     window.scrollTo({ top: 0, behavior: 'instant' });
                     
-                    // Trigger animations
                     setTimeout(() => {
                         animateHeroContent(targetPage);
                         isTransitioning = false;
@@ -1870,7 +1886,6 @@
                 isTransitioning = false;
             }
             
-            // Close mobile menu on page change
             const navLinks = document.getElementById('navLinks');
             if (navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
@@ -1878,7 +1893,7 @@
             }
         }
 
-        // Mobile menu toggle with ARIA support
+        // MOBILE MENU
         function initMobileMenu() {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             if (mobileMenuBtn) {
@@ -1890,7 +1905,7 @@
             }
         }
 
-        // SEO: Handle hash-based navigation for better crawlability
+        // HASH NAVIGATION
         function initPageNavigation() {
             window.addEventListener('hashchange', function() {
                 const hash = window.location.hash.slice(1);
@@ -1900,23 +1915,15 @@
             });
         }
 
-        // Form handling: Security-first, privacy-respecting
-        function initFormHandling() {
-            // Form submission handled by Formspree (action/method in form tag)
-            // JavaScript removed to allow proper submission
-        }
-
-        // Solution cards: Make keyboard-accessible
+        // SOLUTION CARDS
         function initSolutionCards() {
             document.querySelectorAll('.solution-card').forEach(card => {
-                // Click handler
                 card.addEventListener('click', function(e) {
                     if (!e.target.closest('a')) {
                         toggleExpand(this);
                     }
                 });
 
-                // Keyboard handler: Enter and Space keys
                 card.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
@@ -1926,14 +1933,9 @@
             });
         }
 
-        // Expand/collapse solution cards with accessibility
         function toggleExpand(card) {
-            const isExpanded = card.classList.contains('expanded');
-            
-            // Toggle expanded class
             card.classList.toggle('expanded');
             
-            // Toggle specific hidden elements
             const outcome = card.querySelector('.solution-outcome');
             const processList = card.querySelectorAll('.solution-process li.hidden');
             const qualifier = card.querySelector('.solution-qualifier');
@@ -1942,7 +1944,6 @@
             processList.forEach(item => item.classList.toggle('hidden'));
             if (qualifier) qualifier.classList.toggle('hidden');
 
-            // Update button text based on NEW state
             const indicator = card.querySelector('.expand-indicator');
             if (indicator) {
                 const nowExpanded = card.classList.contains('expanded');
