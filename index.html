@@ -675,30 +675,8 @@
         }
 
         /* =========================================
-           CASE STUDIES & RESOURCES
+           RESOURCES
         ========================================= */
-        .case-study {
-            background: var(--gray);
-            padding: 40px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            border: 1px solid var(--border);
-        }
-
-        .case-study h3 {
-            font-size: 24px;
-            margin-bottom: 18px;
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .case-label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
         .resource-card {
             background: white;
             padding: 28px;
@@ -791,7 +769,7 @@
         ========================================= */
         footer {
             background: var(--dark);
-            color: rgb(255, 255, 255);
+            color: #000000;
             padding: 70px 0 30px;
         }
 
@@ -806,10 +784,15 @@
             margin-bottom: 24px;
             font-size: 18px;
             font-weight: 600;
+            color: #000000;
+        }
+
+        .footer-section p {
+            color: #000000;
         }
 
         .footer-section a {
-            color: rgba(255,255,255,0.7);
+            color: #000000;
             text-decoration: none;
             display: block;
             margin-bottom: 12px;
@@ -817,14 +800,14 @@
         }
 
         .footer-section a:hover {
-            color: white;
+            color: var(--primary);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.7);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: #000000;
             font-size: 14px;
         }
 
@@ -975,7 +958,6 @@
                 <li role="none"><a href="#solutions" data-page="solutions" role="menuitem">Solutions</a></li>
                 <li role="none"><a href="#pricing" data-page="pricing" role="menuitem">Pricing</a></li>
                 <li role="none"><a href="#health-check" data-page="health-check" role="menuitem">Digital Health Check</a></li>
-                <li role="none"><a href="#case-studies" data-page="case-studies" role="menuitem">Case Studies</a></li>
                 <li role="none"><a href="#resources" data-page="resources" role="menuitem">Resources</a></li>
                 <li role="none"><a href="#about" data-page="about" role="menuitem">About</a></li>
                 <li role="none"><a href="#contact" data-page="contact" role="menuitem">Contact</a></li>
@@ -1527,37 +1509,6 @@
         </section>
     </div>
 
-    <!-- Case Studies Page -->
-    <div id="case-studies" class="page" role="main">
-        <section class="hero">
-            <div class="container">
-                <h1>Proof over promises</h1>
-                <p>We measure success by outcomes, not opinions.</p>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <div class="case-study">
-                    <h3>Coming Soon</h3>
-                    <p style="color: var(--text-light); margin-bottom: 20px;">We're currently building case studies from our pilot clients. Check back soon to see how we've helped businesses grow.</p>
-                    <p class="case-label">What we'll share:</p>
-                    <ul style="padding-left: 20px; color: var(--text-light);">
-                        <li style="margin-bottom: 8px;">The problem</li>
-                        <li style="margin-bottom: 8px;">The strategy</li>
-                        <li style="margin-bottom: 8px;">The execution</li>
-                        <li>The result</li>
-                    </ul>
-                </div>
-                <div class="cta-box">
-                    <h3>Want to be one of our case studies?</h3>
-                    <p>Work with us and become proof that the right strategy drives real growth.</p>
-                    <a href="#health-check" data-page="health-check" class="btn btn-primary">Start the Digital Health Check <span aria-hidden="true">→</span></a>
-                </div>
-            </div>
-        </section>
-    </div>
-
     <!-- Resources Page -->
     <div id="resources" class="page" role="main">
         <section class="hero">
@@ -1648,8 +1599,8 @@
                             <div class="contact-icon" aria-hidden="true">📧</div>
                             <div>
                                 <strong style="display: block; margin-bottom: 4px;">Email</strong>
-                                <span class="js-email" data-user="mchinodyaruswa" data-domain="gmail.com" style="display: block; margin-bottom: 4px;"></span>
-                                <span class="js-email" data-user="rwezuvaf" data-domain="gmail.com"></span>
+                                <a><span class="js-email" data-user="mchinodyaruswa" data-domain="gmail.com" style="display: block; margin-bottom: 4px;"></span></a>
+                                <a><span class="js-email" data-user="rwezuvaf" data-domain="gmail.com"></span></a>
                             </div>
                         </div>
 
@@ -1687,14 +1638,13 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img src="liver-logo-dark.png" alt="LIVEr Logo" style="width: 150px; margin-bottom: 12px;" loading="lazy">
-                    <p style="color: rgba(255,255,255,0.7); line-height: 1.7;">Digital growth for businesses that want real results.</p>
+                    <p style="color: #000000; line-height: 1.7;">Digital growth for businesses that want real results.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <a href="#solutions" data-page="solutions">Solutions</a>
                     <a href="#pricing" data-page="pricing">Pricing</a>
                     <a href="#health-check" data-page="health-check">Digital Health Check</a>
-                    <a href="#case-studies" data-page="case-studies">Case Studies</a>
                     <a href="#resources" data-page="resources">Resources</a>
                 </div>
                 <div class="footer-section">
@@ -1743,13 +1693,13 @@
                 const link = document.createElement('a');
                 link.href = 'mailto:' + email;
                 link.textContent = email;
-                link.style.color = 'rgba(255,255,255,0.7)';
+                link.style.color = '#000000';
                 link.style.textDecoration = 'none';
                 link.style.display = 'block';
                 link.style.marginBottom = '12px';
                 link.style.transition = 'color 0.3s';
-                link.onmouseover = function() { this.style.color = 'white'; };
-                link.onmouseout = function() { this.style.color = 'rgba(255,255,255,0.7)'; };
+                link.onmouseover = function() { this.style.color = 'var(--primary)'; };
+                link.onmouseout = function() { this.style.color = '#000000'; };
                 
                 span.parentNode.replaceChild(link, span);
             });
