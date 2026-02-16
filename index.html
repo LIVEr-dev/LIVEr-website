@@ -50,6 +50,9 @@
             --gradient-primary: linear-gradient(135deg, #ff3131 0%, #ff5a5a 100%);
             --gradient-dark: linear-gradient(135deg, #373643 0%, #4a4a57 100%);
             --gradient-subtle: linear-gradient(135deg, rgba(255, 49, 49, 0.04) 0%, rgba(255, 90, 90, 0.02) 100%);
+
+            /* Logo border-radius — single source of truth, stays consistent at all sizes */
+            --logo-radius: 10px;
         }
 
         * { 
@@ -205,6 +208,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            /* overflow:hidden ensures the img border-radius is always clipped correctly,
+               regardless of screen size or how the browser interprets the img dimensions */
+            overflow: hidden;
+            border-radius: var(--logo-radius);
+            flex-shrink: 0;
+        }
+
+        /* Explicit rule for logo images — overrides the global img border-radius (20px)
+           so the nav logo stays at a consistent, visually correct radius on all screens */
+        .logo-icon img {
+            border-radius: var(--logo-radius);
+            width: auto;
+            height: 100%;
+            max-height: 40px;
+            object-fit: contain;
+            display: block;
         }
 
         .logo-icon svg {
@@ -496,11 +515,23 @@
             line-height: 1.7;
         }
 
-        /* Premium Images */
+        /* =========================================
+           PREMIUM IMAGES
+           Global rule for content images.
+           Logo images are handled separately below
+           to maintain consistent rounding at all sizes.
+        ========================================= */
         img {
             border-radius: 20px;
             max-width: 100%;
             height: auto;
+        }
+
+        /* Logo images: controlled rounding that doesn't change with screen size.
+           The --logo-radius variable ensures nav and footer logos always match. */
+        .logo-icon img,
+        footer img {
+            border-radius: var(--logo-radius);
         }
 
         /* Premium Forms */
@@ -950,7 +981,7 @@
         <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
             <a href="#home" class="logo" data-page="home" title="LIVEr - Go to Home page">
                 <div class="logo-icon" aria-hidden="true">
-                    <img src="liver-logo-white.png" alt="LIVEr Logo" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                    <img src="liver-logo-white.png" alt="LIVEr Logo" loading="lazy">
                 </div>
             </a>
             <ul class="nav-links" id="navLinks" role="menubar">
@@ -1637,7 +1668,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="liver-logo-dark.png" alt="LIVEr Logo" style="width: 150px; margin-bottom: 12px;" loading="lazy">
+                    <img src="liver-logo-dark.png" alt="LIVEr Logo" style="width: 150px; margin-bottom: 12px; display: block;" loading="lazy">
                     <p style="color: #000000; line-height: 1.7;">Digital growth for businesses that want real results.</p>
                 </div>
                 <div class="footer-section">
