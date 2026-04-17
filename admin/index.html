@@ -1,13 +1,480 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIVEr Digital — Admin</title>
+  <link rel="icon" href="/favicon.ico">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── LOADING SCREEN ─────────────────────────────────────────────────── */
+    #liver-loader {
+      position: fixed; inset: 0; z-index: 99999;
+      background: #0f0e14;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      transition: opacity .5s ease, visibility .5s ease;
+    }
+    #liver-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem; letter-spacing: .12em;
+      color: #fff; line-height: 1;
+      display: flex; align-items: baseline; gap: 6px;
+    }
+    .loader-logo span { color: #ff3131; }
+    .loader-sub {
+      font-family: 'Syne', sans-serif; font-size: .7rem;
+      color: rgba(255,255,255,.35); letter-spacing: .25em;
+      text-transform: uppercase; margin-top: 8px;
+    }
+    .loader-bar {
+      width: 120px; height: 2px;
+      background: rgba(255,255,255,.1);
+      border-radius: 2px; margin-top: 40px; overflow: hidden;
+    }
+    .loader-bar-fill {
+      height: 100%; width: 0%; background: #ff3131;
+      border-radius: 2px;
+      animation: loaderFill 1.8s ease forwards;
+    }
+    @keyframes loaderFill { to { width: 100%; } }
+
+    /* ── GLOBAL CMS OVERRIDE ────────────────────────────────────────────── */
+    :root {
+      --liver-red: #ff3131;
+      --liver-dark: #373643;
+      --liver-bg: #0f0e14;
+      --liver-surface: #1a1925;
+      --liver-border: rgba(255,255,255,.07);
+      --liver-muted: rgba(255,255,255,.4);
+      --liver-white: #f2f0fb;
+    }
+
+    /* Base reset */
+    body { background: var(--liver-bg) !important; }
+
+    /* ── APP SHELL ──────────────────────────────────────────────────────── */
+    [class*="App-header"],
+    [class*="AppHeader"],
+    header[class*="css-"] {
+      background: var(--liver-surface) !important;
+      border-bottom: 1px solid var(--liver-border) !important;
+      box-shadow: none !important;
+      padding: 0 28px !important;
+      height: 56px !important;
+    }
+
+    /* Sidebar */
+    [class*="SidebarNav"],
+    [class*="sidebar"],
+    nav[class*="css-"] {
+      background: #13121c !important;
+      border-right: 1px solid var(--liver-border) !important;
+      width: 220px !important;
+    }
+
+    /* Sidebar items */
+    [class*="SidebarNavLink"],
+    [class*="NavLink"],
+    [class*="sidebar"] a {
+      font-family: 'Syne', sans-serif !important;
+      font-size: .8rem !important;
+      font-weight: 600 !important;
+      letter-spacing: .04em !important;
+      color: var(--liver-muted) !important;
+      border-radius: 8px !important;
+      margin: 2px 8px !important;
+      padding: 10px 14px !important;
+      transition: all .15s ease !important;
+      text-decoration: none !important;
+    }
+    [class*="SidebarNavLink"]:hover,
+    [class*="NavLink"]:hover,
+    [class*="sidebar"] a:hover {
+      color: var(--liver-white) !important;
+      background: rgba(255,255,255,.06) !important;
+    }
+    [class*="SidebarNavLink"][class*="active"],
+    [class*="NavLink"][class*="active"],
+    [class*="sidebar"] a[class*="active"] {
+      color: var(--liver-white) !important;
+      background: rgba(255, 49, 49, .12) !important;
+      border-left: 3px solid var(--liver-red) !important;
+    }
+
+    /* ── MAIN CONTENT AREA ──────────────────────────────────────────────── */
+    [class*="main-panel"],
+    [class*="MainPanel"],
+    main[class*="css-"],
+    [class*="App__main"],
+    [class*="EditorContainer"],
+    [class*="CollectionView"],
+    [class*="EntryListingGrid"],
+    [class*="EntriesCollection"] {
+      background: var(--liver-bg) !important;
+    }
+
+    /* Page titles */
+    [class*="CollectionHeader"] h1,
+    [class*="ViewTitle"],
+    [class*="CollectionLabel"] {
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: 2.2rem !important;
+      letter-spacing: .05em !important;
+      color: var(--liver-white) !important;
+    }
+
+    /* ── CARDS / ENTRY TILES ─────────────────────────────────────────────── */
+    [class*="EntryCard"],
+    [class*="ListCard"],
+    [class*="Card"][class*="css-"] {
+      background: var(--liver-surface) !important;
+      border: 1px solid var(--liver-border) !important;
+      border-radius: 12px !important;
+      box-shadow: none !important;
+      transition: border-color .15s, transform .15s !important;
+    }
+    [class*="EntryCard"]:hover,
+    [class*="ListCard"]:hover {
+      border-color: rgba(255,49,49,.3) !important;
+      transform: translateY(-1px) !important;
+    }
+    [class*="EntryCard"] h2,
+    [class*="EntryCard"] h3,
+    [class*="EntryCard"] [class*="title"] {
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      color: var(--liver-white) !important;
+    }
+    [class*="EntryCard"] p,
+    [class*="EntryCard"] [class*="description"] {
+      color: var(--liver-muted) !important;
+      font-size: .8rem !important;
+    }
+
+    /* ── BUTTONS ────────────────────────────────────────────────────────── */
+    button[class*="css-"],
+    [class*="Button"][class*="css-"],
+    [class*="ActionButton"] {
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .78rem !important;
+      letter-spacing: .04em !important;
+      border-radius: 8px !important;
+      transition: all .15s ease !important;
+    }
+    /* Primary / New entry button */
+    [class*="ToolbarButton"],
+    [class*="NewEntryButton"],
+    button[class*="primary"] {
+      background: var(--liver-red) !important;
+      color: #fff !important;
+      border: none !important;
+    }
+    button[class*="primary"]:hover,
+    [class*="NewEntryButton"]:hover {
+      background: #e02020 !important;
+      transform: translateY(-1px) !important;
+    }
+    /* Publish button */
+    [class*="PublishButton"],
+    [class*="publish-button"] {
+      background: var(--liver-red) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    /* ── FORMS / EDITOR ─────────────────────────────────────────────────── */
+    [class*="ControlContainer"],
+    [class*="FieldWrapper"],
+    [class*="FormField"] {
+      background: transparent !important;
+    }
+    [class*="ControlLabel"],
+    [class*="LabelComponent"],
+    label[class*="css-"] {
+      font-family: 'Syne', sans-serif !important;
+      font-size: .72rem !important;
+      font-weight: 700 !important;
+      letter-spacing: .1em !important;
+      text-transform: uppercase !important;
+      color: var(--liver-muted) !important;
+      margin-bottom: 6px !important;
+    }
+    input[class*="css-"],
+    textarea[class*="css-"],
+    [class*="StyledInput"],
+    [class*="StyledTextArea"],
+    [class*="StringControl"] input,
+    [class*="TextControl"] textarea {
+      background: var(--liver-surface) !important;
+      border: 1.5px solid var(--liver-border) !important;
+      border-radius: 8px !important;
+      color: var(--liver-white) !important;
+      font-family: 'Syne', sans-serif !important;
+      font-size: .88rem !important;
+      padding: 10px 14px !important;
+      transition: border-color .15s !important;
+    }
+    input[class*="css-"]:focus,
+    textarea[class*="css-"]:focus,
+    [class*="StringControl"] input:focus,
+    [class*="TextControl"] textarea:focus {
+      border-color: var(--liver-red) !important;
+      outline: none !important;
+      box-shadow: 0 0 0 3px rgba(255,49,49,.12) !important;
+    }
+
+    /* Select dropdowns */
+    select[class*="css-"],
+    [class*="SelectControl"] select {
+      background: var(--liver-surface) !important;
+      border: 1.5px solid var(--liver-border) !important;
+      border-radius: 8px !important;
+      color: var(--liver-white) !important;
+      font-family: 'Syne', sans-serif !important;
+    }
+
+    /* ── OBJECT / NESTED WIDGETS ────────────────────────────────────────── */
+    [class*="ObjectControl"],
+    [class*="ObjectWidgetTopBar"],
+    [class*="NestedObjectControl"] {
+      background: var(--liver-surface) !important;
+      border: 1px solid var(--liver-border) !important;
+      border-radius: 10px !important;
+    }
+    [class*="ObjectWidgetTopBar"] {
+      background: rgba(255,255,255,.04) !important;
+      border-bottom: 1px solid var(--liver-border) !important;
+      border-radius: 10px 10px 0 0 !important;
+      padding: 10px 16px !important;
+    }
+    [class*="ObjectWidgetTopBar"] button {
+      color: var(--liver-muted) !important;
+    }
+    [class*="ObjectWidgetTopBar"] span {
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .8rem !important;
+      color: var(--liver-white) !important;
+    }
+
+    /* ── LIST WIDGET ────────────────────────────────────────────────────── */
+    [class*="ListItemTopBar"],
+    [class*="SortableList"] {
+      background: var(--liver-surface) !important;
+      border: 1px solid var(--liver-border) !important;
+      border-radius: 10px !important;
+    }
+    [class*="ListItemTopBar"] {
+      border-radius: 10px 10px 0 0 !important;
+      background: rgba(255,255,255,.04) !important;
+    }
+
+    /* Add item button */
+    [class*="ListItemTopBar"] + button,
+    [class*="addButton"],
+    button[class*="Add"] {
+      border: 1.5px dashed rgba(255,49,49,.3) !important;
+      background: transparent !important;
+      color: var(--liver-red) !important;
+      border-radius: 8px !important;
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: .78rem !important;
+    }
+    button[class*="Add"]:hover { background: rgba(255,49,49,.08) !important; }
+
+    /* ── MARKDOWN EDITOR ────────────────────────────────────────────────── */
+    [class*="EditorControl"],
+    [class*="MarkdownControl"],
+    .CodeMirror {
+      background: var(--liver-surface) !important;
+      border: 1.5px solid var(--liver-border) !important;
+      border-radius: 8px !important;
+      color: var(--liver-white) !important;
+      font-size: .88rem !important;
+    }
+    .CodeMirror-scroll { background: transparent !important; }
+    .CodeMirror-gutters { background: rgba(255,255,255,.03) !important; border-right: 1px solid var(--liver-border) !important; }
+
+    /* ── TOOLBAR ────────────────────────────────────────────────────────── */
+    [class*="Toolbar"],
+    [class*="ToolBar"] {
+      background: var(--liver-surface) !important;
+      border-bottom: 1px solid var(--liver-border) !important;
+      box-shadow: none !important;
+    }
+    [class*="ToolbarButton"] {
+      color: var(--liver-muted) !important;
+      border-radius: 6px !important;
+    }
+    [class*="ToolbarButton"]:hover { color: var(--liver-white) !important; background: rgba(255,255,255,.07) !important; }
+    [class*="ToolbarButton"][class*="active"] { color: var(--liver-red) !important; background: rgba(255,49,49,.1) !important; }
+
+    /* ── HEADER LOGO AREA ────────────────────────────────────────────────── */
+    [class*="AppHeaderSiteLink"],
+    [class*="SiteName"],
+    [class*="AppHeader"] a[href="/"] {
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: 1.3rem !important;
+      letter-spacing: .1em !important;
+      color: var(--liver-white) !important;
+      text-decoration: none !important;
+    }
+
+    /* ── NOTIFICATIONS / TOAST ──────────────────────────────────────────── */
+    [class*="NotifList"],
+    [class*="Toast"],
+    [class*="Toastify__toast"] {
+      background: var(--liver-surface) !important;
+      border: 1px solid var(--liver-border) !important;
+      border-radius: 10px !important;
+      font-family: 'Syne', sans-serif !important;
+      color: var(--liver-white) !important;
+    }
+    [class*="Toastify__progress-bar"] {
+      background: var(--liver-red) !important;
+    }
+
+    /* ── MEDIA / IMAGE WIDGET ────────────────────────────────────────────── */
+    [class*="ImageCard"],
+    [class*="FileWidget"],
+    [class*="ImageWidget"] {
+      background: var(--liver-surface) !important;
+      border: 1.5px dashed var(--liver-border) !important;
+      border-radius: 10px !important;
+    }
+    [class*="ImageCard"]:hover,
+    [class*="FileWidget"]:hover { border-color: rgba(255,49,49,.4) !important; }
+
+    /* ── MODAL / MEDIA LIBRARY ──────────────────────────────────────────── */
+    [class*="Modal"],
+    [class*="ModalBackdrop"] ~ div {
+      background: #1a1925 !important;
+      border: 1px solid var(--liver-border) !important;
+      border-radius: 16px !important;
+    }
+
+    /* ── SCROLLBARS ─────────────────────────────────────────────────────── */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,49,49,.3) transparent;
+    }
+    *::-webkit-scrollbar { width: 4px; height: 4px; }
+    *::-webkit-scrollbar-track { background: transparent; }
+    *::-webkit-scrollbar-thumb { background: rgba(255,49,49,.3); border-radius: 4px; }
+
+    /* ── LOGIN OVERRIDE ─────────────────────────────────────────────────── */
+    [class*="AuthenticationPage"],
+    [class*="LoginButton"] {
+      background: var(--liver-bg) !important;
+    }
+    [class*="AuthenticationPage"] h1 {
+      font-family: 'Bebas Neue', sans-serif !important;
+      font-size: 2.4rem !important;
+      color: var(--liver-white) !important;
+    }
+
+    /* ── SIDEBAR BRAND HEADER ────────────────────────────────────────────── */
+    #liver-brand {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--liver-border);
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+    #liver-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: .1em;
+      color: #fff;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    #liver-brand-name span { color: var(--liver-red); }
+    #liver-brand-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: .62rem;
+      color: var(--liver-muted);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* General text legibility */
+    [class*="css-"] { color: var(--liver-white); }
+    p[class*="css-"], span[class*="css-"] { color: inherit; }
+
+    /* Hint text */
+    [class*="HintText"],
+    [class*="hint"] {
+      font-size: .72rem !important;
+      color: rgba(255,255,255,.25) !important;
+      font-family: 'Syne', sans-serif !important;
+    }
+
+    /* Section dividers */
+    [class*="ObjectWidgetTopBar"]::before {
+      content: '';
+      display: inline-block;
+      width: 3px; height: 14px;
+      background: var(--liver-red);
+      border-radius: 2px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Branded loading screen -->
+  <div id="liver-loader">
+    <div class="loader-logo">LIV<span>E</span>r</div>
+    <div class="loader-sub">Admin Panel</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
   <div id="nc-root"></div>
+
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    // Hide loader once CMS has mounted
+    function hideLogo() {
+      var el = document.getElementById('liver-loader');
+      if (el) el.classList.add('hidden');
+    }
+
+    // Watch for nc-root to get children (CMS mounted)
+    var observer = new MutationObserver(function(mutations) {
+      var root = document.getElementById('nc-root');
+      if (root && root.children.length > 0) {
+        setTimeout(hideLogo, 400);
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Fallback: hide after 4s regardless
+    setTimeout(hideLogo, 4000);
+
+    // Netlify Identity redirect handler
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function(user) {
+        if (!user) {
+          window.netlifyIdentity.on('login', function() {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
