@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   repo: LIVEr-dev/LIVEr-website
   branch: master
-  
+
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
 
@@ -58,3 +58,337 @@ collections:
         name: "coverImage"
         widget: "image"
         required: false
+
+  - name: "site_data"
+    label: "Pricing & Testimonials"
+    files:
+
+      - name: "pricing"
+        label: "💰 Pricing — Change any price here"
+        file: "content/pricing.json"
+        fields:
+
+          - label: "Business Plans"
+            name: "business"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Digital Foundation"
+                name: "biz_foundation"
+                widget: "object"
+                fields:
+                  - { label: "Price (number only, e.g. 150)", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Social + Content Starter"
+                name: "biz_social_starter"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Ad Launchpad"
+                name: "biz_ad_launchpad"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Growth Accelerator"
+                name: "biz_growth_accelerator"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "WhatsApp Funnel"
+                name: "biz_whatsapp_funnel"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Premium Growth Partner"
+                name: "biz_premium_partner"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Outsourced Marketing Team"
+                name: "biz_enterprise_team"
+                widget: "object"
+                fields:
+                  - { label: "Price (e.g. 1.5k or 2k)", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+
+          - label: "Athlete Plans"
+            name: "athlete"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Athlete Brand Starter"
+                name: "ath_brand_starter"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Athlete Portfolio Site"
+                name: "ath_portfolio_site"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Athlete Content Plan"
+                name: "ath_content_plan"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Athlete Photography"
+                name: "ath_photography"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Athlete Growth System"
+                name: "ath_growth_system"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Sponsor Media Kit"
+                name: "ath_sponsor_kit"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Elite Athlete Brand"
+                name: "ath_elite_brand"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Sponsorship Activation"
+                name: "ath_sponsorship"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+
+          - label: "Creator Plans"
+            name: "creator"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Creator Brand Starter"
+                name: "cre_brand_starter"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Creator Identity Kit"
+                name: "cre_identity_kit"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Content Support Plan"
+                name: "cre_content_support"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Creator Growth System"
+                name: "cre_growth_system"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Creator Link-in-Bio Site"
+                name: "cre_link_bio"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Influencer Media Kit"
+                name: "cre_media_kit"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+              - label: "Creator Partner Programme"
+                name: "cre_partner_programme"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Price period", name: "period", widget: "string" }
+
+          - label: "Business Add-Ons"
+            name: "biz_addons"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Logo Design"
+                name: "logo"
+                widget: "object"
+                fields:
+                  - { label: "Price (include $ sign, e.g. $150)", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Landing Page"
+                name: "landing"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Photography Session"
+                name: "photography"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "SEO Setup"
+                name: "seo"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Short-form Video (3x)"
+                name: "video"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Extra Social Platforms"
+                name: "platforms"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Monthly Maintenance"
+                name: "maintenance"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Strategy Audit"
+                name: "audit"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+
+          - label: "Athlete Add-Ons"
+            name: "ath_addons"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "In-Match Action Photography"
+                name: "action_photo"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Brand Photoshoot"
+                name: "brand_shoot"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Full Match Day Package"
+                name: "matchday"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Training Ground Shoot"
+                name: "training_shoot"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Highlights Reel Edit"
+                name: "highlights"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Professional Bio Write-Up"
+                name: "bio"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Sponsor Media Kit"
+                name: "media_kit"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Press Release"
+                name: "press_release"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+
+          - label: "Creator Add-Ons"
+            name: "cre_addons"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Extra Reels / TikToks"
+                name: "extra_reels"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Post Design Pack"
+                name: "post_pack"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Brand Deal Outreach"
+                name: "brand_outreach"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "YouTube Channel Setup"
+                name: "youtube"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Podcast Launch Kit"
+                name: "podcast"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Email Newsletter Setup"
+                name: "newsletter"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Creator Photoshoot"
+                name: "photoshoot"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+              - label: "Merchandise Store"
+                name: "merch"
+                widget: "object"
+                fields:
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string" }
+
+      - name: "testimonials"
+        label: "💬 Testimonials — Edit client quotes"
+        file: "content/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            label_singular: "Testimonial"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text", hint: "The client's words — no need for quote marks" }
+              - { label: "Client Name", name: "name", widget: "string", hint: "E.g. T. Moyo" }
+              - { label: "Role & Location", name: "role", widget: "string", hint: "E.g. Restaurant Owner · Harare" }
