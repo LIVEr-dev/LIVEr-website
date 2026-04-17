@@ -1,0 +1,60 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+  branch: main
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+
+  - name: "portfolio"
+    label: "Portfolio / Work Photos"
+    label_singular: "Portfolio Item"
+    folder: "content/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", hint: "E.g. 'Social Media Campaign — Brand X'" }
+      - { label: "Client Name", name: "client", widget: "string", hint: "E.g. 'T. Moyo Restaurant'" }
+      - label: "Photo"
+        name: "image"
+        widget: "image"
+        hint: "Upload your photo here — it goes live on the Work page"
+      - { label: "Category", name: "category", widget: "select", options: ["Social Media", "Photography", "Paid Ads", "Branding", "Website", "Content", "Strategy"], default: "Photography" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description (optional)", name: "description", widget: "text", required: false }
+
+  - name: "clients"
+    label: "Client Logos"
+    label_singular: "Client"
+    folder: "content/clients"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client / Brand Name", name: "name", widget: "string" }
+      - label: "Logo Image"
+        name: "logo"
+        widget: "image"
+        required: false
+        hint: "Upload their logo. If you leave this blank, their name will show as text instead."
+
+  - name: "posts"
+    label: "Blog / Resources"
+    label_singular: "Article"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Summary", name: "excerpt", widget: "text", hint: "1–2 sentences shown on the resources page" }
+      - { label: "URL Slug", name: "slug", widget: "string", hint: "E.g. 'why-boosting-posts-doesnt-work' — no spaces, no capitals" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Article Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Write the full article here. You can use bold, headings, bullet points."
+      - label: "Cover Image (optional)"
+        name: "coverImage"
+        widget: "image"
+        required: false

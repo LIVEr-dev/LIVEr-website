@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff3131">
+<title>Free Digital Health Check | LIVEr Digital</title>
+<meta name="description" content="Get a free digital health check from LIVEr Digital. We audit your presence and tell you exactly what's broken, what's working, and what to do first. 48-hour turnaround.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://liverdigital.org/health-check.html">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+<div id="ambientGlow"></div><div id="ambientGlow2"></div>
+<nav>
+  <a href="/" class="nav-logo" aria-label="LIVEr Digital"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></a>
+  <button class="mob-toggle" id="mobToggle" aria-label="Open menu">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li><li><a href="/solutions.html">Solutions</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/work.html">Work</a></li><li><a href="/about.html">About</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/contact.html">Contact</a></li>
+  </ul>
+  <a href="/health-check.html" class="nav-cta active" style="background:var(--red);color:#fff;">Free Audit &rarr;</a>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose" aria-label="Close">&#10005;</button>
+  <div class="mob-nav-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div>
+  <a href="/">Home</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a><a href="/work.html">Work</a><a href="/about.html">About</a><a href="/resources.html">Resources</a><a href="/contact.html">Contact</a><a href="/health-check.html">Free Audit</a>
+</div>
+<main>
+  <section class="form-wrap-outer">
+    <div class="form-grid">
+      <div>
+        <img src="/liver-logo-dark.png" alt="LIVEr Digital" class="form-brand-logo rv" style="mix-blend-mode:screen;filter:brightness(1.05) contrast(0.95) sepia(0.15) saturate(1.2);">
+        <div class="sec-tag rv">Free &middot; No obligation</div>
+        <div class="sec-title rv d1" style="font-size:clamp(38px,5.5vw,72px);">Free<br><span class="r">digital</span><br><span class="o">health check.</span></div>
+        <p class="form-intro rv d2">Not a sales pitch. Not a template report. We look at your actual digital presence and tell you exactly what's broken, what's working, and what you should do first.</p>
+        <p class="form-intro rv d3" style="margin-top:10px;">Response within 48 hours. Available to any business or person globally.</p>
+      </div>
+      <div>
+        <div id="fSuccess" class="f-success"><h3>Submitted &#10022;</h3><p>We'll review your details and get back to you within 48 hours.</p></div>
+        <form class="form-inner rv" id="hcForm" action="https://formspree.io/f/xojyaayk" method="POST" novalidate>
+          <div class="form-row">
+            <div class="f-group"><label class="f-label">Business / Name *</label><input class="f-field" type="text" name="businessName" placeholder="Your name or brand" required></div>
+            <div class="f-group"><label class="f-label">Website</label><input class="f-field" type="url" name="website" placeholder="https://... or leave blank"></div>
+          </div>
+          <div class="f-group"><label class="f-label">What are you? *</label><select class="f-field" name="type" required><option value="">Select one</option><option>Business / Brand</option><option>Athlete / Sports personality</option><option>Content creator / Influencer</option><option>Professional / Personal brand</option><option>Other</option></select></div>
+          <div class="f-group">
+            <label class="f-label">Platforms you're currently on *</label>
+            <div class="f-checks">
+              <label class="f-check"><input type="checkbox" name="platforms" value="Instagram"> <span>Instagram</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="TikTok"> <span>TikTok</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="Facebook"> <span>Facebook</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="Twitter/X"> <span>Twitter / X</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="LinkedIn"> <span>LinkedIn</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="YouTube"> <span>YouTube</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="WhatsApp Business"> <span>WhatsApp Business</span></label>
+              <label class="f-check"><input type="checkbox" name="platforms" value="None yet"> <span>None yet</span></label>
+            </div>
+          </div>
+          <div class="f-group"><label class="f-label">Main social handle</label><input class="f-field" type="text" name="socialHandle" placeholder="@yourbrand"></div>
+          <div class="f-group"><label class="f-label">Country / Market *</label><select class="f-field" name="country" required><option value="">Select market</option><option>Zimbabwe</option><option>South Africa</option><option>Kenya</option><option>Nigeria</option><option>Ghana</option><option>Zambia</option><option>Botswana</option><option>United Kingdom</option><option>United States</option><option>Other Africa</option><option>Other international</option></select></div>
+          <div class="f-group"><label class="f-label">Your main goal *</label><select class="f-field" name="goal" required><option value="">What do you need most?</option><option>Build my digital presence from scratch</option><option>Get a website or landing page built</option><option>Grow my following / reach</option><option>Generate more leads or sales</option><option>Build my personal brand</option><option>Get more clients</option><option>Increase brand awareness</option><option>All of the above</option></select></div>
+          <div class="f-group"><label class="f-label">Biggest challenge right now *</label><textarea class="f-field" name="challenges" placeholder="E.g. I post but get no engagement..." required></textarea></div>
+          <div class="f-group"><label class="f-label">Approximate audience size</label><select class="f-field" name="audienceSize"><option value="">Select range</option><option>0 &mdash; Starting from nothing</option><option>1 &ndash; 500</option><option>500 &ndash; 2,000</option><option>2,000 &ndash; 10,000</option><option>10,000 &ndash; 50,000</option><option>50,000+</option></select></div>
+          <div class="form-row">
+            <div class="f-group"><label class="f-label">Monthly budget *</label><select class="f-field" name="budget" required><option value="">Select range</option><option>$0 &ndash; $500</option><option>$500 &ndash; $1,000</option><option>$1,000 &ndash; $5,000</option><option>$5,000+</option></select></div>
+            <div class="f-group"><label class="f-label">Timeline *</label><select class="f-field" name="timeline" required><option value="">When do you need results?</option><option>As soon as possible</option><option>1&ndash;3 months</option><option>3&ndash;6 months</option><option>6+ months</option></select></div>
+          </div>
+          <div class="f-group"><label class="f-label">How did you hear about us?</label><select class="f-field" name="referral"><option value="">Select one</option><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>WhatsApp</option><option>Google search</option><option>Word of mouth / referral</option><option>Other</option></select></div>
+          <div class="form-row">
+            <div class="f-group"><label class="f-label">Email *</label><input class="f-field" type="email" name="email" placeholder="your@email.com" required></div>
+            <div class="f-group"><label class="f-label">WhatsApp number</label><input class="f-field" type="tel" name="phone" placeholder="+263 ..."></div>
+          </div>
+          <button type="submit" class="f-submit"><span>Send my health check request &rarr;</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="foot-grid">
+    <div><div class="foot-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div><p class="foot-tag">We turn invisible brands into unforgettable ones.</p><span class="foot-hq">&#128205; Harare, Zimbabwe &middot; Working globally</span></div>
+    <div><div class="foot-col-h">Navigate</div><div class="foot-links"><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a><a href="/work.html">Work</a><a href="/about.html">About</a><a href="/resources.html">Resources</a><a href="/contact.html">Contact</a></div></div>
+    <div><div class="foot-col-h">Contact</div><div class="foot-links"><a href="https://wa.me/263717122549" target="_blank" rel="noopener">WhatsApp: +263 717 122 549</a><span class="js-email-f" data-user="business" data-domain="liverdigital.org"></span></div></div>
+  </div>
+  <div class="foot-bottom"><p>&copy; 2026 LIVEr Digital.</p><div class="foot-soc"><a href="https://www.instagram.com/liver.digital/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@liver.digital" target="_blank" rel="noopener">TikTok</a></div></div>
+</footer>
+<a href="https://wa.me/263717122549" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script src="/js/main.js"></script>
+</body>
+</html>

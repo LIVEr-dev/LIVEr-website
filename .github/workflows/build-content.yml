@@ -1,0 +1,90 @@
+name: Build Content JSON
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build work.json from CMS content
+        run: |
+          mkdir -p content
+
+          # Build portfolio array from markdown files
+          PORTFOLIO="[]"
+          if [ -d "content/portfolio" ]; then
+            PORTFOLIO="["
+            FIRST=true
+            for f in content/portfolio/*.md; do
+              [ -f "$f" ] || continue
+              TITLE=$(grep -m1 '^title:' "$f" | sed 's/title: *"//' | sed 's/"$//' | sed "s/title: *'//;s/'$//")
+              CLIENT=$(grep -m1 '^client:' "$f" | sed 's/client: *"//' | sed 's/"$//' | sed "s/client: *'//;s/'$//")
+              IMAGE=$(grep -m1 '^image:' "$f" | sed 's/image: *//')
+              CATEGORY=$(grep -m1 '^category:' "$f" | sed 's/category: *"//' | sed 's/"$//' | sed "s/category: *'//;s/'$//")
+              DATE=$(grep -m1 '^date:' "$f" | sed 's/date: *//')
+              if [ "$FIRST" = true ]; then FIRST=false; else PORTFOLIO="$PORTFOLIO,"; fi
+              PORTFOLIO="$PORTFOLIO{\"title\":\"$TITLE\",\"client\":\"$CLIENT\",\"image\":\"$IMAGE\",\"category\":\"$CATEGORY\",\"date\":\"$DATE\"}"
+            done
+            PORTFOLIO="$PORTFOLIO]"
+          fi
+
+          # Build clients array
+          CLIENTS="[]"
+          if [ -d "content/clients" ]; then
+            CLIENTS="["
+            FIRST=true
+            for f in content/clients/*.md; do
+              [ -f "$f" ] || continue
+              NAME=$(grep -m1 '^name:' "$f" | sed 's/name: *"//' | sed 's/"$//' | sed "s/name: *'//;s/'$//")
+              LOGO=$(grep -m1 '^logo:' "$f" | sed 's/logo: *//')
+              if [ "$FIRST" = true ]; then FIRST=false; else CLIENTS="$CLIENTS,"; fi
+              CLIENTS="$CLIENTS{\"name\":\"$NAME\",\"logo\":\"$LOGO\"}"
+            done
+            CLIENTS="$CLIENTS]"
+          fi
+
+          echo "{\"portfolio\":$PORTFOLIO,\"clients\":$CLIENTS}" > content/work.json
+          echo "Built work.json"
+          cat content/work.json
+
+      - name: Build resources.json from CMS posts
+        run: |
+          POSTS="[]"
+          if [ -d "content/posts" ]; then
+            POSTS="["
+            FIRST=true
+            # Sort by date descending (newest first)
+            for f in $(ls content/posts/*.md 2>/dev/null | sort -r); do
+              [ -f "$f" ] || continue
+              TITLE=$(grep -m1 '^title:' "$f" | sed 's/title: *"//' | sed 's/"$//' | sed "s/title: *'//;s/'$//")
+              EXCERPT=$(grep -m1 '^excerpt:' "$f" | sed 's/excerpt: *"//' | sed 's/"$//' | sed "s/excerpt: *'//;s/'$//")
+              SLUG=$(grep -m1 '^slug:' "$f" | sed 's/slug: *//')
+              DATE=$(grep -m1 '^date:' "$f" | sed 's/date: *//')
+              # Escape any quotes in title/excerpt
+              TITLE=$(echo "$TITLE" | sed 's/"/\\"/g')
+              EXCERPT=$(echo "$EXCERPT" | sed 's/"/\\"/g')
+              if [ "$FIRST" = true ]; then FIRST=false; else POSTS="$POSTS,"; fi
+              POSTS="$POSTS{\"title\":\"$TITLE\",\"excerpt\":\"$EXCERPT\",\"slug\":\"$SLUG\",\"date\":\"$DATE\"}"
+            done
+            POSTS="$POSTS]"
+          fi
+
+          echo "{\"posts\":$POSTS}" > content/resources.json
+          echo "Built resources.json"
+          cat content/resources.json
+
+      - name: Commit updated JSON files
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add content/work.json content/resources.json
+          git diff --staged --quiet || git commit -m "Auto: rebuild content JSON [skip ci]"
+          git push
