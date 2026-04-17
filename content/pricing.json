@@ -1,0 +1,34 @@
+{
+  "business": {
+    "biz_foundation":         { "price": "150",  "period": "one-time setup" },
+    "biz_social_starter":     { "price": "250",  "period": "per month · cancel anytime" },
+    "biz_ad_launchpad":       { "price": "300",  "period": "one-time setup · ad spend extra" },
+    "biz_growth_accelerator": { "price": "450",  "period": "per month · cancel anytime" },
+    "biz_whatsapp_funnel":    { "price": "350",  "period": "one-time setup · $200/mo to manage" },
+    "biz_premium_partner":    { "price": "750",  "period": "per month · 3-month minimum" },
+    "biz_enterprise_team":    { "price": "1.5k", "period": "per month · custom scope available" }
+  },
+  "athlete": {
+    "ath_brand_starter":  { "price": "180", "period": "one-time · done in 7 days" },
+    "ath_portfolio_site": { "price": "250", "period": "one-time · delivered in 10 days" },
+    "ath_photography":    { "price": "120", "period": "per session — or $200/mo for 2 sessions" },
+    "ath_growth_system":  { "price": "350", "period": "per month · cancel anytime" }
+  },
+  "creator": {
+    "cre_brand_setup":    { "price": "150", "period": "one-time · delivered in 5 days" },
+    "cre_growth_system":  { "price": "280", "period": "per month · cancel anytime" }
+  },
+  "enterprise": {
+    "ent_main": { "price": "4,500", "period": "per month · USD" }
+  },
+  "biz_addons": {
+    "biz_logo":        { "price": "$150", "period": "one-time" },
+    "biz_landing":     { "price": "$250", "period": "one-time" },
+    "biz_photo":       { "price": "$120", "period": "per session" },
+    "biz_seo":         { "price": "$100", "period": "one-time" },
+    "biz_video":       { "price": "$180", "period": "per month" },
+    "biz_platforms":   { "price": "$80",  "period": "per platform/mo" },
+    "biz_maintenance": { "price": "$60",  "period": "per month" },
+    "biz_audit":       { "price": "$200", "period": "one-time" }
+  }
+}
