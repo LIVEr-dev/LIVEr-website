@@ -1,7 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: LIVEr-dev/LIVEr-website
   branch: master
-
+  base_url: https://sveltia-cms-auth.pages.dev
+  
 media_folder: "img/uploads"
 public_folder: "/img/uploads"
 
