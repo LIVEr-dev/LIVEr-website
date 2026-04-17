@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ff2d2d">
+<meta name="theme-color" content="#ff3131">
 <title>Pricing | LIVEr Digital</title>
 <meta name="description" content="Transparent digital marketing pricing for businesses, athletes, and creators. No hidden fees, no lock-in contracts. USD pricing. Start anywhere.">
 <meta name="robots" content="index, follow">
@@ -17,215 +17,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
 <style>
-/* ─── PRICING PAGE SPECIFIC STYLES ─── */
+.pc-price .free{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;color:var(--gold)}
 .price-grid-4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1200px){.price-grid-4{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.price-grid-4{grid-template-columns:1fr}}
-.pc-price .free{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1}
-.biz-accent .pc-price .free{color:var(--red)}
-.ath-accent .pc-price .free{color:var(--gold)}
-.cre-accent .pc-price .free{color:var(--green)}
-
-/* WHO THIS IS FOR */
-.who-wrap{padding:72px 48px;background:var(--dark2);border-bottom:1px solid var(--border)}
-.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:44px}
-.who-card{padding:40px 32px;position:relative;overflow:hidden;cursor:pointer;transition:background .3s,transform .35s cubic-bezier(.16,1,.3,1);background:var(--dark)}
-.who-card:hover,.who-card.active{background:var(--dark3);transform:translateY(-4px)}
-.who-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transition:transform .4s cubic-bezier(.16,1,.3,1)}
-.who-card.biz-card::before{background:linear-gradient(90deg,var(--red),#ff5a1f)}
-.who-card.ath-card::before{background:linear-gradient(90deg,var(--gold),#e6a817)}
-.who-card.cre-card::before{background:linear-gradient(90deg,var(--green),#16a34a)}
-.who-card:hover::before,.who-card.active::before{transform:scaleX(1)}
-.who-emblem{width:52px;height:52px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;border:1px solid;transition:all .35s cubic-bezier(.16,1,.3,1)}
-.who-card.biz-card .who-emblem{border-color:rgba(255,45,45,.2);background:rgba(255,45,45,.06)}
-.who-card.ath-card .who-emblem{border-color:rgba(245,200,66,.2);background:rgba(245,200,66,.06)}
-.who-card.cre-card .who-emblem{border-color:rgba(34,197,94,.2);background:rgba(34,197,94,.06)}
-.who-card:hover .who-emblem,.who-card.active .who-emblem{transform:scale(1.08) rotate(3deg)}
-.who-title{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.04em;margin-bottom:10px}
-.who-card.biz-card .who-title{color:var(--red)}
-.who-card.ath-card .who-title{color:var(--gold)}
-.who-card.cre-card .who-title{color:var(--green)}
-.who-desc{font-size:.8rem;color:var(--muted);line-height:1.7;margin-bottom:18px}
-.who-examples{display:flex;flex-direction:column;gap:5px}
-.who-ex{font-family:'Syne Mono',monospace;font-size:.63rem;color:var(--muted);display:flex;align-items:center;gap:7px}
-.who-ex::before{content:'→';font-size:.6rem}
-.who-card.biz-card .who-ex::before{color:var(--red)}
-.who-card.ath-card .who-ex::before{color:var(--gold)}
-.who-card.cre-card .who-ex::before{color:var(--green)}
-.who-cta-hint{margin-top:20px;font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;opacity:0;transition:opacity .3s}
-.who-card:hover .who-cta-hint,.who-card.active .who-cta-hint{opacity:1}
-.who-card.biz-card .who-cta-hint{color:var(--red)}
-.who-card.ath-card .who-cta-hint{color:var(--gold)}
-.who-card.cre-card .who-cta-hint{color:var(--green)}
-@media(max-width:900px){.who-grid{grid-template-columns:1fr}}
-
-/* TAB NAV */
-.tab-nav{display:flex;padding:0 48px;background:var(--dark2);border-bottom:1px solid var(--border);gap:0;position:sticky;top:0;z-index:100;overflow-x:auto}
-.tab-btn{font-family:'Syne Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:18px 28px;background:none;border:none;color:var(--muted);cursor:pointer;transition:color .2s;position:relative;display:flex;align-items:center;gap:10px;white-space:nowrap}
-.tab-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .3s cubic-bezier(.16,1,.3,1)}
-.tab-btn.biz-tab::after{background:var(--red)}
-.tab-btn.ath-tab::after{background:var(--gold)}
-.tab-btn.cre-tab::after{background:var(--green)}
-.tab-btn.active{color:var(--white)}
-.tab-btn.active::after{transform:scaleX(1)}
-
-/* PANELS */
-.pricing-panel{display:none;padding:80px 48px;animation:panelIn .4s cubic-bezier(.16,1,.3,1) forwards}
-.pricing-panel.active{display:block}
-@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.panel-header{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-bottom:64px}
-.panel-eyebrow{font-family:'Syne Mono',monospace;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.panel-eyebrow::before{content:'';width:22px;height:1px}
-.biz-accent .panel-eyebrow{color:var(--red)}
-.biz-accent .panel-eyebrow::before{background:var(--red)}
-.ath-accent .panel-eyebrow{color:var(--gold)}
-.ath-accent .panel-eyebrow::before{background:var(--gold)}
-.cre-accent .panel-eyebrow{color:var(--green)}
-.cre-accent .panel-eyebrow::before{background:var(--green)}
-.panel-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,6vw,80px);line-height:.9;letter-spacing:-.01em}
-.panel-sub{font-size:.88rem;color:var(--muted);line-height:1.75;max-width:360px;text-align:right}
-.panel-no-min{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid;font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-top:12px;transition:all .25s}
-.biz-accent .panel-no-min{border-color:rgba(255,45,45,.3);color:var(--red)}
-.ath-accent .panel-no-min{border-color:rgba(245,200,66,.3);color:var(--gold)}
-.cre-accent .panel-no-min{border-color:rgba(34,197,94,.3);color:var(--green)}
-@media(max-width:768px){.panel-header{grid-template-columns:1fr}.panel-sub{text-align:left}}
-
-/* TIER LABELS */
-.tier-label{font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.tier-label::before{content:'';flex:1;height:1px;background:var(--border)}
-.biz-accent .tier-label{color:var(--red)}
-.ath-accent .tier-label{color:var(--gold)}
-.cre-accent .tier-label{color:var(--green)}
-
-/* PRICE CARDS */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-bottom:4px}
-.price-grid-2{grid-template-columns:repeat(2,1fr)}
-.pc{background:var(--dark2);padding:40px 32px;position:relative;overflow:hidden;transition:background .3s,transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
-.pc:hover{background:var(--dark3);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.pc.featured{background:var(--dark3)}
-.pc.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.biz-accent .pc.featured::before{background:linear-gradient(90deg,var(--red),#ff5a1f)}
-.ath-accent .pc.featured::before{background:linear-gradient(90deg,var(--gold),#e6a817)}
-.cre-accent .pc.featured::before{background:linear-gradient(90deg,var(--green),#16a34a)}
-.pc-badge{display:inline-flex;align-items:center;gap:5px;font-family:'Syne Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;margin-bottom:20px}
-.biz-accent .pc-badge{background:rgba(255,45,45,.12);color:var(--red)}
-.ath-accent .pc-badge{background:rgba(245,200,66,.12);color:var(--gold)}
-.cre-accent .pc-badge{background:rgba(34,197,94,.12);color:var(--green)}
-.pc-tier{font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
-.pc-name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.04em;color:var(--white);margin-bottom:6px;line-height:1}
-.pc-tagline{font-size:.75rem;color:var(--muted);margin-bottom:20px;line-height:1.5}
-.pc-price{margin-bottom:4px}
-.pc-price .amt{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.9;color:var(--white)}
-.pc-price .cur{font-size:22px;color:var(--muted);vertical-align:super;font-family:'Syne Mono',monospace}
-.pc-period{font-family:'Syne Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--muted);margin-bottom:22px}
-.pc-divider{height:1px;background:var(--border);margin-bottom:20px}
-.pc-feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
-.pc-feats li{font-size:.78rem;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-.pc-feats li::before{content:'→';font-size:.68rem;flex-shrink:0;margin-top:1px}
-.biz-accent .pc-feats li::before{color:var(--red)}
-.ath-accent .pc-feats li::before{color:var(--gold)}
-.cre-accent .pc-feats li::before{color:var(--green)}
-.pc-cta{display:block;text-align:center;padding:13px 20px;font-family:'Syne',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);width:100%}
-.biz-accent .pc-cta{background:var(--red);color:#fff}
-.biz-accent .pc-cta:hover{background:#fff;color:var(--red)}
-.ath-accent .pc-cta{background:var(--gold);color:var(--dark)}
-.ath-accent .pc-cta:hover{background:var(--white);color:var(--dark)}
-.cre-accent .pc-cta{background:var(--green);color:var(--dark)}
-.cre-accent .pc-cta:hover{background:var(--white);color:var(--dark)}
-.pc-cta-ghost{background:transparent!important;border:1px solid}
-.biz-accent .pc-cta-ghost{border-color:rgba(255,45,45,.3);color:var(--white)!important}
-.biz-accent .pc-cta-ghost:hover{border-color:var(--red)!important;color:var(--red)!important}
-.ath-accent .pc-cta-ghost{border-color:rgba(245,200,66,.3);color:var(--white)!important}
-.ath-accent .pc-cta-ghost:hover{border-color:var(--gold)!important;color:var(--gold)!important}
-.cre-accent .pc-cta-ghost{border-color:rgba(34,197,94,.3);color:var(--white)!important}
-.cre-accent .pc-cta-ghost:hover{border-color:var(--green)!important;color:var(--green)!important}
-@media(max-width:1024px){.price-grid{grid-template-columns:1fr 1fr}.price-grid-2{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.price-grid,.price-grid-2,.price-grid-4{grid-template-columns:1fr}.pricing-panel{padding:48px 24px}.who-wrap,.tab-nav{padding-left:24px;padding-right:24px}}
-
-/* ADD-ONS */
-.addons-wrap{background:var(--dark);border:1px solid var(--border);padding:44px 40px;margin-top:44px}
-.addons-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);margin-bottom:6px}
-.addons-sub{font-size:.78rem;color:var(--muted);margin-bottom:28px;line-height:1.6}
-.addons-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border)}
-.addon{background:var(--dark2);padding:22px 20px;transition:background .25s,transform .3s cubic-bezier(.16,1,.3,1)}
-.addon:hover{background:var(--dark3);transform:translateY(-3px)}
-.addon-name{font-size:.85rem;font-weight:700;color:var(--white);margin-bottom:5px}
-.addon-desc{font-size:.72rem;color:var(--muted);line-height:1.55;margin-bottom:12px}
-.addon-price{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;line-height:1}
-.biz-accent .addon-price{color:var(--red)}
-.ath-accent .addon-price{color:var(--gold)}
-.cre-accent .addon-price{color:var(--green)}
-.addon-period{font-family:'Syne Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.08em}
-@media(max-width:900px){.addons-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.addons-grid{grid-template-columns:1fr}}
-
-/* PROCESS */
-.process-wrap{padding:80px 48px;background:var(--dark)}
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);margin-top:44px}
-.process-step{background:var(--dark2);padding:40px 32px;position:relative;overflow:hidden;transition:background .3s,transform .35s cubic-bezier(.16,1,.3,1)}
-.process-step:hover{background:var(--dark3);transform:translateY(-4px)}
-.process-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),#ff5a1f);transform:scaleX(0);transition:transform .4s cubic-bezier(.16,1,.3,1)}
-.process-step:hover::before{transform:scaleX(1)}
-.ps-n{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:1;-webkit-text-stroke:1.5px rgba(255,45,45,.15);color:transparent;margin-bottom:16px}
-.ps-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);margin-bottom:8px}
-.ps-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
-@media(max-width:900px){.process-steps{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.process-steps{grid-template-columns:1fr}}
-
-/* FAQ */
-.faq-wrap{padding:80px 48px;background:var(--dark2);border-top:1px solid var(--border)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:44px}
-.faq-item{background:var(--dark);padding:28px 32px;cursor:pointer;transition:background .25s}
-.faq-item:hover{background:var(--dark3)}
-.faq-q{font-size:.88rem;font-weight:700;color:var(--white);line-height:1.5;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-.faq-q::after{content:'+';font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--red);flex-shrink:0;transition:transform .3s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{font-size:.78rem;color:var(--muted);line-height:1.75;margin-top:14px;display:none}
-.faq-item.open .faq-a{display:block}
-@media(max-width:768px){.faq-grid{grid-template-columns:1fr}}
-
-/* GUARANTEE */
-.guarantee-wrap{padding:80px 48px;text-align:center;background:var(--dark);border-top:1px solid var(--border)}
-.guar-emblem{width:72px;height:72px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,45,45,.3);background:rgba(255,45,45,.06)}
-.guar-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:.95;margin-bottom:20px}
-.guar-title span{color:var(--red)}
-.guar-sub{font-size:.88rem;color:var(--muted);max-width:520px;margin:0 auto 24px;line-height:1.75}
-.guar-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid rgba(255,45,45,.3);font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
-
-/* FINAL CTA */
-.final-cta-wrap{padding:100px 48px;text-align:center;background:var(--dark2);position:relative;overflow:hidden;border-top:1px solid var(--border)}
-.final-cta-wrap h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,96px);line-height:.92;margin-bottom:20px}
-.final-cta-wrap h2 span{color:var(--red)}
-.final-cta-wrap p{font-size:.9rem;color:var(--muted);max-width:440px;margin:0 auto 36px;line-height:1.75}
-.final-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div id="ambientGlow"></div>
-<div id="ambientGlow2"></div>
-
+<div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
+<div id="ambientGlow"></div><div id="ambientGlow2"></div>
 <nav>
   <a href="/" class="nav-logo" aria-label="LIVEr Digital"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></a>
   <button class="mob-toggle" id="mobToggle" aria-label="Open menu">&#9776;</button>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/solutions.html">Solutions</a></li>
-    <li><a href="/pricing.html" class="active">Pricing</a></li>
-    <li><a href="/work.html">Work</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/resources.html">Resources</a></li>
-    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/">Home</a></li><li><a href="/solutions.html">Solutions</a></li><li><a href="/pricing.html" class="active">Pricing</a></li><li><a href="/work.html">Work</a></li><li><a href="/about.html">About</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/contact.html">Contact</a></li>
   </ul>
   <a href="/health-check.html" class="nav-cta">Free Audit &rarr;</a>
 </nav>
 <div class="mob-nav" id="mobNav">
   <button class="mob-close" id="mobClose" aria-label="Close">&#10005;</button>
   <div class="mob-nav-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div>
-  <a href="/">Home</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a>
-  <a href="/work.html">Work</a><a href="/about.html">About</a><a href="/resources.html">Resources</a>
-  <a href="/contact.html">Contact</a><a href="/health-check.html">Free Audit</a>
+  <a href="/">Home</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a><a href="/work.html">Work</a><a href="/about.html">About</a><a href="/resources.html">Resources</a><a href="/contact.html">Contact</a><a href="/health-check.html">Free Audit</a>
 </div>
 
 <main>
@@ -239,18 +51,9 @@
   <div class="hero-sub-wrap" style="margin-top:36px;">
     <p class="hero-sub rv d2" style="opacity:1"><strong>No minimums. No "you're too small."</strong> Whether you have 400 followers or 400,000 — we have something built for exactly where you are right now.</p>
     <div class="hero-badges rv d3" style="opacity:1">
-      <span class="hero-badge biz">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-        Businesses
-      </span>
-      <span class="hero-badge ath">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Athletes
-      </span>
-      <span class="hero-badge cre">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-        Creators
-      </span>
+      <span class="hero-badge biz">Businesses</span>
+      <span class="hero-badge ath">Athletes</span>
+      <span class="hero-badge cre">Creators</span>
     </div>
   </div>
 </section>
@@ -262,7 +65,7 @@
   <p class="rv d2" style="color:var(--muted);font-size:.88rem;line-height:1.7;max-width:520px;">Click your category to see pricing built for you — not for someone else.</p>
   <div class="who-grid">
     <div class="who-card biz-card active rv" onclick="switchTab('biz')">
-      <div class="who-emblem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2d2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+      <div class="who-emblem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff3131" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
       <div class="who-title">Business</div>
       <p class="who-desc">Local shops, service businesses, startups, established brands — anyone selling products or services who needs more customers online.</p>
       <div class="who-examples"><span class="who-ex">Restaurants, salons, clinics</span><span class="who-ex">E-commerce brands</span><span class="who-ex">Professional services</span><span class="who-ex">Startups scaling up</span></div>
@@ -287,547 +90,172 @@
 
 <!-- TAB NAV -->
 <div class="tab-nav" id="tabNav">
-  <button class="tab-btn biz-tab active" onclick="switchTab('biz')">
-    <svg class="tab-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-    Businesses
-  </button>
-  <button class="tab-btn ath-tab" onclick="switchTab('ath')">
-    <svg class="tab-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    Athletes
-  </button>
-  <button class="tab-btn cre-tab" onclick="switchTab('cre')">
-    <svg class="tab-emblem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-    Creators &amp; Influencers
-  </button>
+  <button class="tab-btn biz-tab active" onclick="switchTab('biz')">Businesses</button>
+  <button class="tab-btn ath-tab" onclick="switchTab('ath')">Athletes</button>
+  <button class="tab-btn cre-tab" onclick="switchTab('cre')">Creators &amp; Influencers</button>
 </div>
 
-<!-- ═══ PANEL: BUSINESSES ═══ -->
+<!-- PANEL: BUSINESSES -->
 <div class="pricing-panel biz-accent active" id="panel-biz">
   <div class="panel-header">
     <div><div class="panel-eyebrow">For businesses</div><h2 class="panel-title">Get more<br><span style="color:var(--red);">clients.</span><br><span style="-webkit-text-stroke:2px var(--white);color:transparent">Every month.</span></h2></div>
     <div><p class="panel-sub">From getting online for the first time to running full growth campaigns — pick where you are and we'll take you further.</p><div class="panel-no-min">✦ No minimum budget required</div></div>
   </div>
-
   <div class="tier-label">Starter — Get online fast</div>
   <div class="price-grid price-grid-2 rv">
-    <div class="pc" data-plan="biz_foundation">
-      <div class="pc-tier">Starter · One-time</div>
-      <div class="pc-name">Digital Foundation</div>
-      <div class="pc-tagline">You don't have an online presence yet. Let's fix that.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">150</span></div>
-      <div class="pc-period">one-time setup</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>1–2 page website or landing page</li>
-        <li>Basic branding setup (logo guidance, colours)</li>
-        <li>Mobile-optimised and fast-loading</li>
-        <li>Contact form + WhatsApp button</li>
-        <li>Social media profile setup (2 platforms)</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Get started &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="biz_social_starter">
-      <div class="pc-badge">✦ Most popular entry point</div>
-      <div class="pc-tier">Growth · Monthly</div>
-      <div class="pc-name">Social + Content Starter</div>
-      <div class="pc-tagline">You're online but not growing. This is where that changes.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">250</span></div>
-      <div class="pc-period">per month · cancel anytime</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>8–10 branded social posts per month</li>
-        <li>Content strategy + caption writing</li>
-        <li>Basic platform management (2 platforms)</li>
-        <li>Monthly performance summary</li>
-        <li>WhatsApp support included</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Start growing &rarr;</a>
-    </div>
+    <div class="pc"><div class="pc-tier">Starter · One-time</div><div class="pc-name">Digital Foundation</div><div class="pc-tagline">You don't have an online presence yet. Let's fix that.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_foundation">150</span></div><div class="pc-period" data-period="biz_foundation">one-time setup</div><div class="pc-divider"></div><ul class="pc-feats"><li>1–2 page website or landing page</li><li>Basic branding setup (logo guidance, colours)</li><li>Mobile-optimised and fast-loading</li><li>Contact form + WhatsApp button</li><li>Social media profile setup (2 platforms)</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Get started &rarr;</a></div>
+    <div class="pc featured"><div class="pc-badge">✦ Most popular entry point</div><div class="pc-tier">Growth · Monthly</div><div class="pc-name">Social + Content Starter</div><div class="pc-tagline">You're online but not growing. This is where that changes.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_social_starter">250</span></div><div class="pc-period" data-period="biz_social_starter">per month · cancel anytime</div><div class="pc-divider"></div><ul class="pc-feats"><li>8–10 branded social posts per month</li><li>Content strategy + caption writing</li><li>Basic platform management (2 platforms)</li><li>Monthly performance summary</li><li>WhatsApp support included</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Start growing &rarr;</a></div>
   </div>
-
   <div class="tier-label" style="margin-top:32px;">Growth — Ads + leads</div>
   <div class="price-grid rv">
-    <div class="pc" data-plan="biz_ad_launchpad">
-      <div class="pc-tier">Ads · One-time setup</div>
-      <div class="pc-name">Ad Launchpad</div>
-      <div class="pc-tagline">Get your first paid ad campaign running properly.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">300</span></div>
-      <div class="pc-period">one-time setup · ad spend extra</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Meta or Google Ads account setup</li>
-        <li>1 campaign built and launched</li>
-        <li>Target audience research</li>
-        <li>Ad creative (2 variations)</li>
-        <li>Tracking + reporting setup</li>
-        <li>30-day check-in call</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Launch ads &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="biz_growth_accelerator">
-      <div class="pc-badge">✦ Best results</div>
-      <div class="pc-tier">Full Growth · Monthly</div>
-      <div class="pc-name">Growth Accelerator</div>
-      <div class="pc-tagline">Content + ads + WhatsApp funnels working together.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">450</span></div>
-      <div class="pc-period">per month · cancel anytime</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>16–20 pieces of branded content</li>
-        <li>Full Meta + Google ads management</li>
-        <li>WhatsApp funnel automation</li>
-        <li>Monthly strategy call</li>
-        <li>Lead tracking + performance report</li>
-        <li>Priority WhatsApp support</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Get growing &rarr;</a>
-    </div>
-    <div class="pc" data-plan="biz_whatsapp_funnel">
-      <div class="pc-tier">WhatsApp · One-time setup</div>
-      <div class="pc-name">WhatsApp Funnel</div>
-      <div class="pc-tagline">Turn WhatsApp into your best-performing sales channel.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">350</span></div>
-      <div class="pc-period">one-time setup · $200/mo to manage</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Full funnel design + build</li>
-        <li>Automated greeting + qualification messages</li>
-        <li>Lead routing and tracking</li>
-        <li>Click-to-WhatsApp ad integration</li>
-        <li>2 weeks of live monitoring</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Build my funnel &rarr;</a>
-    </div>
+    <div class="pc"><div class="pc-tier">Ads · One-time setup</div><div class="pc-name">Ad Launchpad</div><div class="pc-tagline">Get your first paid ad campaign running properly.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_ad_launchpad">300</span></div><div class="pc-period" data-period="biz_ad_launchpad">one-time setup · ad spend extra</div><div class="pc-divider"></div><ul class="pc-feats"><li>Meta or Google Ads account setup</li><li>1 campaign built and launched</li><li>Target audience research</li><li>Ad creative (2 variations)</li><li>Tracking + reporting setup</li><li>30-day check-in call</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Launch ads &rarr;</a></div>
+    <div class="pc featured"><div class="pc-badge">✦ Best results</div><div class="pc-tier">Full Growth · Monthly</div><div class="pc-name">Growth Accelerator</div><div class="pc-tagline">Content + ads + WhatsApp funnels working together.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_growth_accelerator">450</span></div><div class="pc-period" data-period="biz_growth_accelerator">per month · cancel anytime</div><div class="pc-divider"></div><ul class="pc-feats"><li>16–20 pieces of branded content</li><li>Full Meta + Google ads management</li><li>WhatsApp funnel automation</li><li>Monthly strategy call</li><li>Lead tracking + performance report</li><li>Priority WhatsApp support</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Get growing &rarr;</a></div>
+    <div class="pc"><div class="pc-tier">WhatsApp · One-time setup</div><div class="pc-name">WhatsApp Funnel</div><div class="pc-tagline">Turn WhatsApp into your best-performing sales channel.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_whatsapp_funnel">350</span></div><div class="pc-period" data-period="biz_whatsapp_funnel">one-time setup · $200/mo to manage</div><div class="pc-divider"></div><ul class="pc-feats"><li>Full funnel design + build</li><li>Automated greeting + qualification messages</li><li>Lead routing and tracking</li><li>Click-to-WhatsApp ad integration</li><li>2 weeks of live monitoring</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Build my funnel &rarr;</a></div>
   </div>
-
   <div class="tier-label" style="margin-top:32px;">Scale — Full partnerships</div>
   <div class="price-grid price-grid-2 rv">
-    <div class="pc" data-plan="biz_premium_partner">
-      <div class="pc-tier">Premium · Monthly</div>
-      <div class="pc-name">Premium Growth Partner</div>
-      <div class="pc-tagline">Full execution: strategy, content, ads, automation.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">750</span></div>
-      <div class="pc-period">per month · 3-month minimum</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Dedicated account manager</li>
-        <li>Full content production incl. video</li>
-        <li>Comprehensive Meta + Google ads</li>
-        <li>WhatsApp automation &amp; tracking</li>
-        <li>Bi-weekly strategy sessions</li>
-        <li>Website updates included</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Apply now &rarr;</a>
-    </div>
-    <div class="pc" data-plan="biz_enterprise_team">
-      <div class="pc-tier">Enterprise · Monthly</div>
-      <div class="pc-name">Outsourced Marketing Team</div>
-      <div class="pc-tagline">Replace your entire in-house marketing function.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">1.5k</span></div>
-      <div class="pc-period">per month · custom scope available</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Full strategy + execution ownership</li>
-        <li>Multi-channel campaigns</li>
-        <li>Weekly reporting + executive reviews</li>
-        <li>Dedicated team of 3+</li>
-        <li>Custom scope on request</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Schedule a call &rarr;</a>
+    <div class="pc"><div class="pc-tier">Premium · Monthly</div><div class="pc-name">Premium Growth Partner</div><div class="pc-tagline">Full execution: strategy, content, ads, automation.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_premium_partner">750</span></div><div class="pc-period" data-period="biz_premium_partner">per month · 3-month minimum</div><div class="pc-divider"></div><ul class="pc-feats"><li>Dedicated account manager</li><li>Full content production incl. video</li><li>Comprehensive Meta + Google ads</li><li>WhatsApp automation &amp; tracking</li><li>Bi-weekly strategy sessions</li><li>Website updates included</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Apply now &rarr;</a></div>
+    <div class="pc"><div class="pc-tier">Enterprise · Monthly</div><div class="pc-name">Outsourced Marketing Team</div><div class="pc-tagline">Replace your entire in-house marketing function.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="biz_enterprise_team">1.5k</span></div><div class="pc-period" data-period="biz_enterprise_team">per month · custom scope available</div><div class="pc-divider"></div><ul class="pc-feats"><li>Full strategy + execution ownership</li><li>Multi-channel campaigns</li><li>Weekly reporting + executive reviews</li><li>Dedicated team of 3+</li><li>Custom scope on request</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Schedule a call &rarr;</a></div>
+  </div>
+  <div class="addons-wrap rv"><div class="addons-title">Business Add-Ons</div><p class="addons-sub">Bolt these on to any package or buy standalone.</p><div class="addons-grid"><div class="addon"><div class="addon-name">Logo Design</div><div class="addon-desc">3 concepts, 2 revision rounds.</div><div class="addon-price" data-price="biz_logo">$150</div><div class="addon-period" data-period="biz_logo">one-time</div></div><div class="addon"><div class="addon-name">Landing Page</div><div class="addon-desc">High-converting single page for ads or campaigns.</div><div class="addon-price" data-price="biz_landing">$250</div><div class="addon-period" data-period="biz_landing">one-time</div></div><div class="addon"><div class="addon-name">Photography Session</div><div class="addon-desc">Brand photos for social, website, and ads. Harare area.</div><div class="addon-price" data-price="biz_photo">$120</div><div class="addon-period" data-period="biz_photo">per session</div></div><div class="addon"><div class="addon-name">SEO Setup</div><div class="addon-desc">Google visibility basics: keywords, meta, local search.</div><div class="addon-price" data-price="biz_seo">$100</div><div class="addon-period" data-period="biz_seo">one-time</div></div><div class="addon"><div class="addon-name">Short-form Video (3x)</div><div class="addon-desc">3 edited Reels or TikTok videos per month.</div><div class="addon-price" data-price="biz_video">$180</div><div class="addon-period" data-period="biz_video">per month</div></div><div class="addon"><div class="addon-name">Extra Social Platforms</div><div class="addon-desc">Add LinkedIn, Pinterest, or YouTube to any plan.</div><div class="addon-price" data-price="biz_platforms">$80</div><div class="addon-period" data-period="biz_platforms">per platform/mo</div></div><div class="addon"><div class="addon-name">Monthly Maintenance</div><div class="addon-desc">Website updates, hosting checks, minor edits.</div><div class="addon-price" data-price="biz_maintenance">$60</div><div class="addon-period" data-period="biz_maintenance">per month</div></div><div class="addon"><div class="addon-name">Strategy Audit</div><div class="addon-desc">Deep-dive analysis of your full digital presence.</div><div class="addon-price" data-price="biz_audit">$200</div><div class="addon-period" data-period="biz_audit">one-time</div></div></div></div>
+
+
+  <div class="enterprise-inline rv" style="margin-top:32px;">
+    <div class="ent-inline-inner">
+      <div class="ent-inline-left">
+        <div class="sec-tag" style="justify-content:flex-start;margin-bottom:10px;font-size:.7rem;">Enterprise</div>
+        <div class="ent-inline-title">Executive Marketing Team</div>
+        <p class="ent-inline-sub">Your complete outsourced marketing department — strategy, content, ads, automation, and weekly reporting. Replaces in-house hires entirely.</p>
+        <a href="/contact.html" class="pc-cta" style="margin-top:16px;display:inline-block;">Schedule a call &rarr;</a>
+      </div>
+      <div class="ent-inline-right">
+        <div class="ent-inline-price"><span class="cur">$</span><span data-price="ent_main">4,500</span></div>
+        <div class="ent-inline-period" data-period="ent_main">per month · USD</div>
+        <ul class="pc-feats" style="margin-top:16px;">
+          <li>Dedicated strategy lead &amp; account manager</li>
+          <li>Full content production (design, copy, video)</li>
+          <li>Paid advertising across Meta &amp; Google</li>
+          <li>WhatsApp funnels &amp; automation</li>
+          <li>Monthly executive reporting &amp; reviews</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="addons-wrap rv">
-    <div class="addons-title">Business Add-Ons</div>
-    <p class="addons-sub">Bolt these on to any package or buy standalone. No upsells, no pressure — just extra options if you need them.</p>
-    <div class="addons-grid">
-      <div class="addon" data-addon-key="biz_addons.logo"><div class="addon-name">Logo Design</div><div class="addon-desc">Professional logo with 3 concepts, 2 revision rounds.</div><div class="addon-price">$150</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="biz_addons.landing"><div class="addon-name">Landing Page</div><div class="addon-desc">High-converting single page for ads or campaigns.</div><div class="addon-price">$250</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="biz_addons.photography"><div class="addon-name">Photography Session</div><div class="addon-desc">Brand photos for social, website, and ads. Harare.</div><div class="addon-price">$120</div><div class="addon-period">per session</div></div>
-      <div class="addon" data-addon-key="biz_addons.seo"><div class="addon-name">SEO Setup</div><div class="addon-desc">Google visibility basics: keywords, meta, local search.</div><div class="addon-price">$100</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="biz_addons.video"><div class="addon-name">Short-form Video (3x)</div><div class="addon-desc">3 edited Reels or TikTok videos per month.</div><div class="addon-price">$180</div><div class="addon-period">per month</div></div>
-      <div class="addon" data-addon-key="biz_addons.platforms"><div class="addon-name">Extra Social Platforms</div><div class="addon-desc">Add LinkedIn, Pinterest, or YouTube to any plan.</div><div class="addon-price">$80</div><div class="addon-period">per platform/mo</div></div>
-      <div class="addon" data-addon-key="biz_addons.maintenance"><div class="addon-name">Monthly Maintenance</div><div class="addon-desc">Website updates, hosting checks, minor edits.</div><div class="addon-price">$60</div><div class="addon-period">per month</div></div>
-      <div class="addon" data-addon-key="biz_addons.audit"><div class="addon-name">Strategy Audit</div><div class="addon-desc">Deep-dive analysis of your full digital presence.</div><div class="addon-price">$200</div><div class="addon-period">one-time</div></div>
-    </div>
-  </div>
 </div>
 
-<!-- ═══ PANEL: ATHLETES ═══ -->
+<!-- PANEL: ATHLETES -->
 <div class="pricing-panel ath-accent" id="panel-ath">
   <div class="panel-header">
     <div><div class="panel-eyebrow">For athletes</div><h2 class="panel-title">Your sport<br><span style="color:var(--gold);">is your</span><br><span style="-webkit-text-stroke:2px var(--white);color:transparent">brand.</span></h2></div>
     <div><p class="panel-sub">400 followers or 4 million — your name has value. Let's build the digital presence that gets you seen by sponsors, clubs, and fans.</p><div class="panel-no-min">✦ We start where you are</div></div>
   </div>
-
   <div class="tier-label">Foundation — Build your name</div>
   <div class="price-grid rv">
-    <div class="pc">
-      <div class="pc-tier">Free · Always</div>
-      <div class="pc-name">Digital Health Check</div>
-      <div class="pc-tagline">Before anything else — see exactly where you stand.</div>
-      <div class="pc-price"><span class="free">FREE</span></div>
-      <div class="pc-period">48-hour turnaround · no obligation</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Full audit of your current social presence</li>
-        <li>Competitor &amp; peer comparison</li>
-        <li>What sponsors actually look for</li>
-        <li>Specific action steps to improve</li>
-        <li>Personal response from our team</li>
-      </ul>
-      <a href="/health-check.html" class="pc-cta pc-cta-ghost">Get mine free &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="ath_brand_starter">
-      <div class="pc-badge">✦ Best starting point</div>
-      <div class="pc-tier">Starter · One-time</div>
-      <div class="pc-name">Athlete Brand Starter</div>
-      <div class="pc-tagline">Every serious athlete needs these basics set up properly.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">180</span></div>
-      <div class="pc-period">one-time · done in 7 days</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Athlete bio + brand statement written for you</li>
-        <li>2 social profiles optimised (Instagram + TikTok)</li>
-        <li>Profile photo edit + banner design</li>
-        <li>Highlight cover icons</li>
-        <li>Content strategy starter guide</li>
-        <li>30-min onboarding call</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Get set up &rarr;</a>
-    </div>
-    <div class="pc" data-plan="ath_portfolio_site">
-      <div class="pc-tier">Website · One-time</div>
-      <div class="pc-name">Athlete Portfolio Site</div>
-      <div class="pc-tagline">Your personal website — where sponsors go to verify you're real.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">250</span></div>
-      <div class="pc-period">one-time · delivered in 10 days</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>3–4 page personal website</li>
-        <li>Stats + achievements section</li>
-        <li>Photo gallery + video highlights embed</li>
-        <li>Sponsor/brand enquiry form</li>
-        <li>Mobile-first, fast loading</li>
-        <li>Basic SEO (your name ranks on Google)</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Build my site &rarr;</a>
-    </div>
+    <div class="pc"><div class="pc-tier">Free · Always</div><div class="pc-name">Digital Health Check</div><div class="pc-tagline">Before anything else — see exactly where you stand.</div><div class="pc-price"><span class="free">FREE</span></div><div class="pc-period">48-hour turnaround · no obligation</div><div class="pc-divider"></div><ul class="pc-feats"><li>Full audit of your current social presence</li><li>Competitor &amp; peer comparison</li><li>What sponsors actually look for</li><li>Specific action steps to improve</li></ul><a href="/health-check.html" class="pc-cta pc-cta-ghost">Get mine free &rarr;</a></div>
+    <div class="pc featured"><div class="pc-badge">✦ Best starting point</div><div class="pc-tier">Starter · One-time</div><div class="pc-name">Athlete Brand Starter</div><div class="pc-tagline">Every serious athlete needs these basics set up properly.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="ath_brand_starter">180</span></div><div class="pc-period" data-period="ath_brand_starter">one-time · done in 7 days</div><div class="pc-divider"></div><ul class="pc-feats"><li>Athlete bio + brand statement written for you</li><li>2 social profiles optimised (Instagram + TikTok)</li><li>Profile photo edit + banner design</li><li>Highlight cover icons</li><li>Content strategy starter guide</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Get set up &rarr;</a></div>
+    <div class="pc"><div class="pc-tier">Website · One-time</div><div class="pc-name">Athlete Portfolio Site</div><div class="pc-tagline">Your personal website — where sponsors go to verify you're real.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="ath_portfolio_site">250</span></div><div class="pc-period" data-period="ath_portfolio_site">one-time · delivered in 10 days</div><div class="pc-divider"></div><ul class="pc-feats"><li>3–4 page personal website</li><li>Stats + achievements section</li><li>Photo gallery + video highlights embed</li><li>Sponsor/brand enquiry form</li><li>Basic SEO (your name ranks on Google)</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Build my site &rarr;</a></div>
   </div>
-
   <div class="tier-label" style="margin-top:32px;">Visibility — Get noticed</div>
-  <div class="price-grid price-grid-4 rv">
-    <div class="pc" data-plan="ath_content_plan">
-      <div class="pc-tier">Content · Monthly</div>
-      <div class="pc-name">Athlete Content Plan</div>
-      <div class="pc-tagline">Consistent content that builds your following while you train.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">200</span></div>
-      <div class="pc-period">per month · cancel anytime</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>8 branded posts per month</li>
-        <li>Captions + hashtag strategy</li>
-        <li>Content calendar provided</li>
-        <li>1 brand or training photoshoot per month</li>
-        <li>Story templates for weekly use</li>
-        <li>Monthly performance review</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Start posting right &rarr;</a>
-    </div>
-    <div class="pc" data-plan="ath_photography">
-      <div class="pc-tier">Photography · One-time or Monthly</div>
-      <div class="pc-name">Athlete Photography</div>
-      <div class="pc-tagline">Match-day action shots + brand photoshoots that make sponsors notice.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">120</span></div>
-      <div class="pc-period">per session — or $200/mo for 2 sessions</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>In-match action photography</li>
-        <li>Training ground + lifestyle shoots</li>
-        <li>Studio or location brand portraits</li>
-        <li>30–50 professionally edited images</li>
-        <li>48-hr delivery for match-day shots</li>
-        <li>Rights to use across all media</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Book a shoot &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="ath_growth_system">
-      <div class="pc-badge">✦ Most popular athlete plan</div>
-      <div class="pc-tier">Brand Building · Monthly</div>
-      <div class="pc-name">Athlete Growth System</div>
-      <div class="pc-tagline">Full personal brand — content, growth, and sponsor-ready presence.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">350</span></div>
-      <div class="pc-period">per month · cancel anytime</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>12–16 pieces of content per month</li>
-        <li>Short-form video (2x Reels/TikToks)</li>
-        <li><strong style="color:var(--gold);">1 in-match / training action photography session</strong></li>
-        <li><strong style="color:var(--gold);">Edited match-day photos for social + media kit</strong></li>
-        <li>Paid growth ads (follower acquisition)</li>
-        <li>Monthly brand positioning review</li>
-        <li>Sponsor outreach strategy guidance</li>
-        <li>Direct WhatsApp access to your manager</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Build my brand &rarr;</a>
-    </div>
-    <div class="pc" data-plan="ath_sponsor_kit">
-      <div class="pc-tier">Media Kit · One-time</div>
-      <div class="pc-name">Sponsor Media Kit</div>
-      <div class="pc-tagline">The document that turns brand interest into brand deals.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">150</span></div>
-      <div class="pc-period">one-time · 5-day delivery</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Professional PDF media kit (4–6 pages)</li>
-        <li>Audience demographics section</li>
-        <li>Your stats + achievements presented visually</li>
-        <li>Sponsorship tiers + pricing suggestions</li>
-        <li>Pitch email template included</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Get my kit &rarr;</a>
-    </div>
-  </div>
-
-  <div class="tier-label" style="margin-top:32px;">Elite — Serious athlete branding</div>
   <div class="price-grid price-grid-2 rv">
-    <div class="pc" data-plan="ath_elite_brand">
-      <div class="pc-tier">Full Package · Monthly</div>
-      <div class="pc-name">Elite Athlete Brand</div>
-      <div class="pc-tagline">Full personal brand management for athletes with real ambitions.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">600</span></div>
-      <div class="pc-period">per month · 3-month minimum</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Full content production (20+ pieces/mo)</li>
-        <li>Video content (Reels, TikTok, highlights)</li>
-        <li><strong style="color:var(--gold);">Monthly professional photoshoot</strong></li>
-        <li><strong style="color:var(--gold);">In-match / matchday action photography</strong> (up to 2 events/mo)</li>
-        <li><strong style="color:var(--gold);">Edited image library for sponsor + media use</strong></li>
-        <li>Paid ads for audience growth</li>
-        <li>Sponsor outreach + pitch support</li>
-        <li>Media kit maintained + updated</li>
-        <li>Bi-weekly strategy calls</li>
-        <li>Personal website managed</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Go elite &rarr;</a>
-    </div>
-    <div class="pc" data-plan="ath_sponsorship">
-      <div class="pc-tier">Sponsorship · Project-based</div>
-      <div class="pc-name">Sponsorship Activation</div>
-      <div class="pc-tagline">You've got a sponsor deal — we create the content that keeps them happy.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">300</span></div>
-      <div class="pc-period">per campaign · scope-dependent</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Sponsored content strategy</li>
-        <li>Posts, stories, and video created</li>
-        <li><strong style="color:var(--gold);">Photoshoot with sponsor branding / kit</strong></li>
-        <li>Brand guidelines respected</li>
-        <li>Performance report for your sponsor</li>
-        <li>Renew + upsell strategy included</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Activate my deal &rarr;</a>
+    <div class="pc"><div class="pc-tier">Photography · One-time or Monthly</div><div class="pc-name">Athlete Photography</div><div class="pc-tagline">Match-day action shots + brand photoshoots that make sponsors notice.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="ath_photography">120</span></div><div class="pc-period" data-period="ath_photography">per session — or $200/mo for 2 sessions</div><div class="pc-divider"></div><ul class="pc-feats"><li>In-match action photography</li><li>Training ground + lifestyle shoots</li><li>30–50 professionally edited images</li><li>48-hr delivery for match-day shots</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Book a shoot &rarr;</a></div>
+    <div class="pc featured"><div class="pc-badge">✦ Most popular athlete plan</div><div class="pc-tier">Brand Building · Monthly</div><div class="pc-name">Athlete Growth System</div><div class="pc-tagline">Full personal brand — content, growth, and sponsor-ready presence.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="ath_growth_system">350</span></div><div class="pc-period" data-period="ath_growth_system">per month · cancel anytime</div><div class="pc-divider"></div><ul class="pc-feats"><li>12–16 pieces of content per month</li><li>Short-form video (2x Reels/TikToks)</li><li>1 in-match / training photography session</li><li>Paid growth ads (follower acquisition)</li><li>Monthly brand positioning review</li><li>Sponsor outreach strategy guidance</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Build my brand &rarr;</a></div>
+  </div>
+
+
+  <div class="enterprise-inline rv" style="margin-top:32px;">
+    <div class="ent-inline-inner">
+      <div class="ent-inline-left">
+        <div class="sec-tag" style="justify-content:flex-start;margin-bottom:10px;font-size:.7rem;">Enterprise</div>
+        <div class="ent-inline-title">Executive Marketing Team</div>
+        <p class="ent-inline-sub">Your complete outsourced marketing department — strategy, content, ads, automation, and weekly reporting. Replaces in-house hires entirely.</p>
+        <a href="/contact.html" class="pc-cta" style="margin-top:16px;display:inline-block;">Schedule a call &rarr;</a>
+      </div>
+      <div class="ent-inline-right">
+        <div class="ent-inline-price"><span class="cur">$</span><span data-price="ent_main">4,500</span></div>
+        <div class="ent-inline-period" data-period="ent_main">per month · USD</div>
+        <ul class="pc-feats" style="margin-top:16px;">
+          <li>Dedicated strategy lead &amp; account manager</li>
+          <li>Full content production (design, copy, video)</li>
+          <li>Paid advertising across Meta &amp; Google</li>
+          <li>WhatsApp funnels &amp; automation</li>
+          <li>Monthly executive reporting &amp; reviews</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="addons-wrap rv">
-    <div class="addons-title">Athlete Add-Ons</div>
-    <p class="addons-sub">Extras that make a real difference when you're building a sports brand.</p>
-    <div class="addons-grid">
-      <div class="addon" data-addon-key="ath_addons.action_photo"><div class="addon-name">In-Match Action Photography</div><div class="addon-desc">Professional photographer at your game. Edited action shots within 48 hrs.</div><div class="addon-price">$120</div><div class="addon-period">per event · Harare area</div></div>
-      <div class="addon" data-addon-key="ath_addons.brand_shoot"><div class="addon-name">Brand Photoshoot</div><div class="addon-desc">Studio or location shoot — athlete lifestyle, kit, training. 30–50 edited images.</div><div class="addon-price">$150</div><div class="addon-period">per session · 2 hr shoot</div></div>
-      <div class="addon" data-addon-key="ath_addons.matchday"><div class="addon-name">Full Match Day Package</div><div class="addon-desc">Photography + same-day story content + post-match social recap.</div><div class="addon-price">$180</div><div class="addon-period">per match day</div></div>
-      <div class="addon" data-addon-key="ath_addons.training_shoot"><div class="addon-name">Training Ground Shoot</div><div class="addon-desc">Action shots and behind-the-scenes from your training session.</div><div class="addon-price">$100</div><div class="addon-period">per session</div></div>
-      <div class="addon" data-addon-key="ath_addons.highlights"><div class="addon-name">Highlights Reel Edit</div><div class="addon-desc">1–2 min edited highlights video from your footage.</div><div class="addon-price">$100</div><div class="addon-period">per video</div></div>
-      <div class="addon" data-addon-key="ath_addons.bio"><div class="addon-name">Professional Bio Write-Up</div><div class="addon-desc">Athlete bio written for sponsors, websites, and press.</div><div class="addon-price">$50</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="ath_addons.media_kit"><div class="addon-name">Sponsor Media Kit</div><div class="addon-desc">PDF media kit built from your photos, stats, and audience data.</div><div class="addon-price">$150</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="ath_addons.press_release"><div class="addon-name">Press Release</div><div class="addon-desc">Written announcement for signings, achievements, or partnerships.</div><div class="addon-price">$80</div><div class="addon-period">per release</div></div>
-    </div>
-  </div>
 </div>
 
-<!-- ═══ PANEL: CREATORS ═══ -->
+<!-- PANEL: CREATORS -->
 <div class="pricing-panel cre-accent" id="panel-cre">
   <div class="panel-header">
-    <div><div class="panel-eyebrow">For creators &amp; influencers</div><h2 class="panel-title">Build it<br><span style="color:var(--green);">before</span><br><span style="-webkit-text-stroke:2px var(--white);color:transparent">it's big.</span></h2></div>
-    <div><p class="panel-sub">400 followers is not too early. The creators who win are the ones who got serious before everyone else. Let's build your brand the right way from day one.</p><div class="panel-no-min">✦ 400 followers is enough to start</div></div>
+    <div><div class="panel-eyebrow">For creators &amp; influencers</div><h2 class="panel-title">Your audience<br><span style="color:var(--green);">is your</span><br><span style="-webkit-text-stroke:2px var(--white);color:transparent">business.</span></h2></div>
+    <div><p class="panel-sub">400 followers is a starting point, not a destination. The right strategy turns any size audience into real income and brand deals.</p><div class="panel-no-min">✦ Start at any follower count</div></div>
   </div>
-
-  <div class="tier-label">Start — Build your foundation</div>
-  <div class="price-grid rv">
-    <div class="pc">
-      <div class="pc-tier">Free · Always</div>
-      <div class="pc-name">Creator Health Check</div>
-      <div class="pc-tagline">Know exactly where you stand and what to do first.</div>
-      <div class="pc-price"><span class="free">FREE</span></div>
-      <div class="pc-period">48-hour turnaround · no obligation</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Full audit of your current profiles</li>
-        <li>What brands actually look for</li>
-        <li>Your biggest growth blockers identified</li>
-        <li>Specific steps to fix them</li>
-        <li>Personal written response</li>
-      </ul>
-      <a href="/health-check.html" class="pc-cta pc-cta-ghost">Get mine free &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="cre_brand_starter">
-      <div class="pc-badge">✦ Perfect for beginners</div>
-      <div class="pc-tier">Starter · One-time</div>
-      <div class="pc-name">Creator Brand Starter</div>
-      <div class="pc-tagline">The essential setup that most creators get wrong.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">120</span></div>
-      <div class="pc-period">one-time · done in 5 days</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Niche + content strategy defined</li>
-        <li>2 social profiles fully optimised</li>
-        <li>Bio rewrite (scroll-stopping)</li>
-        <li>Profile photo + banner designed</li>
-        <li>30-day content plan template</li>
-        <li>What to post, when to post, why</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Get set up &rarr;</a>
-    </div>
-    <div class="pc" data-plan="cre_identity_kit">
-      <div class="pc-tier">Branding · One-time</div>
-      <div class="pc-name">Creator Identity Kit</div>
-      <div class="pc-tagline">Look like a brand, not a random person with a phone.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">180</span></div>
-      <div class="pc-period">one-time · 7-day delivery</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Logo / personal brand mark</li>
-        <li>Colour palette + typography guide</li>
-        <li>Instagram story + post templates (10)</li>
-        <li>TikTok overlay pack</li>
-        <li>Brand usage guide</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Brand me up &rarr;</a>
-    </div>
-  </div>
-
-  <div class="tier-label" style="margin-top:32px;">Grow — Build your audience</div>
-  <div class="price-grid rv">
-    <div class="pc" data-plan="cre_content_support">
-      <div class="pc-tier">Content · Monthly</div>
-      <div class="pc-name">Content Support Plan</div>
-      <div class="pc-tagline">Strategy + graphics so you always know what to post.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">150</span></div>
-      <div class="pc-period">per month · cancel anytime</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Monthly content calendar</li>
-        <li>6–8 designed graphics/posts</li>
-        <li>Caption + hashtag templates</li>
-        <li>2 Reel/TikTok concept scripts</li>
-        <li>Monthly performance review</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Stay consistent &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="cre_growth_system">
-      <div class="pc-badge">✦ Best growth plan</div>
-      <div class="pc-tier">Growth · Monthly</div>
-      <div class="pc-name">Creator Growth System</div>
-      <div class="pc-tagline">Content + ads + strategy working together to build a real audience.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">300</span></div>
-      <div class="pc-period">per month · cancel anytime</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>12 content pieces + 3 short-form videos</li>
-        <li>Follower growth ads (targeted)</li>
-        <li>Audience analysis + niche targeting</li>
-        <li>Engagement strategy</li>
-        <li>Monthly brand deal readiness report</li>
-        <li>WhatsApp access to your manager</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Start growing &rarr;</a>
-    </div>
-    <div class="pc" data-plan="cre_link_bio">
-      <div class="pc-tier">Website · One-time</div>
-      <div class="pc-name">Creator Link-in-Bio Site</div>
-      <div class="pc-tagline">A real website beats Linktree every single time.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">200</span></div>
-      <div class="pc-period">one-time · 7-day delivery</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Personal website (3 pages)</li>
-        <li>Links to all platforms</li>
-        <li>Media / press section</li>
-        <li>Brand collaboration enquiry form</li>
-        <li>Email list signup integration</li>
-        <li>Mobile-first and fast</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Get my site &rarr;</a>
-    </div>
-  </div>
-
-  <div class="tier-label" style="margin-top:32px;">Monetise — Turn audience into income</div>
+  <div class="tier-label">Foundation — Build your brand</div>
   <div class="price-grid price-grid-2 rv">
-    <div class="pc" data-plan="cre_media_kit">
-      <div class="pc-tier">Brand Deals · One-time</div>
-      <div class="pc-name">Influencer Media Kit</div>
-      <div class="pc-tagline">The document that makes brands say yes.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">120</span></div>
-      <div class="pc-period">one-time · 5-day delivery</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Professional 4–6 page PDF media kit</li>
-        <li>Your audience demographics visualised</li>
-        <li>Platform stats + engagement rate</li>
-        <li>Collaboration rates + packages</li>
-        <li>Pitch email template</li>
-        <li>Sent to brands outreach template</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Get my kit &rarr;</a>
-    </div>
-    <div class="pc featured" data-plan="cre_partner_programme">
-      <div class="pc-tier">Full Management · Monthly</div>
-      <div class="pc-name">Creator Partner Programme</div>
-      <div class="pc-tagline">Full personal brand management. You create — we handle everything else.</div>
-      <div class="pc-price"><span class="cur">$</span><span class="amt">500</span></div>
-      <div class="pc-period">per month · 3-month minimum</div>
-      <div class="pc-divider"></div>
-      <ul class="pc-feats">
-        <li>Full content production + strategy</li>
-        <li>Paid audience growth campaigns</li>
-        <li>Brand deal outreach on your behalf</li>
-        <li>Media kit maintained + updated</li>
-        <li>Monetisation strategy (deals, merch, digital)</li>
-        <li>Bi-weekly strategy sessions</li>
-        <li>Personal website managed</li>
-      </ul>
-      <a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Let's build &rarr;</a>
+    <div class="pc"><div class="pc-tier">Starter · One-time</div><div class="pc-name">Creator Brand Setup</div><div class="pc-tagline">Get your personal brand set up to attract brands and grow faster.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="cre_brand_setup">150</span></div><div class="pc-period" data-period="cre_brand_setup">one-time · delivered in 5 days</div><div class="pc-divider"></div><ul class="pc-feats"><li>Niche positioning + bio written for you</li><li>2 platforms optimised for growth</li><li>Profile aesthetic + content direction</li><li>30-day content calendar template</li><li>Brand pitch template (for brand deals)</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta pc-cta-ghost">Set up my brand &rarr;</a></div>
+    <div class="pc featured"><div class="pc-badge">✦ Best for growth</div><div class="pc-tier">Growth · Monthly</div><div class="pc-name">Creator Growth System</div><div class="pc-tagline">Strategy, content support, and ad boosts to grow you faster.</div><div class="pc-price"><span class="cur">$</span><span class="amt" data-price="cre_growth_system">280</span></div><div class="pc-period" data-period="cre_growth_system">per month · cancel anytime</div><div class="pc-divider"></div><ul class="pc-feats"><li>Content strategy + weekly content plan</li><li>Caption writing + hashtag research</li><li>Platform management (2 platforms)</li><li>Paid follower growth ads</li><li>Monthly analytics review</li><li>Brand deal pitch support</li></ul><a href="https://wa.me/263717122549" target="_blank" class="pc-cta">Start growing &rarr;</a></div>
+  </div>
+
+
+  <div class="enterprise-inline rv" style="margin-top:32px;">
+    <div class="ent-inline-inner">
+      <div class="ent-inline-left">
+        <div class="sec-tag" style="justify-content:flex-start;margin-bottom:10px;font-size:.7rem;">Enterprise</div>
+        <div class="ent-inline-title">Executive Marketing Team</div>
+        <p class="ent-inline-sub">Your complete outsourced marketing department — strategy, content, ads, automation, and weekly reporting. Replaces in-house hires entirely.</p>
+        <a href="/contact.html" class="pc-cta" style="margin-top:16px;display:inline-block;">Schedule a call &rarr;</a>
+      </div>
+      <div class="ent-inline-right">
+        <div class="ent-inline-price"><span class="cur">$</span><span data-price="ent_main">4,500</span></div>
+        <div class="ent-inline-period" data-period="ent_main">per month · USD</div>
+        <ul class="pc-feats" style="margin-top:16px;">
+          <li>Dedicated strategy lead &amp; account manager</li>
+          <li>Full content production (design, copy, video)</li>
+          <li>Paid advertising across Meta &amp; Google</li>
+          <li>WhatsApp funnels &amp; automation</li>
+          <li>Monthly executive reporting &amp; reviews</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="addons-wrap rv">
-    <div class="addons-title">Creator Add-Ons</div>
-    <p class="addons-sub">Mix and match. Every bit of this adds up to a bigger brand and more income.</p>
-    <div class="addons-grid">
-      <div class="addon" data-addon-key="cre_addons.extra_reels"><div class="addon-name">Extra Reels / TikToks</div><div class="addon-desc">Scripted, filmed (if local), or edited from your footage.</div><div class="addon-price">$40</div><div class="addon-period">per video</div></div>
-      <div class="addon" data-addon-key="cre_addons.post_pack"><div class="addon-name">Post Design Pack</div><div class="addon-desc">10 branded, on-theme graphics ready to post.</div><div class="addon-price">$60</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="cre_addons.brand_outreach"><div class="addon-name">Brand Deal Outreach</div><div class="addon-desc">We pitch 5 brands per month on your behalf.</div><div class="addon-price">$80</div><div class="addon-period">per month</div></div>
-      <div class="addon" data-addon-key="cre_addons.youtube"><div class="addon-name">YouTube Channel Setup</div><div class="addon-desc">Full channel art, branding, and first 3 thumbnails.</div><div class="addon-price">$100</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="cre_addons.podcast"><div class="addon-name">Podcast Launch Kit</div><div class="addon-desc">Cover art, intro design, episode template, launch plan.</div><div class="addon-price">$150</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="cre_addons.newsletter"><div class="addon-name">Email Newsletter Setup</div><div class="addon-desc">Mailchimp/Substack setup + first 3 templates designed.</div><div class="addon-price">$80</div><div class="addon-period">one-time</div></div>
-      <div class="addon" data-addon-key="cre_addons.photoshoot"><div class="addon-name">Creator Photoshoot</div><div class="addon-desc">Content photos for 30 days of posting. Harare.</div><div class="addon-price">$100</div><div class="addon-period">per session</div></div>
-      <div class="addon" data-addon-key="cre_addons.merch"><div class="addon-name">Merchandise Store</div><div class="addon-desc">Basic merch store setup to start monetising your brand.</div><div class="addon-price">$200</div><div class="addon-period">one-time</div></div>
-    </div>
-  </div>
 </div>
 
 <!-- PROCESS -->
 <section class="process-wrap">
   <div class="sec-tag rv">How it works</div>
-  <h2 class="rv d1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,72px);line-height:.92;margin-bottom:6px;">Simple from<br><span style="color:var(--red);">day one.</span></h2>
-  <p class="rv d2" style="color:var(--muted);font-size:.88rem;line-height:1.7;max-width:480px;margin-bottom:0;">No jargon, no long onboarding process. We move fast.</p>
+  <h2 class="rv d1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,72px);line-height:.92;margin-bottom:6px;">Simple.<br><span style="color:var(--red);">Fast.</span></h2>
   <div class="process-steps">
     <div class="process-step rv"><div class="ps-n">01</div><div class="ps-title">Free Health Check</div><p class="ps-desc">We audit your current digital presence and tell you exactly what to fix first. Free, 48 hours, no strings.</p></div>
-    <div class="process-step rv d1"><div class="ps-n">02</div><div class="ps-title">Pick Your Plan</div><p class="ps-desc">Choose what fits your budget right now. You can start small — everything is designed to grow with you.</p></div>
-    <div class="process-step rv d2"><div class="ps-n">03</div><div class="ps-title">We Build It</div><p class="ps-desc">Our team gets to work. Most one-time projects are done in 5–10 days. Monthly plans start within 48 hours.</p></div>
+    <div class="process-step rv d1"><div class="ps-n">02</div><div class="ps-title">Pick Your Plan</div><p class="ps-desc">Choose what fits your budget right now. Start small — everything is designed to grow with you.</p></div>
+    <div class="process-step rv d2"><div class="ps-n">03</div><div class="ps-title">We Build It</div><p class="ps-desc">Our team gets to work. Most one-time projects done in 5–10 days. Monthly plans start within 48 hours.</p></div>
     <div class="process-step rv d3"><div class="ps-n">04</div><div class="ps-title">You Grow</div><p class="ps-desc">We track results, report back, and optimise. When you're ready to scale, the next tier is right there.</p></div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="enterprise-pinned rv">
+  <div class="ent-inner">
+    <div class="ent-left">
+      <div class="sec-tag" style="justify-content:flex-start;margin-bottom:16px;">Enterprise</div>
+      <h2 class="ent-title">Executive<br><span style="color:var(--red);">Marketing</span><br><span style="-webkit-text-stroke:1.5px var(--white);color:transparent">Team</span></h2>
+      <p class="ent-sub">Your complete outsourced marketing department — anywhere in the world. Replace in-house marketing hires, tools, and management overhead with a dedicated international team.</p>
+      <a href="/contact.html" class="btn-p ent-cta"><span>Schedule a Discovery Call &rarr;</span></a>
+    </div>
+    <div class="ent-right">
+      <div class="ent-price-row"><div class="ent-amt"><span class="cur">$</span><span data-price="ent_main">4,500</span></div><div class="ent-period" data-period="ent_main">per month · USD</div></div>
+      <div class="ent-feats-grid">
+        <div class="ent-feat">Dedicated strategy lead &amp; account manager</div>
+        <div class="ent-feat">WhatsApp funnels &amp; CRM-style automation</div>
+        <div class="ent-feat">Full content production (design, copy, video)</div>
+        <div class="ent-feat">Campaign planning, execution &amp; optimisation</div>
+        <div class="ent-feat">Paid advertising across Meta &amp; Google</div>
+        <div class="ent-feat">Monthly executive reporting &amp; reviews</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -836,37 +264,30 @@
   <div class="sec-tag rv">Common questions</div>
   <h2 class="rv d1" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5.5vw,72px);line-height:.92;margin-bottom:6px;">Got<br><span style="color:var(--red);">questions?</span></h2>
   <div class="faq-grid rv d2">
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">I only have 400 followers. Am I too small for this?</div><div class="faq-a">Absolutely not. 400 followers is a starting point, not a disqualifier. The earlier you get your brand set up properly, the faster you grow. Most of our best creator and athlete clients started with us before they had a significant following.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I start with a one-time service and upgrade later?</div><div class="faq-a">Yes — that's exactly how most clients start. Get set up with a one-time package, see the results, then move to a monthly plan when it makes sense for you. There's no pressure and no lock-in on starter options.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">I'm an athlete — does this work if I'm not professional yet?</div><div class="faq-a">Yes, and this is actually when it matters most. School, college, semi-pro — building your brand early is what gets sponsors interested later. We have specific packages designed for athletes at every stage, starting from $120.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What's included in the free health check?</div><div class="faq-a">We look at your full digital presence — social profiles, website if you have one, content, positioning — and give you a written breakdown of what's working, what's broken, and specific steps to fix it. It's real feedback, not a template. Turnaround is 48 hours.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you work with people outside Zimbabwe?</div><div class="faq-a">Yes — we work with clients across Africa and internationally. Everything is remote-first. Payments are in USD and we use WhatsApp for all client communication, so it doesn't matter where you are.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How long does it take to see results?</div><div class="faq-a">One-time projects (websites, media kits, setups) are delivered in 5–10 days. For monthly growth plans, most clients start seeing real follower growth and engagement improvement within 4–6 weeks. We track everything and report back monthly.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What if I'm not happy with the results?</div><div class="faq-a">We offer a 30-day satisfaction guarantee on all monthly packages — if you're not seeing progress and we can't fix it, we refund your first month. No drama, no questions. That's how confident we are.</div></div>
-    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I mix services across categories?</div><div class="faq-a">Absolutely. An athlete who also creates content, a business owner building a personal brand — we build custom packages all the time. Message us on WhatsApp and we'll put something together specifically for you.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">I only have 400 followers. Am I too small for this?</div><div class="faq-a">Absolutely not. 400 followers is a starting point, not a disqualifier. The earlier you get your brand set up properly, the faster you grow.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Can I start with a one-time service and upgrade later?</div><div class="faq-a">Yes — that's exactly how most clients start. Get set up with a one-time package, see the results, then move to a monthly plan when it makes sense for you.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you work with people outside Zimbabwe?</div><div class="faq-a">Yes — we work with clients across Africa and internationally. Everything is remote-first. Payments are in USD and we use WhatsApp for all client communication.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What's included in the free health check?</div><div class="faq-a">We look at your full digital presence — social profiles, website, content, positioning — and give you a written breakdown of what's working, what's broken, and specific steps to fix it. Turnaround is 48 hours.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How long does it take to see results?</div><div class="faq-a">One-time projects are delivered in 5–10 days. For monthly growth plans, most clients start seeing real follower growth within 4–6 weeks. We track everything and report back monthly.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What if I'm not happy with the results?</div><div class="faq-a">We offer a 30-day satisfaction guarantee on all monthly packages — if you're not seeing progress and we can't fix it, we refund your first month. No drama, no questions.</div></div>
   </div>
 </section>
 
 <!-- GUARANTEE -->
 <section class="guarantee-wrap">
-  <div class="guar-emblem rv">
-    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ff2d2d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      <polyline points="9 12 11 14 15 10"/>
-    </svg>
-  </div>
+  <div class="guar-emblem"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ff3131" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
   <h2 class="guar-title rv">30-day <span>guarantee</span><br>or your money back.</h2>
-  <p class="guar-sub rv d1">Not satisfied after 30 days on any monthly plan? We refund your first month. No drama, no questions. That's how confident we are in what we build.</p>
+  <p class="guar-sub rv d1">Not satisfied after 30 days on any monthly plan? We refund your first month. No drama, no questions.</p>
   <div class="guar-pill rv d2">✦ Every monthly plan · No exceptions · No questions asked</div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final-cta-wrap">
-  <h2 class="rv">Ready to be<br><span>seen globally?</span></h2>
-  <p class="rv d1">Your real-world reach deserves a digital presence to match. Let's build it — starting with a free health check.</p>
-  <div class="final-cta-btns">
-    <a href="/health-check.html" class="btn-p rv d2"><span>Get Free Audit &rarr;</span></a>
-    <a href="https://wa.me/263717122549" class="btn-g rv d3" target="_blank" rel="noopener">WhatsApp Us</a>
+  <h2 class="rv">Start where<br>you are.<br>Grow from there.</h2>
+  <p class="rv d1">Not sure which option is right for you? Get the free health check first — it's free, fast, and tells you exactly where to start.</p>
+  <div class="cta-btns rv d2">
+    <a href="/health-check.html" class="btn-white">Get free health check &rarr;</a>
+    <a href="https://wa.me/263717122549" target="_blank" rel="noopener" class="btn-outline-white">WhatsApp us now</a>
   </div>
 </section>
 
@@ -874,112 +295,66 @@
 
 <footer>
   <div class="foot-grid">
-    <div>
-      <div class="foot-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div>
-      <p class="foot-tag">We turn invisible brands into unforgettable ones &mdash; for businesses and personalities who deserve a global audience.</p>
-      <span class="foot-hq">&#128205; Headquartered in Harare, Zimbabwe &middot; Working globally</span>
-    </div>
-    <div>
-      <div class="foot-col-h">Navigate</div>
-      <div class="foot-links">
-        <a href="/solutions.html">Solutions</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/work.html">Work</a>
-        <a href="/about.html">About</a>
-        <a href="/resources.html">Resources</a>
-        <a href="/health-check.html">Free Health Check</a>
-      </div>
-    </div>
-    <div>
-      <div class="foot-col-h">Contact</div>
-      <div class="foot-links">
-        <a href="https://wa.me/263717122549" target="_blank" rel="noopener">WhatsApp: +263 717 122 549</a>
-        <span class="js-email-f" data-user="business" data-domain="liverdigital.org"></span>
-        <a href="https://www.instagram.com/liver.digital/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@liver.digital" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.facebook.com/profile.php?id=61576526527119" target="_blank" rel="noopener">Facebook</a>
-      </div>
-    </div>
+    <div><div class="foot-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div><p class="foot-tag">We turn invisible brands into unforgettable ones.</p><span class="foot-hq">&#128205; Harare, Zimbabwe &middot; Working globally</span></div>
+    <div><div class="foot-col-h">Navigate</div><div class="foot-links"><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a><a href="/work.html">Work</a><a href="/about.html">About</a><a href="/resources.html">Resources</a><a href="/health-check.html">Free Health Check</a></div></div>
+    <div><div class="foot-col-h">Contact</div><div class="foot-links"><a href="https://wa.me/263717122549" target="_blank" rel="noopener">WhatsApp: +263 717 122 549</a><span class="js-email-f" data-user="business" data-domain="liverdigital.org"></span><a href="https://www.instagram.com/liver.digital/" target="_blank" rel="noopener">Instagram</a></div></div>
   </div>
-  <div class="foot-bottom">
-    <p>&copy; 2026 LIVEr Digital. Harare, Zimbabwe &middot; Working globally.</p>
-    <div class="foot-soc">
-      <a href="https://www.instagram.com/liver.digital/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@liver.digital" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.facebook.com/profile.php?id=61576526527119" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.threads.com/@liver.digital" target="_blank" rel="noopener">Threads</a>
-    </div>
-  </div>
+  <div class="foot-bottom"><p>&copy; 2026 LIVEr Digital.</p><div class="foot-soc"><a href="https://www.instagram.com/liver.digital/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@liver.digital" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/profile.php?id=61576526527119" target="_blank" rel="noopener">Facebook</a></div></div>
 </footer>
-
-<a href="https://wa.me/263717122549" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
+<a href="https://wa.me/263717122549" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script src="/js/main.js"></script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
+<style>
+.enterprise-inline{padding:0 0 8px;}
+.ent-inline-inner{background:linear-gradient(135deg,rgba(255,49,49,.08) 0%,rgba(55,54,67,.6) 100%);border:1.5px solid rgba(255,49,49,.25);border-radius:16px;padding:36px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+@media(max-width:768px){.ent-inline-inner{grid-template-columns:1fr;gap:24px;padding:24px;}}
+.ent-inline-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.5vw,44px);line-height:.95;margin-bottom:10px;color:var(--white);}
+.ent-inline-sub{color:var(--muted);font-size:.85rem;line-height:1.7;}
+.ent-inline-price{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);line-height:1;color:var(--red);}
+.ent-inline-price .cur{font-size:.5em;vertical-align:top;margin-top:.2em;}
+.ent-inline-period{color:var(--muted);font-size:.8rem;margin-top:4px;}
+</style>
 <script>
-/* ── PRICING JSON LOADER ── */
-/* Fetches /content/pricing.json and updates all prices on the page.
-   If the fetch fails, the hardcoded HTML prices remain as fallback. */
-(async () => {
-  try {
-    const res = await fetch('/content/pricing.json?v=' + Date.now());
-    if (!res.ok) return;
-    const d = await res.json();
-
-    /* Update main plan cards */
-    document.querySelectorAll('[data-plan]').forEach(card => {
-      const id = card.dataset.plan;
-      /* Find the right section (business / athlete / creator) */
-      const section = id.startsWith('biz_') ? d.business
-                    : id.startsWith('ath_') ? d.athlete
-                    : id.startsWith('cre_') ? d.creator : null;
-      if (!section || !section[id]) return;
-      const plan = section[id];
-      const amtEl = card.querySelector('.amt');
-      const periodEl = card.querySelector('.pc-period');
-      if (amtEl && plan.price) amtEl.textContent = plan.price;
-      if (periodEl && plan.period) periodEl.textContent = plan.period;
-    });
-
-    /* Update add-on cards */
-    document.querySelectorAll('[data-addon-key]').forEach(card => {
-      const [section, key] = card.dataset.addonKey.split('.');
-      if (!d[section] || !d[section][key]) return;
-      const addon = d[section][key];
-      const priceEl = card.querySelector('.addon-price');
-      const periodEl = card.querySelector('.addon-period');
-      if (priceEl && addon.price) priceEl.textContent = addon.price;
-      if (periodEl && addon.period) periodEl.textContent = addon.period;
-    });
-
-  } catch(e) {
-    /* Silent fail — hardcoded prices shown as fallback */
-  }
+(function(){
+  fetch('/content/pricing.json')
+    .then(r=>r.json())
+    .then(d=>{
+      // flatten all keys from all sections
+      var flat = {};
+      function flatten(obj){
+        if(!obj||typeof obj!=='object') return;
+        Object.keys(obj).forEach(function(k){
+          var v = obj[k];
+          if(v && typeof v==='object' && (v.price!==undefined||v.period!==undefined)){
+            flat[k] = v;
+          } else {
+            flatten(v);
+          }
+        });
+      }
+      flatten(d);
+      // update price spans
+      document.querySelectorAll('[data-price]').forEach(function(el){
+        var k = el.getAttribute('data-price');
+        if(flat[k] && flat[k].price) el.textContent = flat[k].price;
+      });
+      // update period spans
+      document.querySelectorAll('[data-period]').forEach(function(el){
+        var k = el.getAttribute('data-period');
+        if(flat[k] && flat[k].period) el.textContent = flat[k].period;
+      });
+      // addon prices have $ prefix
+      document.querySelectorAll('.addon-price[data-price]').forEach(function(el){
+        var k = el.getAttribute('data-price');
+        if(flat[k] && flat[k].price){
+          var p = flat[k].price;
+          el.textContent = p.startsWith('$') ? p : '$'+p;
+        }
+      });
+    })
+    .catch(function(){/* no json yet, use hardcoded values */});
 })();
-
-/* ── TAB SWITCHING ── */
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.${tab}-tab`).classList.add('active');
-  document.querySelectorAll('.who-card').forEach(c => c.classList.remove('active'));
-  document.querySelector(`.${tab}-card`).classList.add('active');
-  document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById(`panel-${tab}`).classList.add('active');
-  document.getElementById('tabNav').scrollIntoView({behavior:'smooth', block:'start'});
-  setTimeout(() => {
-    document.querySelectorAll(`#panel-${tab} .rv`).forEach(el => el.classList.add('on'));
-  }, 100);
-}
-
-/* ── FAQ ── */
-function toggleFaq(item) {
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
 </script>
+
 </body>
 </html>
