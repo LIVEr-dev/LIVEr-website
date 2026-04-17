@@ -41,6 +41,7 @@
       animation: loaderFill 1.8s ease forwards;
     }
     @keyframes loaderFill { to { width: 100%; } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
 
     /* ── GLOBAL CMS OVERRIDE ────────────────────────────────────────────── */
     :root {
@@ -412,6 +413,52 @@
     [class*="css-"] { color: var(--liver-white); }
     p[class*="css-"], span[class*="css-"] { color: inherit; }
 
+  
+    /* ── PRICING SECTION ENHANCEMENTS ──────────────────────────────── */
+    /* Colour-code the pricing object headers by section */
+    [class*="ObjectWidgetTopBar"]:has(+ div [data-testid*="biz_foundation"]),
+    [class*="ObjectWidgetTopBar"]:has(+ div [data-testid*="biz_"]) {
+      border-left: 3px solid var(--liver-red) !important;
+    }
+    
+    /* Summary lines in collapsed objects */
+    [class*="ObjectWidgetTopBar"] [class*="summary"],
+    [class*="summary-value"] {
+      font-family: 'Syne Mono', monospace !important;
+      font-size: .7rem !important;
+      color: rgba(255,49,49,.7) !important;
+      letter-spacing: .08em !important;
+    }
+
+    /* Make the pricing collection stand out */
+    [class*="CollectionItem"][data-testid*="pricing"],
+    [class*="CollectionItem"][data-testid*="site_data"] {
+      border-left: 3px solid var(--liver-red) !important;
+    }
+
+    /* Wider editor for pricing (it has lots of nested fields) */
+    [class*="EditorContainer"] {
+      max-width: 900px;
+    }
+
+    /* Better object expand/collapse */
+    [class*="ObjectWidgetTopBar"] button[class*="collapse"],
+    [class*="ObjectWidgetTopBar"] button[class*="expand"] {
+      background: rgba(255,49,49,.08) !important;
+      border-radius: 6px !important;
+      color: var(--liver-red) !important;
+    }
+
+    /* Monospace for price input fields (more scannable) */
+    [id*="price"] input,
+    [id*="period"] input {
+      font-family: 'Syne Mono', monospace !important;
+      letter-spacing: .06em !important;
+    }
+
+    /* Section emoji labels */
+    [class*="ObjectWidgetTopBar"] span:empty::after { content: none; }
+
     /* Hint text */
     [class*="HintText"],
     [class*="hint"] {
@@ -464,6 +511,38 @@
 
     // Fallback: hide after 4s regardless
     setTimeout(hideLogo, 4000);
+
+
+    // ── KEYBOARD SHORTCUT: Ctrl+S = Publish ─────────────────────────
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        var publishBtn = document.querySelector('[class*="PublishButton"], [class*="publish-button"]');
+        if (publishBtn) {
+          publishBtn.click();
+          // Flash visual feedback
+          var flash = document.createElement('div');
+          flash.style.cssText = 'position:fixed;top:20px;right:20px;z-index:99999;background:#ff3131;color:#fff;font-family:Syne,sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.06em;padding:10px 18px;border-radius:8px;opacity:1;transition:opacity .5s';
+          flash.textContent = '✓ Publishing...';
+          document.body.appendChild(flash);
+          setTimeout(function(){ flash.style.opacity='0'; setTimeout(function(){ flash.remove(); },500); }, 2000);
+        }
+      }
+    });
+
+    // ── WELCOME MESSAGE ────────────────────────────────────────────
+    var shown = sessionStorage.getItem('liver-welcomed');
+    if (!shown) {
+      sessionStorage.setItem('liver-welcomed', '1');
+      setTimeout(function() {
+        var msg = document.createElement('div');
+        msg.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:99999;background:#1a1925;border:1px solid rgba(255,49,49,.3);border-radius:12px;padding:16px 20px;font-family:Syne,sans-serif;max-width:280px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:fadeUp .4s ease';
+        msg.innerHTML = '<div style="font-weight:800;font-size:.82rem;color:#f2f0fb;margin-bottom:4px;">👋 Welcome to LIVEr Admin</div><div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;">Go to <strong style="color:#ff3131">Pricing & Testimonials → Pricing</strong> to change any price. Hit <strong style="color:#ff3131">Ctrl+S</strong> to publish fast.</div><button onclick="this.parentElement.remove()" style="position:absolute;top:10px;right:12px;background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;font-size:.9rem">✕</button>';
+        msg.style.position = 'fixed';
+        document.body.appendChild(msg);
+        setTimeout(function(){ msg.style.opacity='0'; msg.style.transition='opacity .5s'; setTimeout(function(){ msg.remove(); },500); }, 8000);
+      }, 1500);
+    }
 
     // Netlify Identity redirect handler
     if (window.netlifyIdentity) {
