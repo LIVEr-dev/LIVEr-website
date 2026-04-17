@@ -91,6 +91,26 @@
 .ent-inline-cta{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:12px 22px;border:1.5px solid rgba(255,49,49,.4);color:var(--white);font-family:'Syne',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s}
 .ent-inline-cta:hover{background:var(--red);border-color:var(--red)}
 
+/* ── ENTERPRISE PINNED (big layout, used inside each panel) ────────── */
+.enterprise-pinned-inner{background:linear-gradient(135deg,rgba(255,49,49,.07) 0%,rgba(55,54,67,.5) 100%);border:1.5px solid rgba(255,49,49,.22);border-radius:0;padding:56px 64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden}
+.enterprise-pinned-inner::before{content:'ENTERPRISE';position:absolute;top:-16px;right:40px;font-family:'Bebas Neue',sans-serif;font-size:9rem;color:rgba(255,49,49,.04);letter-spacing:.05em;line-height:1;pointer-events:none;user-select:none}
+@media(max-width:768px){.enterprise-pinned-inner{grid-template-columns:1fr;gap:36px;padding:36px 28px}}
+.ent-p-eyebrow{font-family:'Syne Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.ent-p-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,6vw,82px);line-height:.92;margin-bottom:20px}
+.ent-p-title .red{color:var(--red)}
+.ent-p-title .outline{-webkit-text-stroke:1.5px var(--white);color:transparent}
+.ent-p-sub{color:var(--muted);font-size:.88rem;line-height:1.75;margin-bottom:24px}
+.ent-p-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--red);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.ent-p-cta:hover{background:#cc2020}
+.ent-p-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.ent-p-amt{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,88px);line-height:1;color:var(--red)}
+.ent-p-amt .cur{font-size:.45em;vertical-align:top;margin-top:.3em;color:rgba(255,49,49,.7)}
+.ent-p-period{color:var(--muted);font-size:.75rem;font-family:'Syne Mono',monospace;letter-spacing:.08em;margin-bottom:24px}
+.ent-p-feats{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;list-style:none;padding:0;margin:0}
+@media(max-width:1024px){.ent-p-feats{grid-template-columns:1fr}}
+.ent-p-feats li{font-size:.8rem;color:var(--muted);padding-left:14px;position:relative;line-height:1.5}
+.ent-p-feats li::before{content:'→';position:absolute;left:0;color:var(--red);font-size:.7rem}
+
 /* ── WHO CARD ACTIVE ACCENT ──────────────────────────────────────── */
 .biz-card.active{border-top-color:var(--red)!important}
 .ath-card.active{border-top-color:var(--gold)!important}
@@ -309,22 +329,23 @@
   <div class="addons-wrap rv"><div class="addons-title">Business Add-Ons</div><p class="addons-sub">Bolt these on to any package or buy standalone.</p><div class="addons-grid"><div class="addon"><div class="addon-name">Logo Design</div><div class="addon-desc">3 concepts, 2 revision rounds.</div><div class="addon-price" data-price="biz_logo">$150</div><div class="addon-period" data-period="biz_logo">one-time</div></div><div class="addon"><div class="addon-name">Landing Page</div><div class="addon-desc">High-converting single page for ads or campaigns.</div><div class="addon-price" data-price="biz_landing">$250</div><div class="addon-period" data-period="biz_landing">one-time</div></div><div class="addon"><div class="addon-name">Photography Session</div><div class="addon-desc">Brand photos for social, website, and ads. Harare area.</div><div class="addon-price" data-price="biz_photo">$120</div><div class="addon-period" data-period="biz_photo">per session</div></div><div class="addon"><div class="addon-name">SEO Setup</div><div class="addon-desc">Google visibility basics: keywords, meta, local search.</div><div class="addon-price" data-price="biz_seo">$100</div><div class="addon-period" data-period="biz_seo">one-time</div></div><div class="addon"><div class="addon-name">Short-form Video (3x)</div><div class="addon-desc">3 edited Reels or TikTok videos per month.</div><div class="addon-price" data-price="biz_video">$180</div><div class="addon-period" data-period="biz_video">per month</div></div><div class="addon"><div class="addon-name">Extra Social Platforms</div><div class="addon-desc">Add LinkedIn, Pinterest, or YouTube to any plan.</div><div class="addon-price" data-price="biz_platforms">$80</div><div class="addon-period" data-period="biz_platforms">per platform/mo</div></div><div class="addon"><div class="addon-name">Monthly Maintenance</div><div class="addon-desc">Website updates, hosting checks, minor edits.</div><div class="addon-price" data-price="biz_maintenance">$60</div><div class="addon-period" data-period="biz_maintenance">per month</div></div><div class="addon"><div class="addon-name">Strategy Audit</div><div class="addon-desc">Deep-dive analysis of your full digital presence.</div><div class="addon-price" data-price="biz_audit">$200</div><div class="addon-period" data-period="biz_audit">one-time</div></div></div></div>
 
 
-  <div class="enterprise-inline rv" style="margin-top:32px;">
-    <div class="ent-inline-inner">
-      <div class="ent-inline-left">
-        <div class="ent-inline-eyebrow">Enterprise · Full partnership</div>
-        <div class="ent-inline-title">Executive Marketing Team</div>
-        <p class="ent-inline-sub">Your complete outsourced marketing department — strategy, content, ads, automation, and weekly reporting. Replaces in-house hires and tools entirely.</p>
-        <a href="/contact.html" class="ent-inline-cta">Schedule a discovery call &rarr;</a>
+  <div class="rv" style="margin-top:32px;">
+    <div class="enterprise-pinned-inner">
+      <div>
+        <div class="ent-p-eyebrow">Enterprise · Full partnership</div>
+        <h2 class="ent-p-title">Executive<br><span class="red">Marketing</span><br><span class="outline">Team</span></h2>
+        <p class="ent-p-sub">Your complete outsourced marketing department — anywhere in the world. Replace in-house hires, tools, and management overhead with a dedicated international team.</p>
+        <a href="/contact.html" class="ent-p-cta">Schedule a Discovery Call &rarr;</a>
       </div>
-      <div class="ent-inline-right">
-        <div class="ent-inline-price"><span class="cur">$</span><span data-price="ent_main">4,500</span></div>
-        <div class="ent-inline-period" data-period="ent_main">per month · USD</div>
-        <ul class="pc-feats" style="margin-top:16px;">
+      <div>
+        <div class="ent-p-price-row"><div class="ent-p-amt"><span class="cur">$</span><span data-price="ent_main">4,500</span></div></div>
+        <div class="ent-p-period" data-period="ent_main">per month · USD</div>
+        <ul class="ent-p-feats">
           <li>Dedicated strategy lead &amp; account manager</li>
+          <li>WhatsApp funnels &amp; CRM-style automation</li>
           <li>Full content production (design, copy, video)</li>
+          <li>Campaign planning, execution &amp; optimisation</li>
           <li>Paid advertising across Meta &amp; Google</li>
-          <li>WhatsApp funnels &amp; automation</li>
           <li>Monthly executive reporting &amp; reviews</li>
         </ul>
       </div>
@@ -352,22 +373,23 @@
   </div>
 
 
-  <div class="enterprise-inline rv" style="margin-top:32px;">
-    <div class="ent-inline-inner">
-      <div class="ent-inline-left">
-        <div class="ent-inline-eyebrow">Enterprise · Full partnership</div>
-        <div class="ent-inline-title">Executive Marketing Team</div>
-        <p class="ent-inline-sub">Your complete outsourced marketing department — strategy, content, ads, automation, and weekly reporting. Replaces in-house hires and tools entirely.</p>
-        <a href="/contact.html" class="ent-inline-cta">Schedule a discovery call &rarr;</a>
+  <div class="rv" style="margin-top:32px;">
+    <div class="enterprise-pinned-inner">
+      <div>
+        <div class="ent-p-eyebrow">Enterprise · Full partnership</div>
+        <h2 class="ent-p-title">Executive<br><span class="red">Marketing</span><br><span class="outline">Team</span></h2>
+        <p class="ent-p-sub">Your complete outsourced marketing department — anywhere in the world. Replace in-house hires, tools, and management overhead with a dedicated international team.</p>
+        <a href="/contact.html" class="ent-p-cta">Schedule a Discovery Call &rarr;</a>
       </div>
-      <div class="ent-inline-right">
-        <div class="ent-inline-price"><span class="cur">$</span><span data-price="ent_main">4,500</span></div>
-        <div class="ent-inline-period" data-period="ent_main">per month · USD</div>
-        <ul class="pc-feats" style="margin-top:16px;">
+      <div>
+        <div class="ent-p-price-row"><div class="ent-p-amt"><span class="cur">$</span><span data-price="ent_main">4,500</span></div></div>
+        <div class="ent-p-period" data-period="ent_main">per month · USD</div>
+        <ul class="ent-p-feats">
           <li>Dedicated strategy lead &amp; account manager</li>
+          <li>WhatsApp funnels &amp; CRM-style automation</li>
           <li>Full content production (design, copy, video)</li>
+          <li>Campaign planning, execution &amp; optimisation</li>
           <li>Paid advertising across Meta &amp; Google</li>
-          <li>WhatsApp funnels &amp; automation</li>
           <li>Monthly executive reporting &amp; reviews</li>
         </ul>
       </div>
@@ -389,22 +411,23 @@
   </div>
 
 
-  <div class="enterprise-inline rv" style="margin-top:32px;">
-    <div class="ent-inline-inner">
-      <div class="ent-inline-left">
-        <div class="ent-inline-eyebrow">Enterprise · Full partnership</div>
-        <div class="ent-inline-title">Executive Marketing Team</div>
-        <p class="ent-inline-sub">Your complete outsourced marketing department — strategy, content, ads, automation, and weekly reporting. Replaces in-house hires and tools entirely.</p>
-        <a href="/contact.html" class="ent-inline-cta">Schedule a discovery call &rarr;</a>
+  <div class="rv" style="margin-top:32px;">
+    <div class="enterprise-pinned-inner">
+      <div>
+        <div class="ent-p-eyebrow">Enterprise · Full partnership</div>
+        <h2 class="ent-p-title">Executive<br><span class="red">Marketing</span><br><span class="outline">Team</span></h2>
+        <p class="ent-p-sub">Your complete outsourced marketing department — anywhere in the world. Replace in-house hires, tools, and management overhead with a dedicated international team.</p>
+        <a href="/contact.html" class="ent-p-cta">Schedule a Discovery Call &rarr;</a>
       </div>
-      <div class="ent-inline-right">
-        <div class="ent-inline-price"><span class="cur">$</span><span data-price="ent_main">4,500</span></div>
-        <div class="ent-inline-period" data-period="ent_main">per month · USD</div>
-        <ul class="pc-feats" style="margin-top:16px;">
+      <div>
+        <div class="ent-p-price-row"><div class="ent-p-amt"><span class="cur">$</span><span data-price="ent_main">4,500</span></div></div>
+        <div class="ent-p-period" data-period="ent_main">per month · USD</div>
+        <ul class="ent-p-feats">
           <li>Dedicated strategy lead &amp; account manager</li>
+          <li>WhatsApp funnels &amp; CRM-style automation</li>
           <li>Full content production (design, copy, video)</li>
+          <li>Campaign planning, execution &amp; optimisation</li>
           <li>Paid advertising across Meta &amp; Google</li>
-          <li>WhatsApp funnels &amp; automation</li>
           <li>Monthly executive reporting &amp; reviews</li>
         </ul>
       </div>
@@ -422,29 +445,6 @@
     <div class="process-step rv d1"><div class="ps-n">02</div><div class="ps-title">Pick Your Plan</div><p class="ps-desc">Choose what fits your budget right now. Start small — everything is designed to grow with you.</p></div>
     <div class="process-step rv d2"><div class="ps-n">03</div><div class="ps-title">We Build It</div><p class="ps-desc">Our team gets to work. Most one-time projects done in 5–10 days. Monthly plans start within 48 hours.</p></div>
     <div class="process-step rv d3"><div class="ps-n">04</div><div class="ps-title">You Grow</div><p class="ps-desc">We track results, report back, and optimise. When you're ready to scale, the next tier is right there.</p></div>
-  </div>
-</section>
-
-<!-- ENTERPRISE -->
-<section class="enterprise-pinned rv">
-  <div class="ent-inner">
-    <div class="ent-left">
-      <div class="sec-tag" style="justify-content:flex-start;margin-bottom:16px;">Enterprise</div>
-      <h2 class="ent-title">Executive<br><span style="color:var(--red);">Marketing</span><br><span style="-webkit-text-stroke:1.5px var(--white);color:transparent">Team</span></h2>
-      <p class="ent-sub">Your complete outsourced marketing department — anywhere in the world. Replace in-house marketing hires, tools, and management overhead with a dedicated international team.</p>
-      <a href="/contact.html" class="btn-p ent-cta"><span>Schedule a Discovery Call &rarr;</span></a>
-    </div>
-    <div class="ent-right">
-      <div class="ent-price-row"><div class="ent-amt"><span class="cur">$</span><span data-price="ent_main">4,500</span></div><div class="ent-period" data-period="ent_main">per month · USD</div></div>
-      <div class="ent-feats-grid">
-        <div class="ent-feat">Dedicated strategy lead &amp; account manager</div>
-        <div class="ent-feat">WhatsApp funnels &amp; CRM-style automation</div>
-        <div class="ent-feat">Full content production (design, copy, video)</div>
-        <div class="ent-feat">Campaign planning, execution &amp; optimisation</div>
-        <div class="ent-feat">Paid advertising across Meta &amp; Google</div>
-        <div class="ent-feat">Monthly executive reporting &amp; reviews</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -506,16 +506,7 @@
 <a href="https://wa.me/263717122549" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <script src="/js/main.js"></script>
 
-<style>
-.enterprise-inline{padding:0 0 8px;}
-.ent-inline-inner{background:linear-gradient(135deg,rgba(255,49,49,.08) 0%,rgba(55,54,67,.6) 100%);border:1.5px solid rgba(255,49,49,.25);border-radius:16px;padding:36px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
-@media(max-width:768px){.ent-inline-inner{grid-template-columns:1fr;gap:24px;padding:24px;}}
-.ent-inline-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.5vw,44px);line-height:.95;margin-bottom:10px;color:var(--white);}
-.ent-inline-sub{color:var(--muted);font-size:.85rem;line-height:1.7;}
-.ent-inline-price{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);line-height:1;color:var(--red);}
-.ent-inline-price .cur{font-size:.5em;vertical-align:top;margin-top:.2em;}
-.ent-inline-period{color:var(--muted);font-size:.8rem;margin-top:4px;}
-</style>
+
 <script>
 
 // ── QUICK COMPARE SYNC ─────────────────────────────────────────────────────
