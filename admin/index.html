@@ -6,7 +6,7 @@
   <title>LIVEr Digital — Admin</title>
   <link rel="icon" href="/favicon.ico">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
 
   <style>
     /* ── LOADING SCREEN ─────────────────────────────────────────────────── */
@@ -43,344 +43,249 @@
     @keyframes loaderFill { to { width: 100%; } }
     @keyframes fadeUp { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
 
-    /* ── GLOBAL CMS OVERRIDE ────────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════════════════════════════
+       DECAP CMS v3 THEMING — Uses CSS custom properties (the RIGHT approach)
+       Decap CMS reads these vars from :root — this actually works.
+    ════════════════════════════════════════════════════════════════════════ */
     :root {
-      --liver-red: #ff3131;
-      --liver-dark: #373643;
-      --liver-bg: #0f0e14;
-      --liver-surface: #1a1925;
-      --liver-border: rgba(255,255,255,.07);
-      --liver-muted: rgba(255,255,255,.4);
-      --liver-white: #f2f0fb;
+      /* Brand */
+      --liver-red:    #ff3131;
+      --liver-dark:   #0f0e14;
+      --liver-surface:#1a1925;
+      --liver-border: rgba(255,255,255,.08);
+      --liver-muted:  rgba(255,255,255,.4);
+      --liver-white:  #f2f0fb;
+
+      /* ── Decap CMS custom property overrides ──────────────────────── */
+      color-scheme: dark;
+
+      /* body / page */
+      --body-bg-color:          #0f0e14;
+      --primary-text-color:     #f2f0fb;
+      --secondary-text-color:   rgba(255,255,255,.45);
+      --success-text-color:     #4caf8a;
+      --danger-text-color:      #ff3131;
+      --disabled-text-color:    rgba(255,255,255,.2);
+      --url-text-color:         #ff3131;
+
+      /* inputs */
+      --input-bg-color:         #1a1925;
+      --input-border-color:     rgba(255,255,255,.12);
+      --input-placeholder-color:rgba(255,255,255,.25);
+
+      /* gray buttons */
+      --btn-gray-default-bg:    #1a1925;
+      --btn-gray-default-border:rgba(255,255,255,.15);
+      --btn-gray-hover-bg:      #252334;
+      --btn-gray-hover-border:  rgba(255,255,255,.3);
+      --btn-gray-focus-bg:      #1a1925;
+      --btn-gray-disabled-text: rgba(255,255,255,.2);
+      --btn-gray-disabled-bg:   #13121c;
+      --btn-gray-disabled-border:rgba(255,255,255,.08);
+
+      /* red buttons */
+      --btn-red-default-text:   #ff3131;
+      --btn-red-default-bg:     #1a1925;
+      --btn-red-default-border: rgba(255,49,49,.3);
+      --btn-red-hover-text:     #fff;
+      --btn-red-hover-bg:       #ff3131;
+      --btn-red-hover-border:   #ff3131;
+      --btn-red-active-bg:      #cc2020;
+      --btn-red-active-border:  rgba(255,255,255,.1);
+      --btn-red-disabled-text:  rgba(255,49,49,.4);
+      --btn-red-disabled-bg:    #0f0e14;
+
+      /* green / publish buttons */
+      --btn-green-default-text:   #fff;
+      --btn-green-default-bg:     #ff3131;
+      --btn-green-default-border: #cc2020;
+      --btn-green-hover-bg:       #cc2020;
+      --btn-green-hover-border:   #ff3131;
+      --btn-green-active-bg:      #aa1a1a;
+      --btn-green-disabled-text:  rgba(255,255,255,.4);
+      --btn-green-disabled-bg:    rgba(255,49,49,.4);
+      --btn-green-disabled-border:transparent;
+
+      /* scrollbar */
+      --scrollbar-thumb-color:       rgba(255,49,49,.35);
+      --scrollbar-thumb-hover-color: rgba(255,49,49,.6);
+
+      /* dropdown */
+      --dropdownlist-bg:      #1a1925;
+      --dropdownlist-border:  rgba(255,255,255,.1);
+      --dropdownlist-shadow:  0 16px 32px rgba(0,0,0,.7);
+      --dropdownitem-bg:      #1a1925;
+      --dropdownitem-hover-bg:#252334;
+
+      /* header */
+      --header-bg:                   #13121c;
+      --header-button-text:          rgba(255,255,255,.4);
+      --header-button-text-hover:    rgba(255,255,255,.8);
+      --header-button-text-active:   #fff;
+      --header-dropdownitem-hover-text: #fff;
+      --header-dropdownitem-hover-bg:   rgba(255,49,49,.15);
+
+      /* cards */
+      --card-bg:          #1a1925;
+      --card-border:      rgba(255,255,255,.08);
+      --card-hover-bg:    #1f1d2e;
+      --card-active-border:#ff3131;
+
+      /* modals */
+      --modal-bg-color:     #1a1925;
+      --modal-border-color: rgba(255,255,255,.1);
+      --modal-box-shadow:   0 0 40px rgba(0,0,0,.6);
+
+      /* widgets / editor fields */
+      --widgets-bg-color:            #13121c;
+      --widgets-label-bg-color:      #1a1925;
+      --widgets-border-color:        rgba(255,255,255,.1);
+      --widgets-active-label-bg-color: #ff3131;
+      --widgets-active-border-color:   #ff3131;
+      --widgets-error-label-bg-color:  #ff3131;
+      --widgets-error-border-color:    #ff3131;
+
+      /* date picker */
+      --rdtPicker-bg-color:     #1a1925;
+      --rdtPicker-border-color: rgba(255,255,255,.1);
+      --rdtPicker-shadow:       0 16px 32px rgba(0,0,0,.7);
+      --rdtPicker-hover-bg-color: #252334;
+      --rdtPicker-active-bg-color:#ff3131;
+
+      /* color picker */
+      --color-picker-bg-color:    #1a1925;
+      --color-picker-border-color:rgba(255,255,255,.1);
+      --color-picker-shadow:      0 16px 32px rgba(0,0,0,.7);
+
+      /* toggle */
+      --toggle-true-bg-color:  #ff3131;
+      --toggle-false-bg-color: rgba(255,255,255,.15);
+      --toggle-handle-color:   #f2f0fb;
+
+      /* topbar / code */
+      --topbar-bg-color:        #13121c;
+      --short-code-bg-color:    rgba(255,255,255,.1);
+      --code-block-bg-color:    #13121c;
+      --code-line-number-color: rgba(255,255,255,.3);
+
+      /* checkerboard (image widget bg) */
+      --checkerboard-dark-color:  #1a1925;
+      --checkerboard-bg-color:    #252334;
     }
 
-    /* Base reset */
-    body { background: var(--liver-bg) !important; }
-
-    /* ── APP SHELL ──────────────────────────────────────────────────────── */
-    [class*="App-header"],
-    [class*="AppHeader"],
-    header[class*="css-"] {
-      background: var(--liver-surface) !important;
-      border-bottom: 1px solid var(--liver-border) !important;
-      box-shadow: none !important;
-      padding: 0 28px !important;
-      height: 56px !important;
-    }
-
-    /* Sidebar */
-    [class*="SidebarNav"],
-    [class*="sidebar"],
-    nav[class*="css-"] {
-      background: #13121c !important;
-      border-right: 1px solid var(--liver-border) !important;
-      width: 220px !important;
-    }
-
-    /* Sidebar items */
-    [class*="SidebarNavLink"],
-    [class*="NavLink"],
-    [class*="sidebar"] a {
-      font-family: 'Syne', sans-serif !important;
-      font-size: .8rem !important;
-      font-weight: 600 !important;
-      letter-spacing: .04em !important;
-      color: var(--liver-muted) !important;
-      border-radius: 8px !important;
-      margin: 2px 8px !important;
-      padding: 10px 14px !important;
-      transition: all .15s ease !important;
-      text-decoration: none !important;
-    }
-    [class*="SidebarNavLink"]:hover,
-    [class*="NavLink"]:hover,
-    [class*="sidebar"] a:hover {
-      color: var(--liver-white) !important;
-      background: rgba(255,255,255,.06) !important;
-    }
-    [class*="SidebarNavLink"][class*="active"],
-    [class*="NavLink"][class*="active"],
-    [class*="sidebar"] a[class*="active"] {
-      color: var(--liver-white) !important;
-      background: rgba(255, 49, 49, .12) !important;
-      border-left: 3px solid var(--liver-red) !important;
-    }
-
-    /* ── MAIN CONTENT AREA ──────────────────────────────────────────────── */
-    [class*="main-panel"],
-    [class*="MainPanel"],
-    main[class*="css-"],
-    [class*="App__main"],
-    [class*="EditorContainer"],
-    [class*="CollectionView"],
-    [class*="EntryListingGrid"],
-    [class*="EntriesCollection"] {
-      background: var(--liver-bg) !important;
-    }
-
-    /* Page titles */
-    [class*="CollectionHeader"] h1,
-    [class*="ViewTitle"],
-    [class*="CollectionLabel"] {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: 2.2rem !important;
-      letter-spacing: .05em !important;
-      color: var(--liver-white) !important;
-    }
-
-    /* ── CARDS / ENTRY TILES ─────────────────────────────────────────────── */
-    [class*="EntryCard"],
-    [class*="ListCard"],
-    [class*="Card"][class*="css-"] {
-      background: var(--liver-surface) !important;
-      border: 1px solid var(--liver-border) !important;
-      border-radius: 12px !important;
-      box-shadow: none !important;
-      transition: border-color .15s, transform .15s !important;
-    }
-    [class*="EntryCard"]:hover,
-    [class*="ListCard"]:hover {
-      border-color: rgba(255,49,49,.3) !important;
-      transform: translateY(-1px) !important;
-    }
-    [class*="EntryCard"] h2,
-    [class*="EntryCard"] h3,
-    [class*="EntryCard"] [class*="title"] {
-      font-family: 'Syne', sans-serif !important;
-      font-weight: 700 !important;
-      color: var(--liver-white) !important;
-    }
-    [class*="EntryCard"] p,
-    [class*="EntryCard"] [class*="description"] {
-      color: var(--liver-muted) !important;
-      font-size: .8rem !important;
-    }
-
-    /* ── BUTTONS ────────────────────────────────────────────────────────── */
-    button[class*="css-"],
-    [class*="Button"][class*="css-"],
-    [class*="ActionButton"] {
-      font-family: 'Syne', sans-serif !important;
-      font-weight: 700 !important;
-      font-size: .78rem !important;
-      letter-spacing: .04em !important;
-      border-radius: 8px !important;
-      transition: all .15s ease !important;
-    }
-    /* Primary / New entry button */
-    [class*="ToolbarButton"],
-    [class*="NewEntryButton"],
-    button[class*="primary"] {
-      background: var(--liver-red) !important;
-      color: #fff !important;
-      border: none !important;
-    }
-    button[class*="primary"]:hover,
-    [class*="NewEntryButton"]:hover {
-      background: #e02020 !important;
-      transform: translateY(-1px) !important;
-    }
-    /* Publish button */
-    [class*="PublishButton"],
-    [class*="publish-button"] {
-      background: var(--liver-red) !important;
-      color: #fff !important;
-      border: none !important;
-      border-radius: 8px !important;
-      font-family: 'Syne', sans-serif !important;
-      font-weight: 700 !important;
-    }
-
-    /* ── FORMS / EDITOR ─────────────────────────────────────────────────── */
-    [class*="ControlContainer"],
-    [class*="FieldWrapper"],
-    [class*="FormField"] {
-      background: transparent !important;
-    }
-    [class*="ControlLabel"],
-    [class*="LabelComponent"],
-    label[class*="css-"] {
-      font-family: 'Syne', sans-serif !important;
-      font-size: .72rem !important;
-      font-weight: 700 !important;
-      letter-spacing: .1em !important;
-      text-transform: uppercase !important;
-      color: var(--liver-muted) !important;
-      margin-bottom: 6px !important;
-    }
-    input[class*="css-"],
-    textarea[class*="css-"],
-    [class*="StyledInput"],
-    [class*="StyledTextArea"],
-    [class*="StringControl"] input,
-    [class*="TextControl"] textarea {
-      background: var(--liver-surface) !important;
-      border: 1.5px solid var(--liver-border) !important;
-      border-radius: 8px !important;
-      color: var(--liver-white) !important;
-      font-family: 'Syne', sans-serif !important;
-      font-size: .88rem !important;
-      padding: 10px 14px !important;
-      transition: border-color .15s !important;
-    }
-    input[class*="css-"]:focus,
-    textarea[class*="css-"]:focus,
-    [class*="StringControl"] input:focus,
-    [class*="TextControl"] textarea:focus {
-      border-color: var(--liver-red) !important;
-      outline: none !important;
-      box-shadow: 0 0 0 3px rgba(255,49,49,.12) !important;
-    }
-
-    /* Select dropdowns */
-    select[class*="css-"],
-    [class*="SelectControl"] select {
-      background: var(--liver-surface) !important;
-      border: 1.5px solid var(--liver-border) !important;
-      border-radius: 8px !important;
-      color: var(--liver-white) !important;
-      font-family: 'Syne', sans-serif !important;
-    }
-
-    /* ── OBJECT / NESTED WIDGETS ────────────────────────────────────────── */
-    [class*="ObjectControl"],
-    [class*="ObjectWidgetTopBar"],
-    [class*="NestedObjectControl"] {
-      background: var(--liver-surface) !important;
-      border: 1px solid var(--liver-border) !important;
-      border-radius: 10px !important;
-    }
-    [class*="ObjectWidgetTopBar"] {
-      background: rgba(255,255,255,.04) !important;
-      border-bottom: 1px solid var(--liver-border) !important;
-      border-radius: 10px 10px 0 0 !important;
-      padding: 10px 16px !important;
-    }
-    [class*="ObjectWidgetTopBar"] button {
-      color: var(--liver-muted) !important;
-    }
-    [class*="ObjectWidgetTopBar"] span {
-      font-family: 'Syne', sans-serif !important;
-      font-weight: 700 !important;
-      font-size: .8rem !important;
-      color: var(--liver-white) !important;
-    }
-
-    /* ── LIST WIDGET ────────────────────────────────────────────────────── */
-    [class*="ListItemTopBar"],
-    [class*="SortableList"] {
-      background: var(--liver-surface) !important;
-      border: 1px solid var(--liver-border) !important;
-      border-radius: 10px !important;
-    }
-    [class*="ListItemTopBar"] {
-      border-radius: 10px 10px 0 0 !important;
-      background: rgba(255,255,255,.04) !important;
-    }
-
-    /* Add item button */
-    [class*="ListItemTopBar"] + button,
-    [class*="addButton"],
-    button[class*="Add"] {
-      border: 1.5px dashed rgba(255,49,49,.3) !important;
-      background: transparent !important;
-      color: var(--liver-red) !important;
-      border-radius: 8px !important;
-      font-family: 'Syne', sans-serif !important;
-      font-weight: 700 !important;
-      font-size: .78rem !important;
-    }
-    button[class*="Add"]:hover { background: rgba(255,49,49,.08) !important; }
-
-    /* ── MARKDOWN EDITOR ────────────────────────────────────────────────── */
-    [class*="EditorControl"],
-    [class*="MarkdownControl"],
-    .CodeMirror {
-      background: var(--liver-surface) !important;
-      border: 1.5px solid var(--liver-border) !important;
-      border-radius: 8px !important;
-      color: var(--liver-white) !important;
-      font-size: .88rem !important;
-    }
-    .CodeMirror-scroll { background: transparent !important; }
-    .CodeMirror-gutters { background: rgba(255,255,255,.03) !important; border-right: 1px solid var(--liver-border) !important; }
-
-    /* ── TOOLBAR ────────────────────────────────────────────────────────── */
-    [class*="Toolbar"],
-    [class*="ToolBar"] {
-      background: var(--liver-surface) !important;
-      border-bottom: 1px solid var(--liver-border) !important;
-      box-shadow: none !important;
-    }
-    [class*="ToolbarButton"] {
-      color: var(--liver-muted) !important;
-      border-radius: 6px !important;
-    }
-    [class*="ToolbarButton"]:hover { color: var(--liver-white) !important; background: rgba(255,255,255,.07) !important; }
-    [class*="ToolbarButton"][class*="active"] { color: var(--liver-red) !important; background: rgba(255,49,49,.1) !important; }
-
-    /* ── HEADER LOGO AREA ────────────────────────────────────────────────── */
-    [class*="AppHeaderSiteLink"],
-    [class*="SiteName"],
-    [class*="AppHeader"] a[href="/"] {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: 1.3rem !important;
-      letter-spacing: .1em !important;
-      color: var(--liver-white) !important;
-      text-decoration: none !important;
-    }
-
-    /* ── NOTIFICATIONS / TOAST ──────────────────────────────────────────── */
-    [class*="NotifList"],
-    [class*="Toast"],
-    [class*="Toastify__toast"] {
-      background: var(--liver-surface) !important;
-      border: 1px solid var(--liver-border) !important;
-      border-radius: 10px !important;
-      font-family: 'Syne', sans-serif !important;
-      color: var(--liver-white) !important;
-    }
-    [class*="Toastify__progress-bar"] {
-      background: var(--liver-red) !important;
-    }
-
-    /* ── MEDIA / IMAGE WIDGET ────────────────────────────────────────────── */
-    [class*="ImageCard"],
-    [class*="FileWidget"],
-    [class*="ImageWidget"] {
-      background: var(--liver-surface) !important;
-      border: 1.5px dashed var(--liver-border) !important;
-      border-radius: 10px !important;
-    }
-    [class*="ImageCard"]:hover,
-    [class*="FileWidget"]:hover { border-color: rgba(255,49,49,.4) !important; }
-
-    /* ── MODAL / MEDIA LIBRARY ──────────────────────────────────────────── */
-    [class*="Modal"],
-    [class*="ModalBackdrop"] ~ div {
-      background: #1a1925 !important;
-      border: 1px solid var(--liver-border) !important;
-      border-radius: 16px !important;
+    /* ── BASE ────────────────────────────────────────────────────────────── */
+    html, body {
+      background-color: var(--body-bg-color) !important;
+      color: var(--primary-text-color) !important;
+      font-family: 'Syne', sans-serif;
     }
 
     /* ── SCROLLBARS ─────────────────────────────────────────────────────── */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,49,49,.3) transparent;
-    }
+    * { scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb-color) transparent; }
     *::-webkit-scrollbar { width: 4px; height: 4px; }
     *::-webkit-scrollbar-track { background: transparent; }
-    *::-webkit-scrollbar-thumb { background: rgba(255,49,49,.3); border-radius: 4px; }
+    *::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb-color); border-radius: 4px; }
+    *::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover-color); }
 
-    /* ── LOGIN OVERRIDE ─────────────────────────────────────────────────── */
-    [class*="AuthenticationPage"],
-    [class*="LoginButton"] {
-      background: var(--liver-bg) !important;
+    /* ── NAMED-FRAGMENT CLASS OVERRIDES (stable across Decap CMS versions) ── */
+
+    /* Buttons: gray / neutral */
+    [class*="button-default-gray"],
+    [class*="button-medium-gray"],
+    [class*="button-default-disabled"],
+    [class*="button-default-lightBlue"],
+    [class*="AddButton-button"],
+    [class*="FileWidgetButton-button"],
+    [class*="SaveButton-lightBlue"],
+    [class*="StatusButton"],
+    [class*="StyledDropdownButton"]:not([class*="grayText"]):not([class*="Publish"]) {
+      color: var(--primary-text-color) !important;
+      background-color: var(--btn-gray-default-bg) !important;
+      border: 1px solid var(--btn-gray-default-border) !important;
+      border-radius: 8px !important;
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      transition: background-color .15s, border-color .15s !important;
     }
-    [class*="AuthenticationPage"] h1 {
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: 2.4rem !important;
-      color: var(--liver-white) !important;
+    [class*="button-default-gray"]:hover,
+    [class*="button-medium-gray"]:hover,
+    [class*="AddButton-button"]:hover,
+    [class*="FileWidgetButton-button"]:hover,
+    [class*="StatusButton"]:hover {
+      background-color: var(--btn-gray-hover-bg) !important;
+      border-color: var(--btn-gray-hover-border) !important;
+    }
+
+    /* Buttons: red / delete */
+    [class*="utton-lightRed"],
+    [class*="FileWidgetButtonRemove-button"],
+    [class*="DeleteButton"] {
+      color: var(--btn-red-default-text) !important;
+      background-color: var(--btn-red-default-bg) !important;
+      border: 1px solid var(--btn-red-default-border) !important;
+      border-radius: 8px !important;
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+    }
+    [class*="utton-lightRed"]:hover,
+    [class*="FileWidgetButtonRemove-button"]:hover,
+    [class*="DeleteButton"]:hover {
+      color: var(--btn-red-hover-text) !important;
+      background-color: var(--btn-red-hover-bg) !important;
+    }
+
+    /* Buttons: publish / green → brand red */
+    [class*="button-green"],
+    [class*="PublishButton"],
+    [class*="publishedButton"] {
+      color: var(--btn-green-default-text) !important;
+      background-color: var(--btn-green-default-bg) !important;
+      border: 1px solid var(--btn-green-default-border) !important;
+      border-radius: 8px !important;
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+    }
+    [class*="button-green"]:hover,
+    [class*="PublishButton"]:hover,
+    [class*="publishedButton"]:hover {
+      background-color: var(--btn-green-hover-bg) !important;
+    }
+
+    /* Notifications */
+    [class*="toast-success"] {
+      color: var(--success-text-color) !important;
+      background-color: var(--dropdownitem-bg) !important;
+      box-shadow: var(--dropdownlist-shadow) !important;
+      border-radius: 10px !important;
+      font-family: 'Syne', sans-serif !important;
+    }
+    [class*="toast-danger"] {
+      color: var(--danger-text-color) !important;
+      background-color: var(--dropdownitem-bg) !important;
+      box-shadow: var(--dropdownlist-shadow) !important;
+      border-radius: 10px !important;
+      font-family: 'Syne', sans-serif !important;
+    }
+
+    /* Dropdowns */
+    ul[class*="dropdownList"],
+    ul[class*="Suggestions"],
+    [class*="ControlContainer"] [class*="menu"] {
+      background-color: var(--dropdownlist-bg) !important;
+      border: 1px solid var(--dropdownlist-border) !important;
+      border-radius: 8px !important;
+      box-shadow: var(--dropdownlist-shadow) !important;
+    }
+    ul[class*="dropdownList"] > [class*="dropdownItem"],
+    ul[class*="Suggestions"] > li[class*="SuggestionItem"],
+    [class*="ControlContainer"] [class*="menu"] [class*="option"] {
+      color: var(--primary-text-color) !important;
+      background-color: var(--dropdownitem-bg) !important;
+    }
+    ul[class*="dropdownList"] > [class*="dropdownItem"]:hover,
+    ul[class*="Suggestions"] > li[class*="SuggestionItem"]:hover,
+    [class*="ControlContainer"] [class*="menu"] [class*="option"]:hover {
+      background-color: var(--dropdownitem-hover-bg) !important;
     }
 
     /* ── SIDEBAR BRAND HEADER ────────────────────────────────────────────── */
@@ -409,74 +314,15 @@
       margin-top: 2px;
     }
 
-    /* General text legibility */
-    [class*="css-"] { color: var(--liver-white); }
-    p[class*="css-"], span[class*="css-"] { color: inherit; }
+    /* ── HIDE NETLIFY CREDIT ICON ───────────────────────────────────────── */
+    [class*="NetlifyCreditIcon"],
+    [class*="PageLogoIcon"] { display: none !important; }
 
-  
-    /* ── PRICING SECTION ENHANCEMENTS ──────────────────────────────── */
-    /* Colour-code the pricing object headers by section */
-    [class*="ObjectWidgetTopBar"]:has(+ div [data-testid*="biz_foundation"]),
-    [class*="ObjectWidgetTopBar"]:has(+ div [data-testid*="biz_"]) {
-      border-left: 3px solid var(--liver-red) !important;
-    }
-    
-    /* Summary lines in collapsed objects */
-    [class*="ObjectWidgetTopBar"] [class*="summary"],
-    [class*="summary-value"] {
-      font-family: 'Syne Mono', monospace !important;
-      font-size: .7rem !important;
-      color: rgba(255,49,49,.7) !important;
-      letter-spacing: .08em !important;
-    }
+    /* ── SLATE EDITOR FIX ────────────────────────────────────────────────── */
+    [data-slate-editor] { -webkit-user-modify: read-write !important; }
 
-    /* Make the pricing collection stand out */
-    [class*="CollectionItem"][data-testid*="pricing"],
-    [class*="CollectionItem"][data-testid*="site_data"] {
-      border-left: 3px solid var(--liver-red) !important;
-    }
-
-    /* Wider editor for pricing (it has lots of nested fields) */
-    [class*="EditorContainer"] {
-      max-width: 900px;
-    }
-
-    /* Better object expand/collapse */
-    [class*="ObjectWidgetTopBar"] button[class*="collapse"],
-    [class*="ObjectWidgetTopBar"] button[class*="expand"] {
-      background: rgba(255,49,49,.08) !important;
-      border-radius: 6px !important;
-      color: var(--liver-red) !important;
-    }
-
-    /* Monospace for price input fields (more scannable) */
-    [id*="price"] input,
-    [id*="period"] input {
-      font-family: 'Syne Mono', monospace !important;
-      letter-spacing: .06em !important;
-    }
-
-    /* Section emoji labels */
-    [class*="ObjectWidgetTopBar"] span:empty::after { content: none; }
-
-    /* Hint text */
-    [class*="HintText"],
-    [class*="hint"] {
-      font-size: .72rem !important;
-      color: rgba(255,255,255,.25) !important;
-      font-family: 'Syne', sans-serif !important;
-    }
-
-    /* Section dividers */
-    [class*="ObjectWidgetTopBar"]::before {
-      content: '';
-      display: inline-block;
-      width: 3px; height: 14px;
-      background: var(--liver-red);
-      border-radius: 2px;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
+    /* ── IDENTITY WIDGET Z-INDEX ─────────────────────────────────────────── */
+    iframe#netlify-identity-widget { z-index: 400 !important; }
   </style>
 </head>
 <body>
@@ -499,8 +345,7 @@
       if (el) el.classList.add('hidden');
     }
 
-    // Watch for nc-root to get children (CMS mounted)
-    var observer = new MutationObserver(function(mutations) {
+    var observer = new MutationObserver(function() {
       var root = document.getElementById('nc-root');
       if (root && root.children.length > 0) {
         setTimeout(hideLogo, 400);
@@ -508,10 +353,7 @@
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // Fallback: hide after 4s regardless
     setTimeout(hideLogo, 4000);
-
 
     // ── KEYBOARD SHORTCUT: Ctrl+S = Publish ─────────────────────────
     document.addEventListener('keydown', function(e) {
@@ -520,7 +362,6 @@
         var publishBtn = document.querySelector('[class*="PublishButton"], [class*="publish-button"]');
         if (publishBtn) {
           publishBtn.click();
-          // Flash visual feedback
           var flash = document.createElement('div');
           flash.style.cssText = 'position:fixed;top:20px;right:20px;z-index:99999;background:#ff3131;color:#fff;font-family:Syne,sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.06em;padding:10px 18px;border-radius:8px;opacity:1;transition:opacity .5s';
           flash.textContent = '✓ Publishing...';
@@ -538,7 +379,6 @@
         var msg = document.createElement('div');
         msg.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:99999;background:#1a1925;border:1px solid rgba(255,49,49,.3);border-radius:12px;padding:16px 20px;font-family:Syne,sans-serif;max-width:280px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:fadeUp .4s ease';
         msg.innerHTML = '<div style="font-weight:800;font-size:.82rem;color:#f2f0fb;margin-bottom:4px;">👋 Welcome to LIVEr Admin</div><div style="font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;">Go to <strong style="color:#ff3131">Pricing & Testimonials → Pricing</strong> to change any price. Hit <strong style="color:#ff3131">Ctrl+S</strong> to publish fast.</div><button onclick="this.parentElement.remove()" style="position:absolute;top:10px;right:12px;background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;font-size:.9rem">✕</button>';
-        msg.style.position = 'fixed';
         document.body.appendChild(msg);
         setTimeout(function(){ msg.style.opacity='0'; msg.style.transition='opacity .5s'; setTimeout(function(){ msg.remove(); },500); }, 8000);
       }, 1500);
