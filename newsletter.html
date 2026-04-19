@@ -13,6 +13,410 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/main.css">
+<style>
+/* ── NEWSLETTER PAGE ────────────────────────────────────────────────── */
+.nl-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+@media(max-width: 900px) {
+  .nl-page { grid-template-columns: 1fr; }
+}
+
+/* LEFT — editorial side */
+.nl-left {
+  background: #0a0a0b;
+  padding: 120px 64px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+@media(max-width: 900px) {
+  .nl-left { padding: 100px 28px 48px; }
+}
+
+/* big ghost text watermark */
+.nl-left::before {
+  content: 'DISPATCH';
+  position: absolute;
+  bottom: -40px;
+  left: -20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 14vw, 180px);
+  color: rgba(255,49,49,.04);
+  letter-spacing: .06em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* red accent bar top */
+.nl-left::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(to bottom, #ff3131, transparent);
+}
+
+.nl-issue-tag {
+  font-family: 'Syne Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #ff3131;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nl-issue-tag::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: #ff3131;
+}
+
+.nl-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: .9;
+  letter-spacing: .02em;
+  margin-bottom: 28px;
+}
+.nl-headline .red { color: #ff3131; }
+.nl-headline .outline {
+  -webkit-text-stroke: 1.5px #f5f3ee;
+  color: transparent;
+}
+
+.nl-desc {
+  font-family: 'Syne', sans-serif;
+  font-size: .95rem;
+  color: rgba(255,255,255,.5);
+  line-height: 1.85;
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+/* what's inside cards */
+.nl-inside {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.nl-inside-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.nl-inside-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,49,49,.08);
+  border: 1px solid rgba(255,49,49,.18);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: .9rem;
+}
+.nl-inside-text strong {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: .82rem;
+  color: #f5f3ee;
+  letter-spacing: .02em;
+  margin-bottom: 2px;
+}
+.nl-inside-text span {
+  font-size: .75rem;
+  color: rgba(255,255,255,.38);
+  line-height: 1.5;
+}
+
+/* social proof strip */
+.nl-proof {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.nl-proof-avatars {
+  display: flex;
+}
+.nl-proof-avatar {
+  width: 32px; height: 32px;
+  border-radius: 0;
+  border: 2px solid #0a0a0b;
+  background: rgba(255,49,49,.15);
+  margin-right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .7rem;
+  color: #ff3131;
+  flex-shrink: 0;
+}
+.nl-proof-text {
+  padding-left: 10px;
+  font-size: .72rem;
+  color: rgba(255,255,255,.4);
+  font-family: 'Syne', sans-serif;
+  line-height: 1.5;
+}
+.nl-proof-text strong {
+  color: #f5f3ee;
+  font-weight: 700;
+}
+
+/* RIGHT — form side */
+.nl-right {
+  background: #111018;
+  padding: 120px 64px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+@media(max-width: 900px) {
+  .nl-right { padding: 48px 28px 80px; }
+}
+
+/* diagonal red accent */
+.nl-right::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(255,49,49,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.nl-form-eyebrow {
+  font-family: 'Syne Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 12px;
+}
+
+.nl-form-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: .95;
+  color: #f5f3ee;
+  margin-bottom: 8px;
+  letter-spacing: .02em;
+}
+
+.nl-form-sub {
+  font-size: .8rem;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+/* frequency badge */
+.nl-freq {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,49,49,.06);
+  border: 1px solid rgba(255,49,49,.15);
+  padding: 6px 14px;
+  margin-bottom: 32px;
+  font-family: 'Syne Mono', monospace;
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #ff3131;
+}
+.nl-freq-dot {
+  width: 6px; height: 6px;
+  border-radius: 0;
+  background: #ff3131;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.7); }
+}
+
+/* form fields */
+.nl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 440px;
+}
+
+.nl-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media(max-width: 540px) {
+  .nl-row { grid-template-columns: 1fr; }
+}
+
+.nl-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nl-label {
+  font-family: 'Syne', sans-serif;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+
+.nl-field {
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: 0;
+  padding: 13px 16px;
+  color: #f5f3ee;
+  font-family: 'Syne', sans-serif;
+  font-size: .88rem;
+  transition: border-color .2s, background .2s;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+.nl-field::placeholder { color: rgba(255,255,255,.2); }
+.nl-field:focus {
+  border-color: #ff3131;
+  background: rgba(255,49,49,.04);
+}
+select.nl-field { cursor: pointer; }
+
+/* submit */
+.nl-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #ff3131;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: background .2s, transform .15s;
+  margin-top: 8px;
+  width: 100%;
+}
+.nl-submit:hover {
+  background: #cc2020;
+  transform: translateY(-1px);
+}
+.nl-submit:active { transform: translateY(0); }
+.nl-submit-arrow {
+  font-size: 1.3rem;
+  transition: transform .2s;
+}
+.nl-submit:hover .nl-submit-arrow { transform: translateX(4px); }
+
+/* fine print */
+.nl-fine {
+  font-size: .68rem;
+  color: rgba(255,255,255,.22);
+  margin-top: 12px;
+  letter-spacing: .04em;
+  line-height: 1.6;
+}
+
+/* success state */
+.nl-success {
+  display: none;
+  text-align: center;
+  padding: 48px 32px;
+  background: rgba(255,49,49,.05);
+  border: 1.5px solid rgba(255,49,49,.2);
+}
+.nl-success-icon {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: #ff3131;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.nl-success h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: #f5f3ee;
+  margin-bottom: 10px;
+  letter-spacing: .05em;
+}
+.nl-success p {
+  font-size: .85rem;
+  color: rgba(255,255,255,.5);
+  line-height: 1.7;
+}
+
+/* recent issues preview strip */
+.nl-issues-strip {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  max-width: 440px;
+}
+.nl-issues-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin-bottom: 16px;
+}
+.nl-issue-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.nl-issue-num {
+  font-family: 'Syne Mono', monospace;
+  font-size: .6rem;
+  color: #ff3131;
+  letter-spacing: .1em;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+.nl-issue-name {
+  font-size: .78rem;
+  color: rgba(255,255,255,.5);
+  flex: 1;
+  font-family: 'Syne', sans-serif;
+}
+.nl-issue-arrow {
+  font-size: .7rem;
+  color: rgba(255,255,255,.18);
+  flex-shrink: 0;
+}
+</style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
@@ -30,30 +434,150 @@
   <div class="mob-nav-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div>
   <a href="/">Home</a><a href="/solutions.html">Solutions</a><a href="/pricing.html">Pricing</a><a href="/work.html">Work</a><a href="/about.html">About</a><a href="/resources.html">Resources</a><a href="/contact.html">Contact</a><a href="/health-check.html">Free Audit</a>
 </div>
+
 <main>
-  <section class="form-wrap-outer" style="min-height:100vh;display:flex;align-items:center;">
-    <div style="max-width:680px;margin:0 auto;width:100%;">
-      <img src="/liver-logo-dark.png" alt="LIVEr Digital" class="form-brand-logo rv" style="height:40px;margin-bottom:32px;mix-blend-mode:screen;filter:brightness(1.05) contrast(0.95) sepia(0.15) saturate(1.2);">
-      <div class="sec-tag rv">Weekly insight &middot; Free</div>
-      <div class="sec-title rv d1" style="font-size:clamp(38px,5.5vw,72px);">The <span class="r">LIVEr</span><br><span class="o">Dispatch.</span></div>
-      <p class="rv d2" style="color:var(--muted);font-size:.92rem;line-height:1.85;margin-top:20px;max-width:480px;">One email. Every week. No fluff &mdash; just the strategies, tools, and insights we actually use to grow brands across Africa and globally. Free, forever.</p>
-      <div class="newsletter-perks rv d3"><span class="nl-perk">&#10022; Real marketing tactics</span><span class="nl-perk">&#10022; African market insight</span><span class="nl-perk">&#10022; Unsubscribe anytime</span></div>
-      <div id="nlSuccess" class="f-success rv" style="display:none;margin-top:32px;"><h3>You're in &#10022;</h3><p>Welcome to the Dispatch. Your first issue drops this week.</p></div>
-      <form class="form-inner rv d2" id="nlForm" action="https://formspree.io/f/myklggnj" method="POST" novalidate style="margin-top:40px;max-width:520px;">
+  <div class="nl-page">
+
+    <!-- LEFT: Editorial -->
+    <div class="nl-left">
+      <div class="nl-issue-tag">Weekly · Free forever</div>
+
+      <h1 class="nl-headline">
+        The<br>
+        <span class="red">LIVEr</span><br>
+        <span class="outline">Dispatch.</span>
+      </h1>
+
+      <p class="nl-desc">
+        One email. Every week. The real strategies, playbooks, and market moves we use to grow brands across Africa and beyond — no fluff, no filler.
+      </p>
+
+      <div class="nl-inside">
+        <div class="nl-inside-item">
+          <div class="nl-inside-icon">📈</div>
+          <div class="nl-inside-text">
+            <strong>Growth Tactics That Work Now</strong>
+            <span>Platform-specific strategies we're actively running for clients — what's working, what died.</span>
+          </div>
+        </div>
+        <div class="nl-inside-item">
+          <div class="nl-inside-icon">🌍</div>
+          <div class="nl-inside-text">
+            <strong>African Market Intelligence</strong>
+            <span>Digital trends, platform shifts, and opportunities specific to Zimbabwe, SA, Nigeria, Kenya &amp; beyond.</span>
+          </div>
+        </div>
+        <div class="nl-inside-item">
+          <div class="nl-inside-icon">🛠</div>
+          <div class="nl-inside-text">
+            <strong>Tools &amp; Frameworks</strong>
+            <span>The exact tools, templates, and systems we use. Practical, immediately applicable.</span>
+          </div>
+        </div>
+        <div class="nl-inside-item">
+          <div class="nl-inside-icon">🎯</div>
+          <div class="nl-inside-text">
+            <strong>One Actionable Takeaway</strong>
+            <span>Every issue ends with something you can do this week. No theory without practice.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nl-proof">
+        <div class="nl-proof-avatars">
+          <div class="nl-proof-avatar">TM</div>
+          <div class="nl-proof-avatar">CN</div>
+          <div class="nl-proof-avatar">RS</div>
+          <div class="nl-proof-avatar">+</div>
+        </div>
+        <div class="nl-proof-text">
+          <strong>Founders, athletes &amp; creators</strong><br>
+          across Africa read every issue
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="nl-right">
+      <div class="nl-form-eyebrow">Subscribe · It's free</div>
+      <div class="nl-form-title">Get the Dispatch<br>in your inbox.</div>
+      <p class="nl-form-sub">Join the brands staying ahead of the curve.</p>
+
+      <div class="nl-freq">
+        <span class="nl-freq-dot"></span>
+        Every Friday · One email · No spam
+      </div>
+
+      <div id="nlSuccess" class="nl-success">
+        <div class="nl-success-icon">✦</div>
+        <h3>You're in.</h3>
+        <p>Welcome to the Dispatch. Your first issue drops this Friday. Check your inbox &mdash; sometimes we end up in promo.</p>
+      </div>
+
+      <form class="nl-form" id="nlForm" action="https://formspree.io/f/myklggnj" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New Newsletter Signup — LIVEr Dispatch">
         <input type="hidden" name="formType" value="newsletter">
-        <div class="form-row">
-          <div class="f-group"><label class="f-label">First name *</label><input class="f-field" type="text" name="firstName" placeholder="Your first name" required></div>
-          <div class="f-group"><label class="f-label">Last name</label><input class="f-field" type="text" name="lastName" placeholder="Last name"></div>
+
+        <div class="nl-row">
+          <div class="nl-group">
+            <label class="nl-label">First name *</label>
+            <input class="nl-field" type="text" name="firstName" placeholder="Your first name" required>
+          </div>
+          <div class="nl-group">
+            <label class="nl-label">Last name</label>
+            <input class="nl-field" type="text" name="lastName" placeholder="Last name">
+          </div>
         </div>
-        <div class="f-group"><label class="f-label">Email address *</label><input class="f-field" type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="f-group"><label class="f-label">What best describes you?</label><select class="f-field" name="role"><option value="">Select one (optional)</option><option>Business owner</option><option>Personal brand / Creator</option><option>Marketing professional</option><option>Student</option><option>Just curious</option></select></div>
-        <button type="submit" class="f-submit"><span>Join the Dispatch &rarr;</span></button>
-        <p style="font-size:.7rem;color:var(--muted);margin-top:12px;letter-spacing:.04em;">No spam. No selling your data. One email a week.</p>
+
+        <div class="nl-group">
+          <label class="nl-label">Email address *</label>
+          <input class="nl-field" type="email" name="email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="nl-group">
+          <label class="nl-label">What best describes you?</label>
+          <select class="nl-field" name="role">
+            <option value="">Select one (optional)</option>
+            <option>Business owner</option>
+            <option>Personal brand / Creator</option>
+            <option>Athlete</option>
+            <option>Marketing professional</option>
+            <option>Student</option>
+            <option>Just curious</option>
+          </select>
+        </div>
+
+        <button type="submit" class="nl-submit">
+          <span>Join the Dispatch</span>
+          <span class="nl-submit-arrow">&rarr;</span>
+        </button>
+
+        <p class="nl-fine">No spam. We never sell your data. Unsubscribe with one click, any time.</p>
       </form>
+
+      <div class="nl-issues-strip">
+        <div class="nl-issues-label">Recent topics covered</div>
+        <div class="nl-issue-row">
+          <span class="nl-issue-num">#001</span>
+          <span class="nl-issue-name">Why boosting posts is burning your money</span>
+          <span class="nl-issue-arrow">→</span>
+        </div>
+        <div class="nl-issue-row">
+          <span class="nl-issue-num">#002</span>
+          <span class="nl-issue-name">The WhatsApp funnel that converted 40% of leads</span>
+          <span class="nl-issue-arrow">→</span>
+        </div>
+        <div class="nl-issue-row">
+          <span class="nl-issue-num">#003</span>
+          <span class="nl-issue-name">Building a personal brand with 400 followers</span>
+          <span class="nl-issue-arrow">→</span>
+        </div>
+      </div>
     </div>
-  </section>
+
+  </div>
 </main>
+
 <footer>
   <div class="foot-grid">
     <div><div class="foot-logo"><img src="/liver-logo-dark.png" alt="LIVEr Digital"></div><p class="foot-tag">We turn invisible brands into unforgettable ones.</p><span class="foot-hq">&#128205; Harare, Zimbabwe &middot; Working globally</span></div>
@@ -62,7 +586,35 @@
   </div>
   <div class="foot-bottom"><p>&copy; 2026 LIVEr Digital.</p><div class="foot-soc"><a href="https://www.instagram.com/liver.digital/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@liver.digital" target="_blank" rel="noopener">TikTok</a></div></div>
 </footer>
+
 <a href="https://wa.me/263717122549" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
 <script src="/js/main.js"></script>
+<script>
+  // Form submission handler
+  var form = document.getElementById('nlForm');
+  var success = document.getElementById('nlSuccess');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res) {
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          // also hide freq badge
+          var freq = document.querySelector('.nl-freq');
+          if (freq) freq.style.display = 'none';
+        }
+      }).catch(function() {
+        form.querySelector('.nl-submit').textContent = 'Something went wrong — try again';
+      });
+    });
+  }
+</script>
 </body>
 </html>
