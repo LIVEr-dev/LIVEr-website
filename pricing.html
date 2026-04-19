@@ -27,14 +27,14 @@
 .billing-toggle-wrap{display:flex;align-items:center;gap:14px;margin-bottom:32px;padding:0 2px}
 .billing-toggle-label{font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .2s}
 .billing-toggle-label.active{color:var(--white)}
-.billing-toggle{position:relative;width:44px;height:24px;background:rgba(255,255,255,.1);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:background .2s;flex-shrink:0}
+.billing-toggle{position:relative;width:44px;height:24px;background:rgba(255,255,255,.1);border:1px solid var(--border);border-radius:0;cursor:pointer;transition:background .2s;flex-shrink:0}
 .billing-toggle.monthly{background:rgba(255,49,49,.2);border-color:rgba(255,49,49,.3)}
-.billing-toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.billing-toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:0;background:#fff;transition:transform .2s}
 .billing-toggle.monthly::after{transform:translateX(20px);background:var(--red)}
-.billing-save{font-family:'Syne Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);background:rgba(255,49,49,.1);border:1px solid rgba(255,49,49,.2);padding:3px 8px;border-radius:20px}
+.billing-save{font-family:'Syne Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);background:rgba(255,49,49,.1);border:1px solid rgba(255,49,49,.2);padding:3px 8px;border-radius:0}
 
 /* ── PLAN BADGE SYSTEM ───────────────────────────────────────────── */
-.pc-value-tag{position:absolute;top:16px;right:16px;font-family:'Syne Mono',monospace;font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.pc-value-tag{position:absolute;top:16px;right:16px;font-family:'Syne Mono',monospace;font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:0}
 .biz-accent .pc-value-tag{background:rgba(255,49,49,.12);color:var(--red);border:1px solid rgba(255,49,49,.2)}
 .ath-accent .pc-value-tag{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.2)}
 .cre-accent .pc-value-tag{background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
@@ -44,12 +44,12 @@
 .pc-saving::before{content:'↓';font-size:.6rem}
 
 /* ── PRICING PILL (one-time vs monthly indicator) ────────────────── */
-.pc-type-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-family:'Syne Mono',monospace;font-size:.54rem;letter-spacing:.1em;margin-bottom:14px}
+.pc-type-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:0;font-family:'Syne Mono',monospace;font-size:.54rem;letter-spacing:.1em;margin-bottom:14px}
 .pc-type-onetime{background:rgba(255,255,255,.05);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.07)}
 .pc-type-monthly{background:rgba(255,49,49,.1);color:var(--red);border:1px solid rgba(255,49,49,.2)}
 .ath-accent .pc-type-monthly{background:rgba(245,200,66,.08);color:var(--gold);border-color:rgba(245,200,66,.2)}
 .cre-accent .pc-type-monthly{background:rgba(34,197,94,.08);color:var(--green);border-color:rgba(34,197,94,.2)}
-.pc-type-pill::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.pc-type-pill::before{content:'';width:5px;height:5px;border-radius:0;background:currentColor;flex-shrink:0}
 
 /* ── WHAT'S INCLUDED COUNT ───────────────────────────────────────── */
 .pc-feat-count{font-family:'Syne Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
@@ -57,7 +57,7 @@
 /* ── QUICK COMPARE BAR (below tab nav) ─────────────────────────── */
 .quick-compare{background:var(--dark3);border-bottom:1px solid var(--border);padding:12px 48px;display:flex;align-items:center;gap:20px;overflow-x:auto}
 .qc-label{font-family:'Syne Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0}
-.qc-item{display:flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;text-decoration:none}
+.qc-item{display:flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:0;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;text-decoration:none}
 .qc-item:hover{border-color:rgba(255,49,49,.3);background:rgba(255,49,49,.06)}
 .qc-item-price{font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:var(--white)}
 .qc-item-name{font-family:'Syne',sans-serif;font-size:.68rem;color:var(--muted)}
@@ -66,7 +66,7 @@
 /* ── TIER LABEL UPGRADE ──────────────────────────────────────────── */
 .tier-label-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);margin-bottom:24px}
 .tier-label-wrap .tier-label{border:none;padding:0;margin:0}
-.tier-badge{font-family:'Syne Mono',monospace;font-size:.55rem;letter-spacing:.12em;padding:4px 10px;border-radius:20px;text-transform:uppercase}
+.tier-badge{font-family:'Syne Mono',monospace;font-size:.55rem;letter-spacing:.12em;padding:4px 10px;border-radius:0;text-transform:uppercase}
 .tier-badge-starter{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.08)}
 .tier-badge-growth{background:rgba(255,49,49,.1);color:var(--red);border:1px solid rgba(255,49,49,.2)}
 .tier-badge-scale{background:linear-gradient(135deg,rgba(255,49,49,.15),rgba(255,49,49,.06));color:var(--red);border:1px solid rgba(255,49,49,.25)}
